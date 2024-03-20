@@ -19,6 +19,7 @@ h1, h2, h3, h4, h5, h6, a, button {
 
 p {
   font-family: "Josefin Slab", serif;
+  line-height: 1.25rem;
 }
 
 ::-webkit-scrollbar {
@@ -26,13 +27,11 @@ p {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #EEEBD1;
-  opacity: 0.25;
+  background-color: #242C3440;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: #242C34;
-  border-radius: 10px;
 }
 
 a:hover, button:hover, input[type="submit"]:hover {
@@ -54,11 +53,16 @@ a:hover {
 }
 
 button, input[type="submit"] {
+  border: none;
+  color: #EEEBD1;
+  background-color: #678438;
   transition: 0.25s ease;
+  letter-spacing: 0.125rem;
 }
 
 button:hover, input[type="submit"]:hover {
-
+  color: #EEEBD1;
+  background-color: #445827;
 }
 
 nav {
@@ -144,5 +148,62 @@ nav img {
 
 .profile-btn:hover svg,
 .close-btn:hover svg {
+  color: #678438;
+}
+
+footer {
+  margin: 1rem;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.footer-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .footer-wrapper {
+    flex-direction: row;
+  }
+
+  .footer-content {
+    width: 75%;
+  }
+
+  .footer-btn {
+    align-self: flex-end;
+  }
+}
+
+footer img {
+  height: 150px;
+  width: 150px;
+  display: flex;
+  align-self: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-btn {
+  display: flex;
+  flex-direction: row;
+  gap: 1.25rem;
+}
+
+.footer-btn a svg {
+  display: flex;
+  align-self: center;
+  transition: 0.25s ease;
+}
+
+.footer-btn a:hover svg {
   color: #678438;
 }

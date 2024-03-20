@@ -16,14 +16,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital@0;1&family=Vollkorn:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
 
   <!--Link to Pictures file-->
-  <link rel="icon" type="image/png" href="../App_Assets/header-logo-no-bg.png" />
+  <link rel="icon" type="image/png" href="../App_Assets/header-logo.png" />
 
   <!--Link to CSS-->
   <link rel="stylesheet" href="../App_Styles/Home.css" />
   <link rel="stylesheet" href="../App_Styles/Shared.css" />
 
   <!--Link to Javascript-->
-  <script src="../App_Scripts/script.js" defer></script>
+  <script src="../Scripts/jquery-3.4.1.min.js"></script>
+  <script src="../App_Scripts/script.js"></script>
 
   <!--Title-->
   <title>Chateau Du Nox - Home</title>
@@ -80,9 +81,167 @@
       </div>
     </nav>
 
-    <div>
+    <div class="hero-container">
+      <div class="hero-image">
+        <img src="../App_Assets/vineyard-with-house.jpg" />
+      </div>
 
+      <h1>Uncork Flavor: Discover Chateau Du Nox</h1>
+
+      <p>Nestled in the heart of Napa Valley, our winery crafts and ages one of the world's finest and exceptional wines. A legacy of quality, taste the award-winning wines of Chateau Du Nox.</p>
     </div>
+
+    <div class="slider-container">
+      <div class="slider-viewer">
+        <div class="slider-group">
+          <div class="slide slide-1">
+            <div class="slide-content">
+              <h3>Obsessed with wine. In a good way</h3>
+              <p>Discover the story behind our passion for bringing you the finest wines.</p>
+              <button>
+                <h4>Learn More</h4>
+              </button>
+            </div>
+          </div>
+          <div class="slide slide-2">
+            <div class="slide-content">
+              <h3>Explore a world of exquisite wines</h3>
+              <p>We curate a selection of exceptional wines to tantalize your taste buds.</p>
+              <button>
+                <h4>Shop Wine</h4>
+              </button>
+            </div>
+          </div>
+          <div class="slide slide-3">
+            <div class="slide-content">
+              <h3>Passion for quality</h3>
+              <p>Insight of our network of trusted partners who bring their expertise to the table.</p>
+              <button>
+                <h4>Partners</h4>
+              </button>
+            </div>
+          </div>
+          <div class="slide slide-4">
+            <div class="slide-content">
+              <h3>Love to hear from you!</h3>
+              <p>Get in touch with our team and let's chat about all things wine.</p>
+              <button>
+                <h4>Visit Us</h4>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-buttons"></div>
+    </div>
+
+    <div class="wine-container">
+      <h2>Oenophile's Choices</h2>
+
+      <div class="wine-wrapper">
+        <div class="wine">
+          <div class="wine-image">
+            <img src="../App_Assets/langhe.jpeg" />
+          </div>
+
+          <div class="wine-overlay">
+            <div class="wine-content">
+              <h3>Larigi Langhe Rosso 2020 Elio Altare</h3>
+              <p>RM 400</p>
+              <button>
+                <h4>Discover</h4>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="wine">
+          <div class="wine-image">
+            <img src="../App_Assets/riserva.jpg" />
+          </div>
+
+          <div class="wine-overlay">
+            <div class="wine-content">
+              <h3>Riserva della Famiglia 2006 - Coppo - Barbera d'Asti DOC Superiore Nizza</h3>
+              <p>RM 650</p>
+              <button>
+                <h4>Discover</h4>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="wine">
+          <div class="wine-image">
+            <img src="../App_Assets/david.jpg" />
+          </div>
+
+          <div class="wine-overlay">
+            <div class="wine-content">
+              <h3>David Hook Central ranges Barbera 2021</h3>
+              <p>RM 190</p>
+              <button>
+                <h4>Discover</h4>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="wine">
+          <div class="wine-image">
+            <img src="../App_Assets/castello.png" />
+          </div>
+
+          <div class="wine-overlay">
+            <div class="wine-content">
+              <h3>Castello Del Poggio Barbera D'Asti DOCG</h3>
+              <p>RM 99</p>
+              <button>
+                <h4>Discover</h4>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    <footer>
+      <img src="../App_Assets/header-logo.png" />
+      <div class="footer-wrapper">
+        <div class="footer-content">
+          <h3>Visit Us</h3>
+          <p>4102 St Cahill Quint, Napa Valley, CA 93212</p>
+        </div>
+        <div class="footer-content">
+          <h3>Contact Us</h3>
+          <p>service@chateaudunox.com</p>
+          <p>1 (800) 279 0114</p>
+        </div>
+        <div class="footer-btn">
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" color="#242C34" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3"/>
+            </svg>
+          </a>
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" color="#242C34" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M12 2.04c-5.5 0-10 4.49-10 10.02c0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89c1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02"/>
+            </svg>
+          </a> 
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" color="#242C34" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M18.205 2.25h3.308l-7.227 8.26l8.502 11.24H16.13l-5.214-6.817L4.95 21.75H1.64l7.73-8.835L1.215 2.25H8.04l4.713 6.231zm-1.161 17.52h1.833L7.045 4.126H5.078z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
   </form>
 </body>
 </html>
