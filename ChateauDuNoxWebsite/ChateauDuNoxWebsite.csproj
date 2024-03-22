@@ -108,7 +108,11 @@
     <Content Include="App_Assets\header-logo.png" />
     <Content Include="App_Scripts\script.js" />
     <Content Include="App_Start\Home.aspx" />
+    <Content Include="App_Start\Login.aspx" />
+    <Content Include="App_Start\Register.aspx" />
     <Content Include="App_Styles\Home.css" />
+    <Content Include="App_Styles\Login.css" />
+    <Content Include="App_Styles\Register.css" />
     <Content Include="App_Styles\Shared.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -170,6 +174,20 @@
     </Compile>
     <Compile Include="App_Start\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Start\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Start\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Global.asax.cs">

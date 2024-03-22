@@ -17,7 +17,7 @@ h1, h2, h3, h4, h5, h6, a, button {
   font-family: "Vollkorn", serif;
 }
 
-p {
+p, input {
   font-family: "Josefin Slab", serif;
   line-height: 1.25rem;
 }
@@ -50,6 +50,11 @@ a {
 
 a:hover {
   color: #678438;
+}
+
+input:focus-visible {
+  border-bottom: 3.75px solid #445827;
+  outline: none;
 }
 
 button, input[type="submit"] {
@@ -279,9 +284,26 @@ nav img {
   color: #678438;
 }
 
+.input-box {
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-bottom: 3.75px solid #678438;
+  color: #EEEBD1;
+  background-color: #242C34;
+  letter-spacing: 0.0625rem;
+  transition: 0.25s ease;
+}
+
+.input-submit {
+  padding: 0.5rem 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 @media only screen and (min-width: 768px) {
   .footer-wrapper {
     flex-direction: row;
+    gap: 2rem;
   }
 
   .footer-content {
