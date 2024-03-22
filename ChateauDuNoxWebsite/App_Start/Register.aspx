@@ -31,8 +31,46 @@
 </head>
 <body>
   <form id="form1" runat="server">
-    <div>
+    <div class="login-container">
+      <div class="login-content">
+        <img src="../App_Assets/header-logo.png" />
 
+        <h1>Welcome to Chateau Du Nox</h1>
+
+        <p>Among the Top 10 wineries in Napa Valley</p>
+      </div>
+      <div class="login-content">
+        <img src="../App_Assets/header-logo.png" />
+
+        <div class="input-wrapper">
+          <div class="input-container">
+            <h3>Username</h3>
+            <asp:TextBox CssClass="input-box" ID="UsernameInput" runat="server"></asp:TextBox>
+          </div>
+          <div class="input-container">
+            <h3>Email Address</h3>
+            <asp:TextBox CssClass="input-box" ID="EmailInput" runat="server"></asp:TextBox>
+          </div>
+          <div class="input-container">
+            <h3>Password</h3>
+            <asp:TextBox CssClass="input-box" ID="PasswordInput" runat="server"></asp:TextBox>
+          </div>
+          <div class="input-container">
+            <h3>Confirm Password</h3>
+            <asp:TextBox CssClass="input-box" ID="ConfirmInput" runat="server"></asp:TextBox>
+          </div>
+        </div>
+
+        <asp:Button CssClass="input-submit" ID="RegisterButton" runat="server" Text="Register" />
+      
+        <p>Already have an account?
+          <a href="#">Login here.</a>
+        </p>
+        
+        <a href="#">
+          <p>Continue as Guest</p>
+        </a>
+      </div>
     </div>
   </form>
 </body>

@@ -347,6 +347,12 @@ nav img {
   .desktop-footer {
     display: flex;
   }
+
+  .input-submit {
+    padding: 0.5rem 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
 }
 
 @media only screen and (min-width: 1440px) {

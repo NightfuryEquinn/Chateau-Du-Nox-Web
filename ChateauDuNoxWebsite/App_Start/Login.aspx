@@ -40,6 +40,8 @@
         <p>Among the Top 10 wineries in Napa Valley</p>
       </div>
       <div class="login-content">
+        <img src="../App_Assets/header-logo.png" />
+
         <div class="input-container">
           <h3>Username</h3>
           <asp:TextBox CssClass="input-box" ID="UsernameInput" runat="server"></asp:TextBox>
@@ -56,7 +58,6 @@
         <asp:Button CssClass="input-submit" ID="LoginButton" runat="server" Text="Login" />
       
         <p>Don’t have an account?
-          <br />
           <a href="#">Register here.</a>
         </p>
         
