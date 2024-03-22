@@ -43,6 +43,10 @@
   width: 65%;
 }
 
+.login-content:first-child h1 {
+  width: 80%;
+}
+
 .login-content img {
   margin-top: 2rem;
   height: 200px;

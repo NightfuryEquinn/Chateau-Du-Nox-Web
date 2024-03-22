@@ -107,11 +107,19 @@
   <ItemGroup>
     <Content Include="App_Assets\header-logo.png" />
     <Content Include="App_Scripts\script.js" />
+    <Content Include="App_Start\AboutUs.aspx" />
+    <Content Include="App_Start\ContactUs.aspx" />
+    <Content Include="App_Start\Forget.aspx" />
     <Content Include="App_Start\Home.aspx" />
     <Content Include="App_Start\Login.aspx" />
+    <Content Include="App_Start\Partners.aspx" />
     <Content Include="App_Start\Register.aspx" />
+    <Content Include="App_Styles\AboutUs.css" />
+    <Content Include="App_Styles\ContactUs.css" />
+    <Content Include="App_Styles\Forget.css" />
     <Content Include="App_Styles\Home.css" />
     <Content Include="App_Styles\Login.css" />
+    <Content Include="App_Styles\Partners.css" />
     <Content Include="App_Styles\Register.css" />
     <Content Include="App_Styles\Shared.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -167,7 +175,28 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Start\AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\ContactUs.aspx.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Start\ContactUs.aspx.designer.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\Forget.aspx.cs">
+      <DependentUpon>Forget.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Start\Forget.aspx.designer.cs">
+      <DependentUpon>Forget.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -181,6 +210,13 @@
     </Compile>
     <Compile Include="App_Start\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\Partners.aspx.cs">
+      <DependentUpon>Partners.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Start\Partners.aspx.designer.cs">
+      <DependentUpon>Partners.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>

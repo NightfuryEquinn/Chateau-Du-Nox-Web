@@ -1,4 +1,4 @@
-﻿@import url("Register.css");
+﻿@import url("Forget.css");
 
 :root {
   --black: #242C34;
@@ -134,6 +134,12 @@
 
   .input-container {
     width: 35%;
+    max-width: 250px;
+  }
+
+  .input-container:first-child {
+    width: 75%;
+    max-width: 525px;
   }
 }
 
@@ -141,9 +147,5 @@
   .login-content:not(:first-child) img {
     height: 175px;
     width: 175px;
-  }
-
-  .input-container {
-    width: 40%;
   }
 }

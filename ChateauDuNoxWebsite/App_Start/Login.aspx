@@ -35,7 +35,7 @@
       <div class="login-content">
         <img src="../App_Assets/header-logo.png" />
 
-        <h1>Welcome to Chateau Du Nox</h1>
+        <h1>Login to Chateau Du Nox</h1>
 
         <p>Among the Top 10 wineries in Napa Valley</p>
       </div>
@@ -51,17 +51,17 @@
           <asp:TextBox CssClass="input-box" ID="PasswordInput" TextMode="Password" runat="server"></asp:TextBox>
         </div>
 
-        <a href="#">
+        <a href="Forget.aspx">
           <p>Forget Password?</p>
         </a>
 
         <asp:Button CssClass="input-submit" ID="LoginButton" runat="server" Text="Login" />
       
         <p>Don’t have an account?
-          <a href="#">Register here.</a>
+          <a href="Register.aspx">Register here.</a>
         </p>
         
-        <a href="#">
+        <a href="Home.aspx">
           <p>Continue as Guest</p>
         </a>
       </div>

@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="ChateauDuNoxWebsite.App_Start.Register" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Forget.aspx.cs" Inherits="ChateauDuNoxWebsite.App_Start.Forget" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-   <!--How code being decoded-->
+  <!--How code being decoded-->
   <meta charset="utf-8" />
 
   <!--How page being display based on viewport-->
@@ -19,7 +19,7 @@
   <link rel="icon" type="image/png" href="../App_Assets/header-logo.png" />
 
   <!--Link to CSS-->
-  <link rel="stylesheet" href="../App_Styles/Register.css" />
+  <link rel="stylesheet" href="../App_Styles/Forget.css" />
   <link rel="stylesheet" href="../App_Styles/Shared.css" />
 
   <!--Link to Javascript-->
@@ -27,7 +27,7 @@
   <script src="../App_Scripts/script.js"></script>
 
   <!--Title-->
-  <title>Chateau Du Nox - Register</title>
+  <title>Chateau Du Nox - Forget Password</title>
 </head>
 <body>
   <form id="form1" runat="server">
@@ -35,7 +35,7 @@
       <div class="login-content">
         <img src="../App_Assets/header-logo.png" />
 
-        <h1>Register to Chateau Du Nox</h1>
+        <h1>Reset to Chateau Du Nox</h1>
 
         <p>Among the Top 10 wineries in Napa Valley</p>
       </div>
@@ -43,10 +43,6 @@
         <img src="../App_Assets/header-logo.png" />
 
         <div class="input-wrapper">
-          <div class="input-container">
-            <h3>Username</h3>
-            <asp:TextBox CssClass="input-box" ID="UsernameInput" runat="server"></asp:TextBox>
-          </div>
           <div class="input-container">
             <h3>Email Address</h3>
             <asp:TextBox CssClass="input-box" ID="EmailInput" runat="server"></asp:TextBox>
@@ -61,14 +57,10 @@
           </div>
         </div>
 
-        <asp:Button CssClass="input-submit" ID="RegisterButton" runat="server" Text="Register" />
-      
-        <p>Already have an account?
-          <a href="Login.aspx">Login here.</a>
-        </p>
-        
-        <a href="Home.aspx">
-          <p>Continue as Guest</p>
+        <asp:Button CssClass="input-submit" ID="ResetButton" runat="server" Text="Reset" />
+
+        <a href="Login.aspx">
+          <p>Back to Login</p>
         </a>
       </div>
     </div>
