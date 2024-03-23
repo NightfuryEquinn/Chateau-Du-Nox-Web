@@ -7,3 +7,153 @@
   --green: #678438;
   --darkgreen: #445827;
 }
+
+.contact-container {
+  padding: 1rem;
+  padding-top: 9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: var(--black);
+}
+
+.enquiry-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.enquiry-section p {
+  text-align: justify;
+}
+
+.contact-visit-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-content {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+}
+
+.contact-content svg {
+  display: flex;
+  align-self: center;
+}
+
+.visit-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.image-wrapper {
+  height: 250px;
+  width: 100%;
+}
+
+.image-wrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.visit-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.newsletter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.newsletter-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.newsletter-inner-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.newsletter-inner-wrapper .input-box {
+  width: 100%;
+  max-width: 300px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .contact-container {
+    padding: 3rem;
+    padding-top: 9rem;
+  }
+
+  .contact-visit-wrapper {
+    flex-direction: row;
+    gap: 4rem;
+  }
+
+  .visit-section {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .visit-wrapper {
+    width: 90%;
+  }
+
+  .visit-wrapper p {
+    text-align: justify;
+  }
+
+  .newsletter-section {
+    flex-direction: row;
+    gap: 4rem;
+  }
+
+  .newsletter-inner-wrapper {
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+  } 
+
+  .newsletter-inner-wrapper .input-box {
+    width: initial;
+    max-width: initial;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .contact-container {
+    gap: 3rem;
+  }
+
+  .contact-visit-wrapper {
+    gap: 10rem;
+  }
+
+  .image-wrapper {
+    height: 300px;
+    width: 100%;
+  }
+
+  .newsletter-inner-wrapper {
+    justify-content: flex-start;
+  } 
+}
