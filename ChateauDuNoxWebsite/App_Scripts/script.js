@@ -1,14 +1,19 @@
-﻿// Wait for DOM loaded
+﻿// Overlay functions
+const openOverlay = () => {
+  document.getElementById("overlay-menu").style.height = "100%"
+}
+
+const closeOverlay = () => {
+  document.getElementById("overlay-menu").style.height = "0%"
+}
+
+// Variables
+const counters = document.querySelectorAll(".counters span")
+const container = document.querySelector(".counters")
+let activated = false
+
+// Wait for DOM loaded
 $(document).ready(function () {
-  // Navigation overlay top down
-  const openOverlay = () => {
-    document.getElementById("overlay-menu").style.height = "100%"
-  }
-
-  const closeOverlay = () => {
-    document.getElementById("overlay-menu").style.height = "0%"
-  }
-
   // Slider
   $('.slider-container').each(function () {
     var $this = $(this)
@@ -76,40 +81,99 @@ $(document).ready(function () {
   })
 
   // Number counter
-  const counters = document.querySelectorAll(".counters span")
-  const container = document.querySelector(".counters")
+  if (container && counters) {
+    window.addEventListener('scroll', () => {
+      if (pageYOffset > container.offsetTop - container.offsetHeight - 200 && activated === false) {
+        counters.forEach(counter => {
+          counter.innerText = 0
 
-  let activated = false
+          let count = 0
 
-  window.addEventListener('scroll', () => {
-    if (pageYOffset > container.offsetTop - container.offsetHeight - 200 && activated === false) {
-      counters.forEach(counter => {
-        counter.innerText = 0
-
-        let count = 0
-
-        const updateCount = () => {
-          const target = parseInt(counter.dataset.count)
-          if (count < target) {
-            count++
-            counter.innerText = count
-            setTimeout(updateCount, 20)
-          } else {
-            counter.innerText = target
+          const updateCount = () => {
+            const target = parseInt(counter.dataset.count)
+            if (count < target) {
+              count++
+              counter.innerText = count
+              setTimeout(updateCount, 20)
+            } else {
+              counter.innerText = target
+            }
           }
-        }
 
-        updateCount()
+          updateCount()
 
-        activated = true
-      })
-    } else if (pageYOffset < container.offsetTop - container.offsetHeight - 500 || pageYOffset === 0 && activated === true) {
-      counters.forEach(counter => {
-        counter.innerText = 0
-      })
+          activated = true
+        })
+      } else if (pageYOffset < container.offsetTop - container.offsetHeight - 500 || pageYOffset === 0 && activated === true) {
+        counters.forEach(counter => {
+          counter.innerText = 0
+        })
 
-      activated = false
+        activated = false
+      }
+    })
+  }
+  
+  // Photo Viewer
+  var request
+  var $current
+  var cache = {}
+  var $frame = $("#photo-viewer")
+  var $thumbs = $(".thumb")
+
+  const crossfade = ($img) => {
+    if ($current) {
+      $current.stop().fadeOut('slow')
     }
+
+    $img.stop().fadeTo('slow', 1)
+
+    $current = $img
+  }
+
+  $(document).on('click', '.thumb', function (e) {
+    var $img
+    var src = this.href
+    request = src
+
+    e.preventDefault()
+
+    $thumbs.removeClass('active')
+    $(this).addClass('active')
+
+    if (cache.hasOwnProperty(src)) {
+      if (cache[src].isLoading === false) {
+        crossfade(cache[src].$img)
+      }
+    } else {
+      $img = $('<img />')
+
+      cache[src] = {
+        $img: $img,
+        isLoading: true
+      }
+
+      $img.on('load', function () {
+        $img.hide()
+        $frame.removeClass('is-loading').append($img)
+        cache[src].isLoading = false
+
+        if (request === src) {
+          crossfade($img)
+        }
+      })
+
+      $frame.addClass('is-loading')
+
+      $img.attr({
+        'src': src
+      })
+    }
+
+    $(".viewer-title").text($(this).attr('data-title'))
+    $(".viewer-body").text($(this).attr('data-body'))
   })
+
+  $('.thumb').eq(0).click()
 })
 

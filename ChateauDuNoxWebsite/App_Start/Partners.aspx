@@ -109,7 +109,66 @@
       </div>
     </nav>
 
+    <div class="partners-container">
+      <div class="partners-section">
+        <h1>Our Partners</h1>
 
+        <p>We cultivate strong, collaborative relationships that are essential to sharing our passion for wine with the world. Our partners, including distributors, restaurants, retailers, sommeliers, and industry influencers, form an invaluable network that extends our reach and brings our handcrafted wines to your table. We are committed to fostering a spirit of partnership by providing exceptional service, ongoing support, and educational programs. These efforts ensure our partners have the knowledge and resources they need to confidently share our story and the unique characteristics of our wines with their customers. Together, we create memorable wine experiences, promote responsible enjoyment, and build a vibrant wine community that celebrates quality and craftsmanship. We believe that by working together, we can elevate the world's appreciation for fine wine, one sip at a time.</p>
+      </div>
+
+      <div id="thumbnails" class="thumbnails-container">
+        <div class="thumbnails-scroll">
+          <a 
+            href="../App_Assets/opus.jpg" 
+            class="thumb active"
+            data-title="Opus One Since 2001"
+            data-body="In 1970, Baron Philippe de Rothschild, owner of the First Growth estate Chateau Mouton Rothschild on Bordeaux’s Left Bank, met Robert Mondavi, a Californian winemaking pioneer, for the first time at a hotel in Hawaii. The former suggested the idea of a joint venture between the two wineries; a merging of Old World and New World wine styles. The partnership was announced in 1978, with the aim of making a top-quality Bordeaux-style (Cabernet Sauvignon-dominant blend) wine in California. Mondavi decided to use grapes from his reputable To Kalon vineyard in Napa Valley to make the wine, which was eventually named Opus One. The Franco-American project was considered bold at the time: A world-renowned Bordeaux brand linking arms with a New World producer, albeit one who was on the cusp of leading a wine revolution in California."
+           >
+            <img src="../App_Assets/opus-logo.png" />
+          </a>
+          <a 
+            href="../App_Assets/almaviva.jpg" 
+            class="thumb"
+            data-title="Almaviva Since 2005"
+            data-body="Established in 1997, Almaviva is a joint venture between Mouton Rothschild and Chilean winemaking powerhouse Concha y Toro. Almaviva is a Bordeaux-style blend made in Chile, a marriage between Chilean terroir and French winemaking expertise. The Almaviva estate is located in Puente Alto, the highest part of Chile’s Maipo Valley, a region known for its top cabernet sauvignon. What sets Almaviva apart from other Bordeaux-style blends is the presence of carmenere — a grape that flourishes in Chile — in its blend: It makes up the second largest amount after Cabernet Sauvignon, replacing what would have been Merlot in a Left Bank-inspired Bordeaux-style wine. Carmenere lends a subtle meaty and herbaceous note to the wine."
+           >
+            <img src="../App_Assets/almaviva-logo.jpg" />
+          </a>
+          <a 
+            href="../App_Assets/caro.jpg" 
+            class="thumb"
+            data-title="Bodegas Caro Since 2008"
+            data-body="In 1999, the Domaines Barons de Rothschild Lafite (DBR Lafite) group — a part of the Rothschild family empire and the owner of First Growth estate Chateau Lafite Rothschild — teamed up with Argentina’s Catena winemaking family (of the renowned Catena Zapata winery) to create Bodegas Caro, a winery in Argentina’s Mendoza region. The winery’s eponymous wine is DBR Lafite’s way of revisiting the old Bordeaux tradition of blending cabernet sauvignon with malbec, the latter a red grape that used to be popular in Bordeaux but today has become synonymous with Argentinian wine, especially in Mendoza. According to Grand Vin, the wine’s importer, Caro is a marked departure in style for Catena. “[Catena’s] Malbecs often undergo extended maceration to produce richer flavours. In contrast, Caro is given a much shorter maceration, resulting in a more elegant style,” said Linda Chan, Grand Vin’s assistant manager."
+           >
+            <img src="../App_Assets/caro-logo.jpeg" />
+          </a>
+          <a 
+            href="../App_Assets/cheval.jpg" 
+            class="thumb"
+            data-title="Cheval Des Andes Since 2011"
+            data-body="Established in 1999, Cheval des Andes is the brainchild of Bordeaux’s Chateau Cheval Blanc and Argentina’s Mendoza-based Terrazas de los Andes. Like Bodegas Caro above, Cheval des Andes represents Cheval Blanc’s ambition of reintroducing malbec to a Bordeaux-style blend. Cheval des Andes, however, puts the spotlight on malbec in its blend by making it the dominant component. Winemakers Pierre-Olivier Clouet of Chateau Cheval Blanc and Gerald Gabillet of Cheval des Andes — both armed with extensive experience in Bordeaux — oversee the winemaking at the Argentinian winery."
+           >
+            <img src="../App_Assets/cheval-logo.png" />
+          </a>
+          <a 
+            href="../App_Assets/evremond.jpg" 
+            class="thumb"
+            data-title="Domaine Evremond Since 2017"
+            data-body="It says a lot about the potential of English sparkling wine when a top champagne house decides to hop across the Channel to plant vineyards there. In 2015, Champagne Taittinger announced a joint venture with UK-based Hatch Mansfield — not a winery in this case but Taittinger’s long-time agent and wine distributor — to make sparkling wines in Kent, a county in south-eastern England. Named Domaine Evremond, the estate will have a total of 40 hectares planted to the classic Champagne varieties of chardonnay, pinot noir and pinot meunier. The first 20 hectares of vines were planted in 2017. Kent and Champagne share the same kind of chalky soil, one of the factors that encouraged the maison to set their sights on the English county. Pierre-Emmanuel Taittinger, honorary chairman of Champagne Taittinger, said they aim to make “something of real excellence in the UK’s increasingly temperate climate, and not compare it with champagne or any other sparkling wine”."
+           >
+            <img src="../App_Assets/evremond-logo.jpg" />
+          </a>
+        </div>
+      </div>
+
+      <div class="photo-viewer-content">
+        <div id="photo-viewer" class="photo-viewer-container"></div>
+        <div class="photo-viewer-wrapper">
+          <h2 class="viewer-title"></h2>
+          <p class="viewer-body"></p>
+        </div>
+      </div>
+    </div>
 
     <footer class="mobile-footer">
       <img src="../App_Assets/header-logo.png" />
