@@ -52,6 +52,7 @@ a:hover {
   color: #678438;
 }
 
+textarea:focus-visible,
 input:focus-visible {
   border-bottom: 3.75px solid #445827;
   outline: none;
@@ -292,6 +293,17 @@ nav img {
   background-color: #242C34;
   letter-spacing: 0.0625rem;
   transition: 0.25s ease;
+}
+
+.input-textarea {
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-bottom: 3.75px solid #678438;
+  color: #EEEBD1;
+  background-color: #242C34;
+  letter-spacing: 0.0625rem;
+  transition: 0.25s ease;
+  resize: none;
 }
 
 .input-submit {

@@ -108,20 +108,38 @@
     <Content Include="App_Assets\header-logo.png" />
     <Content Include="App_Scripts\script.js" />
     <Content Include="App_Start\AboutUs.aspx" />
+    <Content Include="App_Start\App_Admin\ManageOrder.aspx" />
+    <Content Include="App_Start\App_Admin\ManageReview.aspx" />
+    <Content Include="App_Start\App_Admin\ManageUser.aspx" />
+    <Content Include="App_Start\App_Admin\ManageWine.aspx" />
+    <Content Include="App_Start\App_Admin\WineForm.aspx" />
     <Content Include="App_Start\ContactUs.aspx" />
     <Content Include="App_Start\Forget.aspx" />
     <Content Include="App_Start\Home.aspx" />
     <Content Include="App_Start\Login.aspx" />
     <Content Include="App_Start\Partners.aspx" />
+    <Content Include="App_Start\Profile.aspx" />
     <Content Include="App_Start\Register.aspx" />
+    <Content Include="App_Start\Review.aspx" />
+    <Content Include="App_Start\SingleWine.aspx" />
+    <Content Include="App_Start\Wines.aspx" />
     <Content Include="App_Styles\AboutUs.css" />
     <Content Include="App_Styles\ContactUs.css" />
     <Content Include="App_Styles\Forget.css" />
     <Content Include="App_Styles\Home.css" />
     <Content Include="App_Styles\Login.css" />
+    <Content Include="App_Styles\ManageOrder.css" />
+    <Content Include="App_Styles\ManageReview.css" />
+    <Content Include="App_Styles\ManageUser.css" />
+    <Content Include="App_Styles\ManageWine.css" />
     <Content Include="App_Styles\Partners.css" />
+    <Content Include="App_Styles\Profile.css" />
     <Content Include="App_Styles\Register.css" />
+    <Content Include="App_Styles\Review.css" />
     <Content Include="App_Styles\Shared.css" />
+    <Content Include="App_Styles\SingleWine.css" />
+    <Content Include="App_Styles\WineForm.css" />
+    <Content Include="App_Styles\Wines.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -182,6 +200,41 @@
     <Compile Include="App_Start\AboutUs.aspx.designer.cs">
       <DependentUpon>AboutUs.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Start\App_Admin\ManageOrder.aspx.cs">
+      <DependentUpon>ManageOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Start\App_Admin\ManageOrder.aspx.designer.cs">
+      <DependentUpon>ManageOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\App_Admin\ManageReview.aspx.cs">
+      <DependentUpon>ManageReview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Start\App_Admin\ManageReview.aspx.designer.cs">
+      <DependentUpon>ManageReview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\App_Admin\ManageUser.aspx.cs">
+      <DependentUpon>ManageUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Start\App_Admin\ManageUser.aspx.designer.cs">
+      <DependentUpon>ManageUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\App_Admin\ManageWine.aspx.cs">
+      <DependentUpon>ManageWine.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Start\App_Admin\ManageWine.aspx.designer.cs">
+      <DependentUpon>ManageWine.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\App_Admin\WineForm.aspx.cs">
+      <DependentUpon>WineForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Start\App_Admin\WineForm.aspx.designer.cs">
+      <DependentUpon>WineForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\ContactUs.aspx.cs">
       <DependentUpon>ContactUs.aspx</DependentUpon>
@@ -218,6 +271,13 @@
     <Compile Include="App_Start\Partners.aspx.designer.cs">
       <DependentUpon>Partners.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Start\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Start\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -225,7 +285,28 @@
     <Compile Include="App_Start\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Start\Review.aspx.cs">
+      <DependentUpon>Review.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Start\Review.aspx.designer.cs">
+      <DependentUpon>Review.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SingleWine.aspx.cs">
+      <DependentUpon>SingleWine.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Start\SingleWine.aspx.designer.cs">
+      <DependentUpon>SingleWine.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\Wines.aspx.cs">
+      <DependentUpon>Wines.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Start\Wines.aspx.designer.cs">
+      <DependentUpon>Wines.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -1,0 +1,26 @@
+﻿@import url("SingleWine.css");
+
+:root {
+  --black: #242C34;
+  --white: #EEEBD1;
+  --beige: #DAD1B1;
+  --green: #678438;
+  --darkgreen: #445827;
+}
+
+.single-container {
+  padding: 1rem;
+  padding-top: 9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: var(--black);
+}
+
+@media only screen and (min-width: 1024px) {
+  .single-container {
+    padding: 3rem;
+    padding-top: 9rem;
+    gap: 3rem;
+  }
+}

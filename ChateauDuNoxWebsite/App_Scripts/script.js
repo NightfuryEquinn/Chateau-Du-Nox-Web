@@ -1,4 +1,24 @@
-﻿// Overlay functions
+﻿// Tab Panel
+const openWine = (evt, wine) => {
+  evt.preventDefault()
+
+  var tabContent, tabs
+
+  tabContent = document.getElementsByClassName("wine-wrapper")
+  for (let i = 0; i < tabContent.length; i++) {
+    tabContent[i].style.display = "none"
+  }
+
+  tabs = document.getElementsByClassName("tab")
+  for (let i = 0; i < tabs.length; i++) {
+    tabs[i].className = tabs[i].className.replace(" active", "")
+  }
+
+  document.getElementById(wine).style.display = "flex"
+  evt.target.className += " active"
+}
+
+// Overlay functions
 const openOverlay = () => {
   document.getElementById("overlay-menu").style.height = "100%"
 }
@@ -14,6 +34,10 @@ let activated = false
 
 // Wait for DOM loaded
 $(document).ready(function () {
+  if (document.getElementsByClassName("tab")[0]) {
+    document.getElementsByClassName("tab")[0].click()
+  }
+
   // Slider
   $('.slider-container').each(function () {
     var $this = $(this)

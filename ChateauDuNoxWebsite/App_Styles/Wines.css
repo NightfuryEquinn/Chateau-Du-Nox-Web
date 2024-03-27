@@ -1,0 +1,187 @@
+﻿@import url("Wines.css");
+
+:root {
+  --black: #242C34;
+  --white: #EEEBD1;
+  --beige: #DAD1B1;
+  --green: #678438;
+  --darkgreen: #445827;
+}
+
+.wine-container {
+  padding: 1rem;
+  padding-top: 9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: var(--black);
+}
+
+.wine-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wine-section p {
+  text-align: justify;
+}
+
+.search-bar {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab-panel-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.tabs {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab {
+  padding: 0.5rem;
+  text-transform: uppercase;
+}
+
+.tab.active {
+  background-color: var(--darkgreen);
+}
+
+.wine-wrapper {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  animation: fade 1s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+.wine-container hr {
+  border: 1px solid var(--beige);
+  margin: 0.5rem 3rem;
+}
+
+.wine {
+  position: relative;
+}
+
+.wine-image {
+  position: relative;
+  height: 400px;
+  background-color: #FFF;
+}
+
+.wine-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.wine-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.25s ease;
+  background-color: #242C3480;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wine:hover .wine-overlay {
+  opacity: 1;
+}
+
+.wine-content {
+  width: 75%;
+  padding: 1rem;
+  background-color: #DAD1B180;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.wine-content p {
+  font-weight: bold;
+}
+
+.wine-content button {
+  padding: 0.5rem 0.75rem;
+  width: 40%;
+  text-transform: uppercase;
+}
+
+@media only screen and (min-width: 768px) {
+  .wine-container hr {
+    display: none;
+  }
+
+  .wine-wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 3rem;
+  }
+
+  .wine-image {
+    width: 350px;
+  }
+
+  .tabs,
+  .search-bar {
+    justify-content: flex-start;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .wine-container {
+    padding: 3rem;
+    padding-top: 9rem;
+    gap: 3rem;
+  }
+
+  .wine-wrapper {
+    align-content: flex-start;
+    justify-content: center;
+  }
+
+  .wine-image {
+    width: 275px;
+  }
+
+  .wine-content {
+    width: 65%;
+  }
+
+  .wine-content button {
+    padding: 0.75rem 1.25rem;
+    width: auto;
+  }
+}
