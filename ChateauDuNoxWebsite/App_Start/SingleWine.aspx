@@ -110,7 +110,119 @@
     </nav>
 
     <div class="single-container">
+      <div class="back-wrapper">
+        <a href="#" class="back-section">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+            <path fill="currentColor" d="m7.825 13l4.9 4.9q.3.3.288.7t-.313.7q-.3.275-.7.288t-.7-.288l-6.6-6.6q-.15-.15-.213-.325T4.426 12q0-.2.063-.375T4.7 11.3l6.6-6.6q.275-.275.688-.275t.712.275q.3.3.3.713t-.3.712L7.825 11H19q.425 0 .713.288T20 12q0 .425-.288.713T19 13z"/>
+          </svg>
+          <h5>Back to Catalog</h5>
+        </a>
+      </div>
 
+      <div class="single-wine-content">
+        <div class="wine-image">
+          <img src="../App_Assets/langhe.jpeg" />
+        </div>
+        <div class="wine-content">
+          <h1>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        
+          <div class="wine-detail">
+            <div class="detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Vintage Year"></asp:Label>
+              <asp:Label runat="server" CssClass="input-label" ID="vintage" Text="2018"></asp:Label>
+            </div>
+            <div class="detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Body"></asp:Label>
+              <asp:Label runat="server" CssClass="input-label" ID="body" Text="Full-bodied"></asp:Label>
+            </div>
+            <div class="detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Type"></asp:Label>
+              <asp:Label runat="server" CssClass="input-label" ID="type" Text="Red wine"></asp:Label>
+            </div>
+            <div class="detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Tannin"></asp:Label>
+              <asp:Label runat="server" CssClass="input-label" ID="tannin" Text="Ripe tannins"></asp:Label>
+            </div>
+            <div class="detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Acidity"></asp:Label>
+              <asp:Label runat="server" CssClass="input-label" ID="acidity" Text="Medium to medium high"></asp:Label>
+            </div>
+            <div class="detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Varietal"></asp:Label>
+              <asp:Label runat="server" CssClass="input-label" ID="varietal" Text="Pinot Noir"></asp:Label>
+            </div>
+            <div class="detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Volume (ml)"></asp:Label>
+              <asp:Label runat="server" CssClass="input-label" ID="volume" Text="750"></asp:Label>
+            </div>
+            <div class="detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Alcohol by Volume (ABV)"></asp:Label>
+              <asp:Label runat="server" CssClass="input-label" ID="abv" Text="12.5% - 14.5%"></asp:Label>
+            </div>
+            <div class="detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Origin"></asp:Label>
+              <asp:Label runat="server" CssClass="input-label" ID="origin" Text="Nuits-Saint-Georges, Côte de Nuits, Burgundy, France"></asp:Label>
+            </div>
+            <div class="detail">
+              <asp:Label runat="server" CssClass="input-label" Text="In Stock"></asp:Label>
+              <asp:Label runat="server" CssClass="input-label" ID="stock" Text="144"></asp:Label>
+            </div>
+          </div>
+
+          <div class="price-section">
+            <h3>RM <span data-price="400" id="total-price">400</span></h3>
+
+            <div class="counter">
+              <button class="input-submit" onclick="decrement(); return false;" type="button"> - </button>
+              <p id="total-quantity">1</p>
+              <button class="input-submit" onclick="increment(); return false;" type="button"> + </button>
+            </div>
+
+            <asp:Button runat="server" CssClass="input-submit" Text="Add to Wishlist" />
+            <asp:Button runat="server" CssClass="input-submit" Text="Add to Cart" />
+          </div>
+        </div>
+      </div>
+
+      <div class="wine-review-section">
+        <h2>Wine Reviews (<span id="total-reviews">23</span>)</h2>
+        <div class="review-container">
+          <div class="review">
+            <div class="review-content">
+              <div class="user-image">
+                <img src="../App_Assets/profile.jpg" />
+              </div>
+              <div class="review-inner-content">
+                <h3>John Doe</h3>
+                <p>19 March 2024</p>
+              </div>
+            </div>
+
+            <div class="review-content">
+              <h3><span>5</span> / 5</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+            </div>
+          </div>
+
+          <div class="review">
+            <div class="review-content">
+              <div class="user-image">
+                <img src="../App_Assets/profile.jpg" />
+              </div>
+              <div class="review-inner-content">
+                <h3>John Doe</h3>
+                <p>19 March 2024</p>
+              </div>
+            </div>
+
+            <div class="review-content">
+              <h3><span>5</span> / 5</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <footer class="mobile-footer">

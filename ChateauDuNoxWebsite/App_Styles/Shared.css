@@ -17,7 +17,7 @@ h1, h2, h3, h4, h5, h6, a, button {
   font-family: "Vollkorn", serif;
 }
 
-p, input {
+p, input, .input-label {
   font-family: "Josefin Slab", serif;
   line-height: 1.25rem;
 }
@@ -310,6 +310,16 @@ nav img {
   padding: 0.5rem 0.75rem;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.detail .input-label {
+  letter-spacing: 0.0625rem;
+}
+
+.detail .input-label:first-child {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.25rem;
 }
 
 @media only screen and (min-width: 768px) {

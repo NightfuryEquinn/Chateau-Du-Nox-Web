@@ -109,6 +109,128 @@
       </div>
     </nav>
 
+    <div class="profile-container">
+      <div class="avatar-section">
+        <div class="avatar-wrapper">
+          <img src="../App_Assets/profile.jpg" />
+        </div>
+        <div class="avatar-detail">
+          <p>Joined since 13 March 2024</p>
+          <h1>John Doe</h1>
+        </div>
+      </div>
+
+      <div class="profile-detail-section">
+        <div class="detail">
+          <asp:Label runat="server" CssClass="input-label" Text="Email Address"></asp:Label>
+          <asp:Label runat="server" CssClass="input-label" ID="email" Text="john.doe@gmail.com"></asp:Label>
+        </div>
+        <div class="detail">
+          <asp:Label runat="server" CssClass="input-label" Text="Phone Number"></asp:Label>
+          <asp:Label runat="server" CssClass="input-label" ID="phone" Text="0128981055"></asp:Label>
+        </div>
+        <div class="detail">
+          <asp:Label runat="server" CssClass="input-label" Text="Shipping Address"></asp:Label>
+          <asp:Label runat="server" CssClass="input-label" ID="shipping" Text="35, Walnut Street, Baker Town, Oxford"></asp:Label>
+        </div>
+        <div class="detail">
+          <asp:Label runat="server" CssClass="input-label" Text="Billing Address"></asp:Label>
+          <asp:Label runat="server" CssClass="input-label" ID="billing" Text="35, Walnut Street, Baker Town, Oxford"></asp:Label>
+        </div>
+        <div class="detail">
+          <asp:Label runat="server" CssClass="input-label" Text="Role"></asp:Label>
+          <asp:Label runat="server" CssClass="input-label" ID="role" Text="User"></asp:Label>
+        </div>
+
+        <asp:Button runat="server" CssClass="input-submit" Text="Edit Profile" />
+      </div>
+
+      <div class="function-section">
+        <div class="function-content short">
+          <h2>On Wishlist</h2>
+
+          <div class="scroll-container">
+            <div class="scroll-wrapper">
+              <a href="#" class="wine-wish">
+                <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
+              </a>
+
+              <hr />
+            </div>
+          </div>
+        </div>
+
+        <div class="function-content long">
+          <h2>On Cart</h2>
+
+          <div class="scroll-container">
+            <div class="scroll-wrapper">
+              <div class="wine-wrapper">
+                <div class="wine-cart">
+                  <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
+                  <p>Quantity: <span id="wine-quantity">3</span></p>
+                  <p>Total Price: RM <span id="wine-total">1200</span></p>
+                </div>
+              
+                <asp:Button runat="server" CssClass="input-submit" Text="Remove" />
+              </div>
+
+              <hr />
+            </div>
+          </div>
+
+          <div class="cart-content">
+            <h3>Checkout Price: RM <span id="cart-total">1400</span></h3>
+            <asp:Button runat="server" CssClass="input-submit" Text="Checkout" />
+          </div>
+        </div>
+
+        <div class="function-content short">
+          <h2>Order History</h2>
+
+          <div class="scroll-container">
+            <div class="scroll-wrapper">
+              <div class="order-wrapper">
+                <div class="order-history">
+                  <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
+                  <p>Ordered Date: <span id="ordered-date">24 February 2024</span></p>
+                  <p>Delivered Date: <span id="delivered-date">24 March 2024</span></p>
+                  <p>Total Payable: RM <span id="total-payable">3100</span></p>
+                </div>
+
+                <asp:Button runat="server" CssClass="input-submit" Text="Rate" />
+              </div>
+
+              <hr />
+            </div>
+          </div>
+        </div>
+
+        <div class="function-content long">
+          <h2>Past Reviews</h2>
+
+          <div class="scroll-container">
+            <div class="scroll-wrapper">
+              <div class="review-wrapper">
+                <div class="review">
+                  <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
+                  <p>Written Date: <span>27 March 2024</span></p>
+
+                  <hr />
+
+                  <p>Very good wine, full body, quite sour but ok.</p>
+                </div>
+
+                <asp:Button runat="server" CssClass="input-submit" Text="View" />
+              </div>
+
+              <hr />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer class="mobile-footer">
       <img src="../App_Assets/header-logo.png" />
       <div class="footer-wrapper">

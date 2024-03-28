@@ -1,4 +1,34 @@
-﻿// Tab Panel
+﻿// Variables
+const counters = document.querySelectorAll(".counters span")
+const container = document.querySelector(".counters")
+let activated = false
+
+// Price counter
+const increment = () => {
+  let quantity = parseInt(document.getElementById("total-quantity").innerText)
+  quantity++
+  document.getElementById("total-quantity").innerText = quantity
+
+  updatePrice()
+}
+
+const decrement = () => {
+  let quantity = parseInt(document.getElementById("total-quantity").innerText)
+  if (quantity > 1) {
+    quantity--
+  }
+  document.getElementById("total-quantity").innerText = quantity
+
+  updatePrice()
+}
+
+const updatePrice = () => {
+  let quantity = parseInt(document.getElementById("total-quantity").innerText)
+  let total = quantity * $("#total-price").attr("data-price")
+  document.getElementById("total-price").innerText = total
+}
+
+// Tab Panel
 const openWine = (evt, wine) => {
   evt.preventDefault()
 
@@ -26,11 +56,6 @@ const openOverlay = () => {
 const closeOverlay = () => {
   document.getElementById("overlay-menu").style.height = "0%"
 }
-
-// Variables
-const counters = document.querySelectorAll(".counters span")
-const container = document.querySelector(".counters")
-let activated = false
 
 // Wait for DOM loaded
 $(document).ready(function () {
