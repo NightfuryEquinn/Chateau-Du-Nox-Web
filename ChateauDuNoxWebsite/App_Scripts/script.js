@@ -225,6 +225,7 @@ $(document).ready(function () {
 
   $('.thumb').eq(0).click()
 
+  // Modal
   var editModal = document.getElementById("edit-modal")
   var editButton = document.getElementById("EditProfile")
 
@@ -242,6 +243,18 @@ $(document).ready(function () {
         editModal.style.display = "none"
       }
     }
+  }
+
+  // Accordian
+  if (document.getElementsByClassName('user-container')) {
+    $('.user-accordian').on('click', '.accordian-control', function (e) {
+      e.preventDefault()
+
+      $(this).next('.accordian-panel').not(':animated').slideToggle()
+      $(this).next('.accordian-panel').css('display', 'flex')
+    })
+
+    $('.accordian-control').eq(0).click()
   }
 })
 

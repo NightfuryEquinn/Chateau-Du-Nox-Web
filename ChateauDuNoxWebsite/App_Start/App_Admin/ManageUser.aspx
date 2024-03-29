@@ -109,6 +109,45 @@
       </div>
     </nav>
 
+    <div class="user-container">
+      <h1>Manage User</h1>
+      <div class="user-accordian">
+        <div class="accordian-wrapper">
+          <button type="button" class="accordian-control">Admins</button>
+          <div class="accordian-panel">
+            <div class="user-detail">
+              <div class="user-top">
+                <div class="user-avatar">
+                  <img src="../../App_Assets/profile.jpg" />
+                </div>
+                <div class="user-content">
+                  <h3>John Doe</h3>
+                  <p>john.doe@gmail.com</p>
+                  <p>Joined since <span id="registered-date">18 February 2024</span></p>
+                </div>
+              </div>
+              <div class="user-bottom">
+                <asp:Button runat="server" CssClass="input-submit" ID="ChangeRole" Text="Change Role" />
+                <asp:Button runat="server" CssClass="input-submit" ID="ViewProfile" Text="View Profile" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordian-wrapper">
+          <button type="button" class="accordian-control">Active Users</button>
+          <div class="accordian-panel">
+            
+          </div>
+        </div>
+        <div class="accordian-wrapper">
+          <button type="button" class="accordian-control">Inactive Users</button>
+          <div class="accordian-panel">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer class="mobile-footer">
       <img src="../../App_Assets/header-logo.png" />
       <div class="footer-wrapper">
