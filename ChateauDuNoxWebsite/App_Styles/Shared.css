@@ -322,6 +322,16 @@ nav img {
   font-size: 1.25rem;
 }
 
+.input-file {
+  padding: 0.5rem 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #EEEBD1;
+  background-color: #242C34;
+  outline: none;
+  border: none;
+}
+
 @media only screen and (min-width: 768px) {
   .footer-wrapper {
     flex-direction: row;

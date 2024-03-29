@@ -112,7 +112,6 @@
     <Content Include="App_Start\App_Admin\ManageReview.aspx" />
     <Content Include="App_Start\App_Admin\ManageUser.aspx" />
     <Content Include="App_Start\App_Admin\ManageWine.aspx" />
-    <Content Include="App_Start\App_Admin\WineForm.aspx" />
     <Content Include="App_Start\ContactUs.aspx" />
     <Content Include="App_Start\Forget.aspx" />
     <Content Include="App_Start\Home.aspx" />
@@ -138,7 +137,6 @@
     <Content Include="App_Styles\Review.css" />
     <Content Include="App_Styles\Shared.css" />
     <Content Include="App_Styles\SingleWine.css" />
-    <Content Include="App_Styles\WineForm.css" />
     <Content Include="App_Styles\Wines.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -227,13 +225,6 @@
     </Compile>
     <Compile Include="App_Start\App_Admin\ManageWine.aspx.designer.cs">
       <DependentUpon>ManageWine.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\App_Admin\WineForm.aspx.cs">
-      <DependentUpon>WineForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="App_Start\App_Admin\WineForm.aspx.designer.cs">
-      <DependentUpon>WineForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\ContactUs.aspx.cs">

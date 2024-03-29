@@ -224,5 +224,24 @@ $(document).ready(function () {
   })
 
   $('.thumb').eq(0).click()
+
+  var editModal = document.getElementById("edit-modal")
+  var editButton = document.getElementById("EditProfile")
+
+  if (editButton) {
+    editButton.onclick = (event) => {
+      event.preventDefault()
+
+      editModal.style.display = "flex"
+    }
+  }
+
+  if (editModal) {
+    window.onclick = (event) => {
+      if (event.target == editModal) {
+        editModal.style.display = "none"
+      }
+    }
+  }
 })
 

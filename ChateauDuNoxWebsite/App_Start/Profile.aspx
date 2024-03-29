@@ -118,6 +118,9 @@
           <p>Joined since 13 March 2024</p>
           <h1>John Doe</h1>
         </div>
+        <div class="avatar-cover">
+          <img src="../App_Assets/profile-cover.jpg" />
+        </div>
       </div>
 
       <div class="profile-detail-section">
@@ -142,7 +145,8 @@
           <asp:Label runat="server" CssClass="input-label" ID="role" Text="User"></asp:Label>
         </div>
 
-        <asp:Button runat="server" CssClass="input-submit" Text="Edit Profile" />
+        <asp:Button runat="server" CssClass="input-submit" ID="EditProfile" Text="Edit Profile" />
+        <asp:Button runat="server" OnClick="ChangePass_Click" CssClass="input-submit" ID="ChangePass" Text="Change Password" />
       </div>
 
       <div class="function-section">
@@ -185,7 +189,7 @@
           </div>
         </div>
 
-        <div class="function-content short">
+        <div class="function-content long">
           <h2>Order History</h2>
 
           <div class="scroll-container">
@@ -206,7 +210,7 @@
           </div>
         </div>
 
-        <div class="function-content long">
+        <div class="function-content short">
           <h2>Past Reviews</h2>
 
           <div class="scroll-container">
@@ -310,6 +314,43 @@
       </div>
       <p>Copyright 2024 @ Chateau Du Nox</p>
     </footer>
+
+    <div id="edit-modal" class="modal">
+      <div class="modal-content">
+        <h2>Edit Profile Detail</h2>
+
+        <div class="modal-wrapper">
+          <div class="input-container">
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Name"></asp:Label>
+              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>
+            </div>
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Avatar"></asp:Label>
+              <asp:FileUpload ID="AvatarUpload" CssClass="input-file" runat="server" />
+            </div>
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Email Address"></asp:Label>
+              <asp:TextBox runat="server" CssClass="input-box" TextMode="Email"></asp:TextBox>
+            </div>
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Phone Number"></asp:Label>
+              <asp:TextBox runat="server" CssClass="input-box" TextMode="Phone"></asp:TextBox>
+            </div>
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Shipping Address"></asp:Label>
+              <asp:TextBox runat="server" CssClass="input-textarea" TextMode="MultiLine" Height="50"></asp:TextBox>
+            </div>
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Billing Address"></asp:Label>
+              <asp:TextBox runat="server" CssClass="input-textarea" TextMode="MultiLine" Height="50"></asp:TextBox>
+            </div>
+          </div>
+        </div>
+
+        <asp:Button runat="server" CssClass="input-submit" Text="Save Changes" />
+      </div>
+    </div>
   </form>
 </body>
 </html>
