@@ -146,6 +146,12 @@ a:hover.wine-wish {
   gap: 0.5rem;
 }
 
+.scroll-wrapper .wine-wrapper:last-of-type,
+.scroll-wrapper .order-wrapper:last-of-type,
+.scroll-wrapper .review-wrapper:last-of-type {
+  margin-bottom: 1rem;
+}
+
 .scroll-wrapper hr {
   border: 1px solid var(--darkgreen);
   margin: 0.25rem 3rem;

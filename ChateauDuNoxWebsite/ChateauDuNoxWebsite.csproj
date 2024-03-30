@@ -106,10 +106,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Assets\header-logo.png" />
+    <Content Include="App_Data\ChateauDB.mdf" />
+    <Content Include="App_Data\ChateauDB_log.ldf">
+      <DependentUpon>ChateauDB.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Scripts\script.js" />
     <Content Include="App_Start\AboutUs.aspx" />
     <Content Include="App_Start\App_Admin\ManageOrder.aspx" />
     <Content Include="App_Start\App_Admin\ManageReview.aspx" />
+    <Content Include="App_Start\App_Admin\ManageType.aspx" />
     <Content Include="App_Start\App_Admin\ManageUser.aspx" />
     <Content Include="App_Start\App_Admin\ManageWine.aspx" />
     <Content Include="App_Start\ContactUs.aspx" />
@@ -129,6 +134,7 @@
     <Content Include="App_Styles\Login.css" />
     <Content Include="App_Styles\ManageOrder.css" />
     <Content Include="App_Styles\ManageReview.css" />
+    <Content Include="App_Styles\ManageType.css" />
     <Content Include="App_Styles\ManageUser.css" />
     <Content Include="App_Styles\ManageWine.css" />
     <Content Include="App_Styles\Partners.css" />
@@ -211,6 +217,13 @@
     </Compile>
     <Compile Include="App_Start\App_Admin\ManageReview.aspx.designer.cs">
       <DependentUpon>ManageReview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\App_Admin\ManageType.aspx.cs">
+      <DependentUpon>ManageType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Start\App_Admin\ManageType.aspx.designer.cs">
+      <DependentUpon>ManageType.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\App_Admin\ManageUser.aspx.cs">
       <DependentUpon>ManageUser.aspx</DependentUpon>
@@ -324,9 +337,7 @@
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />

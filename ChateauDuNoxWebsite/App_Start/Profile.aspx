@@ -197,12 +197,41 @@
               <div class="order-wrapper">
                 <div class="order-history">
                   <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
+                  <p>Status: <span id="status">Completed</span></p>
                   <p>Ordered Date: <span id="ordered-date">24 February 2024</span></p>
                   <p>Delivered Date: <span id="delivered-date">24 March 2024</span></p>
                   <p>Total Payable: RM <span id="total-payable">3100</span></p>
                 </div>
 
                 <asp:Button runat="server" CssClass="input-submit" Text="Rate" />
+              </div>
+
+              <hr />
+
+              <div class="order-wrapper">
+                <div class="order-history">
+                  <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
+                  <p>Status: <span id="status">Shipping</span></p>
+                  <p>Ordered Date: <span id="ordered-date">24 February 2024</span></p>
+                  <p>Delivered Date: <span id="delivered-date">24 March 2024</span></p>
+                  <p>Total Payable: RM <span id="total-payable">3100</span></p>
+                </div>
+
+                <asp:Button runat="server" CssClass="input-submit" Text="Cancel" />
+              </div>
+
+              <hr />
+
+              <div class="order-wrapper">
+                <div class="order-history">
+                  <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
+                  <p>Status: <span id="status">Delivered</span></p>
+                  <p>Ordered Date: <span id="ordered-date">24 February 2024</span></p>
+                  <p>Delivered Date: <span id="delivered-date">24 March 2024</span></p>
+                  <p>Total Payable: RM <span id="total-payable">3100</span></p>
+                </div>
+
+                <asp:Button runat="server" CssClass="input-submit" Text="Confirm" />
               </div>
 
               <hr />

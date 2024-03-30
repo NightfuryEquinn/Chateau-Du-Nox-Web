@@ -24,6 +24,15 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
     protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
     /// <summary>
+    /// AddWine control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button AddWine;
+
+    /// <summary>
     /// EditWine control.
     /// </summary>
     /// <remarks>
@@ -42,21 +51,39 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
     protected global::System.Web.UI.WebControls.Button DeleteWine;
 
     /// <summary>
-    /// WineImageUpload control.
+    /// AddWineFileUpload control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.FileUpload WineImageUpload;
+    protected global::System.Web.UI.WebControls.FileUpload AddWineFileUpload;
 
     /// <summary>
-    /// WineType control.
+    /// AddWineDropdown control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.DropDownList WineType;
+    protected global::System.Web.UI.WebControls.DropDownList AddWineDropdown;
+
+    /// <summary>
+    /// EditWineFileUpload control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.FileUpload EditWineFileUpload;
+
+    /// <summary>
+    /// EditWineDropdown control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.DropDownList EditWineDropdown;
   }
 }

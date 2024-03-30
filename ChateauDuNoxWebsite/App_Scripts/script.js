@@ -229,6 +229,11 @@ $(document).ready(function () {
   var editModal = document.getElementById("edit-modal")
   var editProfile = document.getElementById("EditProfile")
   var editWine = document.getElementById("EditWine")
+  var editType = document.getElementById("EditType")
+
+  var addModal = document.getElementById("add-modal")
+  var addType = document.getElementById("AddType")
+  var addWine = document.getElementById("AddWine")
 
   if (editProfile) {
     editProfile.onclick = (event) => {
@@ -246,8 +251,36 @@ $(document).ready(function () {
     }
   }
 
-  if (editModal) {
+  if (editType) {
+    editType.onclick = (event) => {
+      event.preventDefault()
+
+      editModal.style.display = "flex"
+    }
+  }
+
+  if (addType) {
+    addType.onclick = (event) => {
+      event.preventDefault()
+
+      addModal.style.display = "flex"
+    }
+  }
+
+  if (addWine) {
+    addWine.onclick = (event) => {
+      event.preventDefault()
+
+      addModal.style.display = "flex"
+    }
+  }
+
+  if (addModal || editModal) {
     window.onclick = (event) => {
+      if (event.target == addModal) {
+        addModal.style.display = "none"
+      }
+
       if (event.target == editModal) {
         editModal.style.display = "none"
       }
