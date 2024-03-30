@@ -109,6 +109,42 @@
       </div>
     </nav>
 
+    <div class="user-container">
+      <h1>Manage User</h1>
+      <div class="user-accordian">
+        <div class="accordian-wrapper">
+          <button type="button" class="accordian-control">Active Reviews</button>
+          <div class="accordian-panel">
+            <div class="user-detail">
+              <div class="user-top">
+                <div class="user-avatar">
+                  <img src="../../App_Assets/profile.jpg" />
+                </div>
+                <div class="user-content">
+                  <h3>John Doe</h3>
+                  <p>Rating: <span id="review-rating">5</span></p>
+                  <p>Written Date: <span id="review-date">25 March 2024</span></p>
+                </div>
+              </div>
+              <div class="user-middle">
+                <h4><span id="review-wine">Larigi Langhe Rosso 2020 Elio Altare</span></h4>
+                <p>Lorem ipsum odlor ipsum actunm autmn sume witer sprng adctum.</p>
+              </div>
+              <div class="user-bottom">
+                <asp:Button runat="server" CssClass="input-submit" ID="DeleteReview" Text="Delete Review" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordian-wrapper">
+          <button type="button" class="accordian-control">Inactive Reviews</button>
+          <div class="accordian-panel">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer class="mobile-footer">
       <img src="../../App_Assets/header-logo.png" />
       <div class="footer-wrapper">

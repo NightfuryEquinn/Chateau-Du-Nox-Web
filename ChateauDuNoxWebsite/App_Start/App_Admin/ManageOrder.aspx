@@ -109,6 +109,78 @@
       </div>
     </nav>
 
+    <div class="user-container">
+      <h1>Manage Order</h1>
+      <div class="user-accordian">
+        <div class="accordian-wrapper">
+          <button type="button" class="accordian-control">Pending Shipping</button>
+          <div class="accordian-panel">
+            <div class="user-detail">
+              <div class="user-top">
+                <div class="user-avatar">
+                  <img src="../../App_Assets/profile.jpg" />
+                </div>
+                <div class="user-content">
+                  <h3>Order ID: <span id="shipping-order-id">1</span></h3>
+                  <p><span id="shipping-username">John Doe</span></p>
+                  <p><span id="shipping-email">john.doe@gmail.com</span></p>
+                  <p>Order Date: <span id="shipping-order-date">27 February 2024</span></p>
+                  <p>Total Payable: RM <span id="shipping-order-pay">420</span></p>
+                </div>
+              </div>
+              <div class="user-bottom">
+                <asp:Button runat="server" CssClass="input-submit" ID="ConfirmShipping" Text="Confirm Shipping" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordian-wrapper">
+          <button type="button" class="accordian-control">Pending Confirmation Delivered</button>
+          <div class="accordian-panel">
+            <div class="user-detail">
+              <div class="user-top">
+                <div class="user-avatar">
+                  <img src="../../App_Assets/profile.jpg" />
+                </div>
+                <div class="user-content">
+                  <h3>Order ID: <span id="delivery-order-id">1</span></h3>
+                  <p><span id="delivery-username">John Doe</span></p>
+                  <p><span id="delivery-email">john.doe@gmail.com</span></p>
+                  <p>Order Date: <span id="delivery-order-date">27 February 2024</span></p>
+                  <p>Delivered Date: <span id="delivery-deliver-date">27 March 2024</span></p>
+                  <p>Total Payable: RM <span id="delivery-order-pay">420</span></p>
+                </div>
+              </div>
+              <div class="user-bottom">
+                <asp:Button runat="server" CssClass="input-submit" ID="ConfirmPayment" Text="Confirm Payment" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordian-wrapper">
+          <button type="button" class="accordian-control">Completed</button>
+          <div class="accordian-panel">
+            <div class="user-detail">
+              <div class="user-top">
+                <div class="user-avatar">
+                  <img src="../../App_Assets/profile.jpg" />
+                </div>
+                <div class="user-content">
+                  <h3>Order ID: <span id="completed-order-id">1</span></h3>
+                  <p><span id="completed-username">John Doe</span></p>
+                  <p><span id="completed-email">john.doe@gmail.com</span></p>
+                  <p>Order Date: <span id="completed-order-date">27 February 2024</span></p>
+                  <p>Delivered Date: <span id="completed-deliver-date">27 March 2024</span></p>
+                  <p>Total Payable: RM <span id="completed-order-pay">420</span></p>
+                  <p>Review Written: <span id="completed-review">Yes</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer class="mobile-footer">
       <img src="../../App_Assets/header-logo.png" />
       <div class="footer-wrapper">

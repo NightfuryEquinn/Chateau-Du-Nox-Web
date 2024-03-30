@@ -227,10 +227,19 @@ $(document).ready(function () {
 
   // Modal
   var editModal = document.getElementById("edit-modal")
-  var editButton = document.getElementById("EditProfile")
+  var editProfile = document.getElementById("EditProfile")
+  var editWine = document.getElementById("EditWine")
 
-  if (editButton) {
-    editButton.onclick = (event) => {
+  if (editProfile) {
+    editProfile.onclick = (event) => {
+      event.preventDefault()
+
+      editModal.style.display = "flex"
+    }
+  }
+
+  if (editWine) {
+    editWine.onclick = (event) => {
       event.preventDefault()
 
       editModal.style.display = "flex"

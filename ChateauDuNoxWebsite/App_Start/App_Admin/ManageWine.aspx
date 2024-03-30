@@ -109,6 +109,38 @@
       </div>
     </nav>
 
+    <div class="user-container">
+      <h1>Manage User</h1>
+      <div class="user-accordian">
+        <div class="accordian-wrapper">
+          <button type="button" class="accordian-control">Active Wines</button>
+          <div class="accordian-panel">
+            <div class="user-detail">
+              <div class="user-top">
+                <div class="user-avatar">
+                  <img src="../../App_Assets/castello.png" />
+                </div>
+                <div class="user-content">
+                  <h3>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h3>
+                  <p>Stock: <span id="wine-stock">1754</span></p>
+                </div>
+              </div>
+              <div class="user-bottom">
+                <asp:Button runat="server" CssClass="input-submit" ID="EditWine" Text="Edit Wine" />
+                <asp:Button runat="server" CssClass="input-submit" ID="DeleteWine" Text="Delete Wine" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordian-wrapper">
+          <button type="button" class="accordian-control">Inactive Wines</button>
+          <div class="accordian-panel">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer class="mobile-footer">
       <img src="../../App_Assets/header-logo.png" />
       <div class="footer-wrapper">
@@ -188,6 +220,78 @@
       </div>
       <p>Copyright 2024 @ Chateau Du Nox</p>
     </footer>
+
+    <div id="edit-modal" class="modal">
+      <div class="modal-content">
+        <h2>Edit Wine Detail</h2>
+
+        <div class="modal-wrapper">
+          <div class="input-container">
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Name"></asp:Label>
+              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>
+            </div>
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Wine Image"></asp:Label>
+              <asp:FileUpload ID="WineImageUpload" CssClass="input-file" runat="server" />
+            </div>
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Description"></asp:Label>
+              <asp:TextBox runat="server" CssClass="input-textarea" TextMode="MultiLine" Height="50"></asp:TextBox>
+            </div>
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Price (RM)"></asp:Label>
+              <asp:TextBox runat="server" CssClass="input-box" TextMode="Number"></asp:TextBox>
+            </div>
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Type"></asp:Label>
+              <asp:DropDownList ID="WineType" runat="server">
+                <asp:ListItem Value="red-wine">Red Wine</asp:ListItem>
+                <asp:ListItem Value="white-wine">White Wine</asp:ListItem>
+              </asp:DropDownList>
+            </div>
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Varietal"></asp:Label>
+              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>              
+            </div>
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Vintage Year"></asp:Label>
+              <asp:TextBox runat="server" CssClass="input-box" TextMode="Number"></asp:TextBox>              
+            </div>
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Volume (ml)"></asp:Label>
+              <asp:TextBox runat="server" CssClass="input-box" TextMode="Number"></asp:TextBox>              
+            </div>
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Body"></asp:Label>
+              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>              
+            </div>
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Tannin"></asp:Label>
+              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>              
+            </div>
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Acidity"></asp:Label>
+              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>              
+            </div>
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Alcohol by Volume"></asp:Label>
+              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>              
+            </div>
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Origin"></asp:Label>
+              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>              
+            </div>
+            <div class="input-detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Stock"></asp:Label>
+              <asp:TextBox runat="server" CssClass="input-box" TextMode="Number"></asp:TextBox>              
+            </div>
+          </div>
+        </div>
+
+        <asp:Button runat="server" CssClass="input-submit" Text="Save Changes" />
+      </div>
+    </div>
   </form>
 </body>
 </html>

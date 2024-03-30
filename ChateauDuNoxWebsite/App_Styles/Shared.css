@@ -17,7 +17,7 @@ h1, h2, h3, h4, h5, h6, a, button {
   font-family: "Vollkorn", serif;
 }
 
-p, input, .input-label {
+p, input, .input-label, select {
   font-family: "Josefin Slab", serif;
   line-height: 1.25rem;
 }
@@ -330,6 +330,18 @@ nav img {
   background-color: #242C34;
   outline: none;
   border: none;
+}
+
+.input-detail select {
+  padding: 0.75rem;
+  color: #EEEBD1;
+  background-color: #242C34;
+  outline: none;
+  border: none;
+}
+
+.input-detail select option {
+  padding: 0.75rem;
 }
 
 @media only screen and (min-width: 768px) {
