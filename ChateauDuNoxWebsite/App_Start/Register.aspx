@@ -61,7 +61,7 @@
           </div>
         </div>
 
-        <asp:Button CssClass="input-submit" ID="RegisterButton" runat="server" Text="Register" />
+        <asp:Button CssClass="input-submit" ID="RegisterButton" runat="server" Text="Register" OnClick="RegisterButton_Click" />
       
         <p>Already have an account?
           <a href="Login.aspx">Login here.</a>
@@ -72,6 +72,37 @@
         </a>
       </div>
     </div>
+
+    <asp:SqlDataSource ID="RegisterSDS" runat="server" ConnectionString="<%$ ConnectionStrings:ChateauString %>" DeleteCommand="DELETE FROM [User] WHERE [UserId] = @UserId" InsertCommand="INSERT INTO [User] ([Name], [Avatar], [Role], [EmailAddress], [Password], [PhoneNumber], [ShippingAddress], [BillingAddress], [RegisteredDate], [Active]) VALUES (@Name, 0x, @Role, @EmailAddress, @Password, @PhoneNumber, @ShippingAddress, @BillingAddress, @RegisteredDate, @Active)" SelectCommand="SELECT * FROM [User]" UpdateCommand="UPDATE [User] SET [Name] = @Name, [Avatar] = @Avatar, [Role] = @Role, [EmailAddress] = @EmailAddress, [Password] = @Password, [PhoneNumber] = @PhoneNumber, [ShippingAddress] = @ShippingAddress, [BillingAddress] = @BillingAddress, [RegisteredDate] = @RegisteredDate, [Active] = @Active WHERE [UserId] = @UserId">
+      <DeleteParameters>
+        <asp:Parameter Name="UserId" Type="Int32" />
+      </DeleteParameters>
+      <InsertParameters>
+        <asp:ControlParameter ControlID="UsernameInput" Name="Name" PropertyName="Text" Type="String" />
+        <asp:Parameter Name="Avatar" Type="Object" />
+        <asp:Parameter Name="Role" Type="String" />
+        <asp:ControlParameter ControlID="EmailInput" Name="EmailAddress" PropertyName="Text" Type="String" />
+        <asp:ControlParameter ControlID="PasswordInput" Name="Password" PropertyName="Text" Type="String" />
+        <asp:Parameter Name="PhoneNumber" Type="String" />
+        <asp:Parameter Name="ShippingAddress" Type="String" />
+        <asp:Parameter Name="BillingAddress" Type="String" />
+        <asp:Parameter Name="RegisteredDate" Type="DateTime" />
+        <asp:Parameter Name="Active" Type="Int32" />
+      </InsertParameters>
+      <UpdateParameters>
+        <asp:Parameter Name="Name" Type="String" />
+        <asp:Parameter Name="Avatar" Type="Object" />
+        <asp:Parameter Name="Role" Type="String" />
+        <asp:Parameter Name="EmailAddress" Type="String" />
+        <asp:Parameter Name="Password" Type="String" />
+        <asp:Parameter Name="PhoneNumber" Type="String" />
+        <asp:Parameter Name="ShippingAddress" Type="String" />
+        <asp:Parameter Name="BillingAddress" Type="String" />
+        <asp:Parameter Name="RegisteredDate" Type="DateTime" />
+        <asp:Parameter Name="Active" Type="Int32" />
+        <asp:Parameter Name="UserId" Type="Int32" />
+      </UpdateParameters>
+    </asp:SqlDataSource>
   </form>
 </body>
 </html>

@@ -3,7 +3,7 @@
 CREATE TABLE [dbo].[User] (
     [UserId]          INT           IDENTITY (1, 1) NOT NULL,
     [Name]            VARCHAR (50)  NULL,
-    [Avatar]          VARCHAR (MAX) NULL,
+    [Avatar]          VARBINARY (MAX) NULL,
     [Role]            VARCHAR (50)  NULL,
     [EmailAddress]    VARCHAR (MAX) NULL,
     [Password]        VARCHAR (MAX) NULL,
@@ -21,7 +21,7 @@ CREATE TABLE [dbo].[Wine] (
     [Name]        VARCHAR (50)  NULL,
     [Description] VARCHAR (MAX) NULL,
     [Price]       INT           NULL,
-    [Image]       VARCHAR (MAX) NULL,
+    [Image]       VARBINARY (MAX) NULL,
     [Varietal]    VARCHAR (50)  NULL,
     [Vintage]     INT           NULL,
     [Volume]      INT           NULL,
