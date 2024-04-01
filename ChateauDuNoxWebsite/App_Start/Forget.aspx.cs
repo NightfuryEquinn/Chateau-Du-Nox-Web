@@ -13,5 +13,10 @@ namespace ChateauDuNoxWebsite.App_Start
     {
 
     }
+
+    protected void ResetButton_Click(object sender, EventArgs e)
+    {
+
+    }
   }
 }

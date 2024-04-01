@@ -55,7 +55,7 @@
           <p>Forget Password?</p>
         </a>
 
-        <asp:Button CssClass="input-submit" ID="LoginButton" runat="server" Text="Login" />
+        <asp:Button CssClass="input-submit" ID="LoginButton" runat="server" Text="Login" OnClick="LoginButton_Click" />
       
         <p>Don’t have an account?
           <a href="Register.aspx">Register here.</a>

@@ -57,7 +57,7 @@
           </div>
         </div>
 
-        <asp:Button CssClass="input-submit" ID="ResetButton" runat="server" Text="Reset" />
+        <asp:Button CssClass="input-submit" ID="ResetButton" runat="server" Text="Reset" OnClick="ResetButton_Click" />
 
         <a href="Login.aspx">
           <p>Back to Login</p>
