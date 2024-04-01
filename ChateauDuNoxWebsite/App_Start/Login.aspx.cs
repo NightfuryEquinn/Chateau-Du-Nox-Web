@@ -29,14 +29,14 @@ namespace ChateauDuNoxWebsite.App_Start
         command.Parameters.AddWithValue("@Name", UsernameInput.Text.Trim());
         command.Parameters.AddWithValue("@Password", PasswordInput.Text.Trim());
 
-        int check = Convert.ToInt32(command.ExecuteScalar());
+        int check = Convert.ToInt32(command.ExecuteScalar().ToString());
 
         if (check == 1)
         {
           string checkQuery = "SELECT * FROM [User] WHERE Name = @Name AND Password = @Password";
           SqlCommand commandCheck = new SqlCommand(checkQuery, conn);
-          command.Parameters.AddWithValue("@Name", UsernameInput.Text.Trim());
-          command.Parameters.AddWithValue("@Password", PasswordInput.Text.Trim());
+          commandCheck.Parameters.AddWithValue("@Name", UsernameInput.Text.Trim());
+          commandCheck.Parameters.AddWithValue("@Password", PasswordInput.Text.Trim());
 
           SqlDataReader reader = commandCheck.ExecuteReader();
 
