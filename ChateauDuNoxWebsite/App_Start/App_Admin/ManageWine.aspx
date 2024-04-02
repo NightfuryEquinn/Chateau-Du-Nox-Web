@@ -258,7 +258,7 @@
           <div class="input-container">
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Name"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>
+              <asp:TextBox runat="server" CssClass="input-box" ID="AddWineName"></asp:TextBox>
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Wine Image"></asp:Label>
@@ -266,59 +266,59 @@
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Description"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-textarea" TextMode="MultiLine" Height="50"></asp:TextBox>
+              <asp:TextBox runat="server" CssClass="input-textarea" ID="AddWineDesc" TextMode="MultiLine" Height="50"></asp:TextBox>
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Price (RM)"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box" TextMode="Number"></asp:TextBox>
+              <asp:TextBox runat="server" CssClass="input-box" ID="AddWinePrice" TextMode="Number"></asp:TextBox>
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Type"></asp:Label>
               <asp:DropDownList ID="AddWineDropdown" runat="server">
-                <asp:ListItem Value="red-wine">Red Wine</asp:ListItem>
-                <asp:ListItem Value="white-wine">White Wine</asp:ListItem>
+                <asp:ListItem Value="1">Red Wine</asp:ListItem>
+                <asp:ListItem Value="2">White Wine</asp:ListItem>
               </asp:DropDownList>
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Varietal"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>              
+              <asp:TextBox runat="server" CssClass="input-box" ID="AddWineVar"></asp:TextBox>              
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Vintage Year"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box" TextMode="Number"></asp:TextBox>              
+              <asp:TextBox runat="server" CssClass="input-box" ID="AddWineVint" TextMode="Number"></asp:TextBox>              
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Volume (ml)"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box" TextMode="Number"></asp:TextBox>              
+              <asp:TextBox runat="server" CssClass="input-box" ID="AddWineML" TextMode="Number"></asp:TextBox>              
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Body"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>              
+              <asp:TextBox runat="server" CssClass="input-box" ID="AddWineBody"></asp:TextBox>              
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Tannin"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>              
+              <asp:TextBox runat="server" CssClass="input-box" ID="AddWineTannin"></asp:TextBox>              
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Acidity"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>              
+              <asp:TextBox runat="server" CssClass="input-box" ID="AddWineAcid"></asp:TextBox>              
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Alcohol by Volume"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>              
+              <asp:TextBox runat="server" CssClass="input-box" ID="AddWineABV"></asp:TextBox>              
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Origin"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>              
+              <asp:TextBox runat="server" CssClass="input-box" ID="AddWineOrigin"></asp:TextBox>              
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Stock"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box" TextMode="Number"></asp:TextBox>              
+              <asp:TextBox runat="server" CssClass="input-box" ID="AddWineStock" TextMode="Number"></asp:TextBox>              
             </div>
           </div>
         </div>
 
-        <asp:Button runat="server" CssClass="input-submit" Text="Confirm" />
+        <asp:Button runat="server" CssClass="input-submit" ID="AddWineButton" Text="Confirm" OnClick="AddWineButton_Click" />
       </div>
     </div>
 
@@ -330,7 +330,7 @@
           <div class="input-container">
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Name"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>
+              <asp:TextBox runat="server" CssClass="input-box" ID="EditWineName"></asp:TextBox>
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Wine Image"></asp:Label>
@@ -338,11 +338,11 @@
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Description"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-textarea" TextMode="MultiLine" Height="50"></asp:TextBox>
+              <asp:TextBox runat="server" CssClass="input-textarea" ID="EditWineDesc" TextMode="MultiLine" Height="50"></asp:TextBox>
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Price (RM)"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box" TextMode="Number"></asp:TextBox>
+              <asp:TextBox runat="server" CssClass="input-box" ID="EditWinePrice" TextMode="Number"></asp:TextBox>
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Type"></asp:Label>
@@ -353,44 +353,44 @@
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Varietal"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>              
+              <asp:TextBox runat="server" CssClass="input-box" ID="EditWineVar"></asp:TextBox>              
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Vintage Year"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box" TextMode="Number"></asp:TextBox>              
+              <asp:TextBox runat="server" CssClass="input-box" ID="EditWineVint" TextMode="Number"></asp:TextBox>              
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Volume (ml)"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box" TextMode="Number"></asp:TextBox>              
+              <asp:TextBox runat="server" CssClass="input-box" ID="EditWineML" TextMode="Number"></asp:TextBox>              
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Body"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>              
+              <asp:TextBox runat="server" CssClass="input-box" ID="EditWineBody"></asp:TextBox>              
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Tannin"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>              
+              <asp:TextBox runat="server" CssClass="input-box" ID="EditWineTannin"></asp:TextBox>              
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Acidity"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>              
+              <asp:TextBox runat="server" CssClass="input-box" ID="EditWineAcid"></asp:TextBox>              
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Alcohol by Volume"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>              
+              <asp:TextBox runat="server" CssClass="input-box" ID="EditWineABV"></asp:TextBox>              
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Origin"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>              
+              <asp:TextBox runat="server" CssClass="input-box" ID="EditWineOrigin"></asp:TextBox>              
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Stock"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box" TextMode="Number"></asp:TextBox>              
+              <asp:TextBox runat="server" CssClass="input-box" ID="EditWineStock" TextMode="Number"></asp:TextBox>              
             </div>
           </div>
         </div>
 
-        <asp:Button runat="server" CssClass="input-submit" Text="Save Changes" />
+        <asp:Button runat="server" CssClass="input-submit" ID="EditWineButton" Text="Save Changes" OnClick="EditWineButton_Click" />
       </div>
     </div>
   </form>

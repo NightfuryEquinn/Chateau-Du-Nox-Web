@@ -51,6 +51,15 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
     protected global::System.Web.UI.WebControls.Button DeleteWine;
 
     /// <summary>
+    /// AddWineName control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox AddWineName;
+
+    /// <summary>
     /// AddWineFileUpload control.
     /// </summary>
     /// <remarks>
@@ -58,6 +67,24 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.FileUpload AddWineFileUpload;
+
+    /// <summary>
+    /// AddWineDesc control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox AddWineDesc;
+
+    /// <summary>
+    /// AddWinePrice control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox AddWinePrice;
 
     /// <summary>
     /// AddWineDropdown control.
@@ -69,6 +96,105 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
     protected global::System.Web.UI.WebControls.DropDownList AddWineDropdown;
 
     /// <summary>
+    /// AddWineVar control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox AddWineVar;
+
+    /// <summary>
+    /// AddWineVint control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox AddWineVint;
+
+    /// <summary>
+    /// AddWineML control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox AddWineML;
+
+    /// <summary>
+    /// AddWineBody control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox AddWineBody;
+
+    /// <summary>
+    /// AddWineTannin control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox AddWineTannin;
+
+    /// <summary>
+    /// AddWineAcid control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox AddWineAcid;
+
+    /// <summary>
+    /// AddWineABV control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox AddWineABV;
+
+    /// <summary>
+    /// AddWineOrigin control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox AddWineOrigin;
+
+    /// <summary>
+    /// AddWineStock control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox AddWineStock;
+
+    /// <summary>
+    /// AddWineButton control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button AddWineButton;
+
+    /// <summary>
+    /// EditWineName control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox EditWineName;
+
+    /// <summary>
     /// EditWineFileUpload control.
     /// </summary>
     /// <remarks>
@@ -78,6 +204,24 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
     protected global::System.Web.UI.WebControls.FileUpload EditWineFileUpload;
 
     /// <summary>
+    /// EditWineDesc control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox EditWineDesc;
+
+    /// <summary>
+    /// EditWinePrice control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox EditWinePrice;
+
+    /// <summary>
     /// EditWineDropdown control.
     /// </summary>
     /// <remarks>
@@ -85,5 +229,95 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.DropDownList EditWineDropdown;
+
+    /// <summary>
+    /// EditWineVar control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox EditWineVar;
+
+    /// <summary>
+    /// EditWineVint control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox EditWineVint;
+
+    /// <summary>
+    /// EditWineML control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox EditWineML;
+
+    /// <summary>
+    /// EditWineBody control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox EditWineBody;
+
+    /// <summary>
+    /// EditWineTannin control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox EditWineTannin;
+
+    /// <summary>
+    /// EditWineAcid control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox EditWineAcid;
+
+    /// <summary>
+    /// EditWineABV control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox EditWineABV;
+
+    /// <summary>
+    /// EditWineOrigin control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox EditWineOrigin;
+
+    /// <summary>
+    /// EditWineStock control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox EditWineStock;
+
+    /// <summary>
+    /// EditWineButton control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button EditWineButton;
   }
 }
