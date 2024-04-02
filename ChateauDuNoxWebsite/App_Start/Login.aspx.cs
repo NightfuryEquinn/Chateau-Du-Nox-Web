@@ -14,7 +14,12 @@ namespace ChateauDuNoxWebsite.App_Start
   {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+      if (Session["Name"] != null)
+      {
+        Response.Write(
+          "<script>alert('You have logged in already.'); document.location.href='./Home.aspx';</script>"
+        );
+      }
     }
 
     protected void LoginButton_Click(object sender, EventArgs e)

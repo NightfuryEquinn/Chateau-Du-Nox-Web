@@ -13,5 +13,25 @@ namespace ChateauDuNoxWebsite.App_Start
     {
 
     }
+
+    protected void SubscribeButton_Click(object sender, EventArgs e)
+    {
+      string subscribeEmail = SubscribeInput.Text.Trim();
+
+      if (subscribeEmail != "")
+      {
+        Response.Write(
+          "<script>alert('Thank you for subscribing our newsletter. We will send new updates and possible invitation to our chateau to " + subscribeEmail + ". Stay tuned and wined.');</script>"
+        );
+
+        SubscribeInput.Text = string.Empty;
+      }
+      else
+      {
+        Response.Write(
+          "<script>alert('Please use a valid email address.');</script>"
+        );
+      }
+    }
   }
 }

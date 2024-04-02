@@ -33,14 +33,18 @@
   <form id="form1" runat="server">
     <div class="login-container">
       <div class="login-content">
-        <img src="../App_Assets/header-logo.png" />
+        <a href="Home.aspx">
+          <img src="../App_Assets/header-logo.png" />
+        </a>
 
         <h1>Register to Chateau Du Nox</h1>
 
         <p>Among the Top 10 wineries in Napa Valley</p>
       </div>
       <div class="login-content">
-        <img src="../App_Assets/header-logo.png" />
+        <a href="Home.aspx">
+          <img src="../App_Assets/header-logo.png" />
+        </a>
 
         <div class="input-wrapper">
           <div class="input-container">

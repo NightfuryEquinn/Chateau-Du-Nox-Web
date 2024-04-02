@@ -11,7 +11,12 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
   {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+      if (Session["Role"] as string != "Admin")
+      {
+        Response.Write(
+          "<script>alert('Only admin has access to this page.'); document.location.href='./Home.aspx';</script>"
+        );
+      }
     }
   }
 }

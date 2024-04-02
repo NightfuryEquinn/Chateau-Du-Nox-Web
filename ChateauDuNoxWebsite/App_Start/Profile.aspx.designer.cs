@@ -87,6 +87,51 @@ namespace ChateauDuNoxWebsite.App_Start
     protected global::System.Web.UI.WebControls.Button ChangePass;
 
     /// <summary>
+    /// ManageOrder control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button ManageOrder;
+
+    /// <summary>
+    /// ManageReview control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button ManageReview;
+
+    /// <summary>
+    /// ManageType control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button ManageType;
+
+    /// <summary>
+    /// ManageUser control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button ManageUser;
+
+    /// <summary>
+    /// ManageWine control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button ManageWine;
+
+    /// <summary>
     /// AvatarUpload control.
     /// </summary>
     /// <remarks>

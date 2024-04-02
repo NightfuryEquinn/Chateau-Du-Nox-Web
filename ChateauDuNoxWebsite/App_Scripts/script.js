@@ -1,9 +1,4 @@
-﻿// Variables
-const counters = document.querySelectorAll(".counters span")
-const container = document.querySelector(".counters")
-let activated = false
-
-// Price counter
+﻿// Price counter
 const increment = () => {
   let quantity = parseInt(document.getElementById("total-quantity").innerText)
   quantity++
@@ -130,6 +125,11 @@ $(document).ready(function () {
   })
 
   // Number counter
+  // Variables
+  const counters = document.querySelectorAll(".counters span")
+  const container = document.querySelector(".counters")
+  let activated = false
+
   if (container && counters) {
     window.addEventListener('scroll', () => {
       if (pageYOffset > container.offsetTop - container.offsetHeight - 200 && activated === false) {
