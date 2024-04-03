@@ -33,22 +33,22 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
     protected global::System.Web.UI.WebControls.Button AddWine;
 
     /// <summary>
-    /// EditWine control.
+    /// ActiveRepeater control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button EditWine;
+    protected global::System.Web.UI.WebControls.Repeater ActiveRepeater;
 
     /// <summary>
-    /// DeleteWine control.
+    /// InactiveRepeater control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button DeleteWine;
+    protected global::System.Web.UI.WebControls.Repeater InactiveRepeater;
 
     /// <summary>
     /// AddWineName control.
@@ -312,12 +312,12 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
     protected global::System.Web.UI.WebControls.TextBox EditWineStock;
 
     /// <summary>
-    /// EditWineButton control.
+    /// SaveWineButton control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button EditWineButton;
+    protected global::System.Web.UI.WebControls.Button SaveWineButton;
   }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ManageWine.aspx.cs" Inherits="ChateauDuNoxWebsite.App_Start.App_Admin.ManageWine" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="ManageWine.aspx.cs" Inherits="ChateauDuNoxWebsite.App_Start.App_Admin.ManageWine" %>
 
 <!DOCTYPE html>
 
@@ -142,27 +142,49 @@
         <div class="accordian-wrapper">
           <button type="button" class="accordian-control">Active Wines</button>
           <div class="accordian-panel">
-            <div class="user-detail">
-              <div class="user-top">
-                <div class="user-avatar">
-                  <img src="../../App_Assets/castello.png" />
+            <asp:Repeater runat="server" ID="ActiveRepeater">
+              <ItemTemplate>
+                <div class="user-detail">
+                  <div class="user-top">
+                    <div class="user-avatar">
+                      <img src="data:image/jpeg;base64,<%# Convert.ToBase64String((byte[])Eval("Image")) %>" />
+                    </div>
+                    <div class="user-content">
+                      <h3><%# Eval("Name") %></h3>
+                      <p>Stock: <span id="wine-stock"><%# Eval("Stock") %></span></p>
+                    </div>
+                  </div>
+                  <div class="user-bottom">
+                    <asp:Button runat="server" data-id='<%# Eval("WineId") %>' CommandArgument='<%# Eval("WineId") %>' CssClass="input-submit edit-wine-button" ID="EditWine" Text="Edit Wine" OnClientClick="return checkQueryString()" OnClick="EditWine_Click" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("WineId") %>' CssClass="input-submit" ID="DeleteWine" Text="Delete Wine" OnClick="DeleteWine_Click" />
+                  </div>
                 </div>
-                <div class="user-content">
-                  <h3>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h3>
-                  <p>Stock: <span id="wine-stock">1754</span></p>
-                </div>
-              </div>
-              <div class="user-bottom">
-                <asp:Button runat="server" CssClass="input-submit" ID="EditWine" Text="Edit Wine" />
-                <asp:Button runat="server" CssClass="input-submit" ID="DeleteWine" Text="Delete Wine" />
-              </div>
-            </div>
+              </ItemTemplate>
+            </asp:Repeater>
           </div>
         </div>
         <div class="accordian-wrapper">
           <button type="button" class="accordian-control">Inactive Wines</button>
           <div class="accordian-panel">
-            
+            <asp:Repeater runat="server" ID="InactiveRepeater">
+              <ItemTemplate>
+                <div class="user-detail">
+                  <div class="user-top">
+                    <div class="user-avatar">
+                      <img src="data:image/jpeg;base64,<%# Convert.ToBase64String((byte[])Eval("Image")) %>" />
+                    </div>
+                    <div class="user-content">
+                      <h3><%# Eval("Name") %></h3>
+                      <p>Stock: <span id="wine-stock"><%# Eval("Stock") %></span></p>
+                    </div>
+                  </div>
+                  <div class="user-bottom">
+                    <asp:Button runat="server" data-id='<%# Eval("WineId") %>' CommandArgument='<%# Eval("WineId") %>' CssClass="input-submit edit-wine-button" ID="EditWine" Text="Edit Wine" OnClientClick="return checkQueryString()" OnClick="EditWine_Click" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("WineId") %>' CssClass="input-submit" ID="RecoverWine" Text="Recover Wine" OnClick="RecoverWine_Click" />
+                  </div>
+                </div>
+              </ItemTemplate>
+            </asp:Repeater>
           </div>
         </div>
       </div>
@@ -274,10 +296,7 @@
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Type"></asp:Label>
-              <asp:DropDownList ID="AddWineDropdown" runat="server">
-                <asp:ListItem Value="1">Red Wine</asp:ListItem>
-                <asp:ListItem Value="2">White Wine</asp:ListItem>
-              </asp:DropDownList>
+              <asp:DropDownList ID="AddWineDropdown" runat="server"></asp:DropDownList>
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Varietal"></asp:Label>
@@ -346,10 +365,7 @@
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Type"></asp:Label>
-              <asp:DropDownList ID="EditWineDropdown" runat="server">
-                <asp:ListItem Value="red-wine">Red Wine</asp:ListItem>
-                <asp:ListItem Value="white-wine">White Wine</asp:ListItem>
-              </asp:DropDownList>
+              <asp:DropDownList ID="EditWineDropdown" runat="server"></asp:DropDownList>
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Varietal"></asp:Label>
@@ -390,7 +406,7 @@
           </div>
         </div>
 
-        <asp:Button runat="server" CssClass="input-submit" ID="EditWineButton" Text="Save Changes" OnClick="EditWineButton_Click" />
+        <asp:Button runat="server" CssClass="input-submit" ID="SaveWineButton" Text="Save Changes" OnClick="SaveWineButton_Click" />
       </div>
     </div>
   </form>

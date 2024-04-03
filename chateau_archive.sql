@@ -17,7 +17,7 @@ CREATE TABLE [dbo].[User] (
 
 -- Wine
 CREATE TABLE [dbo].[Wine] (
-    [WineId]      INT           NOT NULL,
+    [WineId]      INT           IDENTITY (1, 1) NOT NULL,
     [Name]        VARCHAR (50)  NULL,
     [Description] VARCHAR (MAX) NULL,
     [Price]       INT           NULL,

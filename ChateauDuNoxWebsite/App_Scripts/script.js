@@ -52,6 +52,18 @@ const closeOverlay = () => {
   document.getElementById("overlay-menu").style.height = "0%"
 }
 
+// Prevent postback if have query string in URL
+const checkQueryString = () => {
+  var currentUrl = window.location.href
+
+  if (currentUrl.indexOf('?') !== -1) {
+    document.getElementById("edit-modal").style.display = "flex"
+    return false
+  }
+
+  return true
+}
+
 // Wait for DOM loaded
 $(document).ready(function () {
   if (document.getElementsByClassName("tab")[0]) {
@@ -283,6 +295,7 @@ $(document).ready(function () {
 
       if (event.target == editModal) {
         editModal.style.display = "none"
+        document.location.href = "ManageWine.aspx"
       }
     }
   }
