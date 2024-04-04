@@ -123,8 +123,8 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
             AddWineDropdown.DataBind();
             EditWineDropdown.DataBind();
 
-            AddWineDropdown.Items.Insert(0, new ListItem("-- Select Type --", ""));
-            EditWineDropdown.Items.Insert(0, new ListItem("-- Select Type --", ""));
+            AddWineDropdown.Items.Insert(0, new ListItem("-- Select Type --", "0"));
+            EditWineDropdown.Items.Insert(0, new ListItem("-- Select Type --", "0"));
           }
 
           if (Request.QueryString["WineId"] != null)
@@ -175,7 +175,7 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
         byte[] wineImage = AddWineFileUpload.FileBytes;
         string desc = AddWineDesc.Text.Trim();
         int price = Convert.ToInt32(AddWinePrice.Text.Trim());
-        int typeId = AddWineDropdown.SelectedIndex + 1;
+        int typeId = AddWineDropdown.SelectedIndex;
         string varietal = AddWineVar.Text.Trim();
         int vintage = Convert.ToInt32(AddWineVint.Text.Trim());
         int volume = Convert.ToInt32(AddWineML.Text.Trim());
@@ -190,7 +190,7 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
           wineImage != null && 
           !string.IsNullOrWhiteSpace(desc) &&
           price >= 0 &&
-          typeId >= 0 &&
+          typeId > 0 &&
           !string.IsNullOrWhiteSpace(varietal) &&
           vintage >= 1000 &&
           volume >= 0 &&
@@ -254,11 +254,11 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
 
         int wineId = Convert.ToInt32(Request.QueryString["WineId"]);
 
-        string name = EditWineName.Text.Trim();
+        string name = EditWineName.Text;
         byte[] wineImage = EditWineFileUpload.FileBytes;
         string desc = EditWineDesc.Text.Trim();
         int price = Convert.ToInt32(EditWinePrice.Text.Trim());
-        int typeId = EditWineDropdown.SelectedIndex + 1;
+        int typeId = EditWineDropdown.SelectedIndex;
         string varietal = EditWineVar.Text.Trim();
         int vintage = Convert.ToInt32(EditWineVint.Text.Trim());
         int volume = Convert.ToInt32(EditWineML.Text.Trim());
@@ -272,7 +272,7 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
         if (!string.IsNullOrWhiteSpace(name) &&
           !string.IsNullOrWhiteSpace(desc) &&
           price >= 0 &&
-          typeId >= 0 &&
+          typeId > 0 &&
           !string.IsNullOrWhiteSpace(varietal) &&
           vintage >= 1000 &&
           volume >= 0 &&
@@ -284,7 +284,7 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
           stock >= 0
         )
         {
-          if (wineImage != null)
+          if (wineImage != null && wineImage.Length != 0)
           {
             string updateQuery = @"
                                 UPDATE [Wine] SET
@@ -346,14 +346,14 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
             updateCommand.ExecuteNonQuery();
 
             Response.Write(
-              "<script>alert('Details of " + name + " has been edited successfully.'); document.location.href='./ManageWine.aspx';</script>"
+              "<script>alert('Details of " + name + " has been edited successfully.');  document.location.href='./ManageWine.aspx';</script>"
             );
           }
         }
         else
         {
           Response.Write(
-            "<script>alert('Please fill up all empty fields. Image is optional unless change is required.');</script>"
+            "<script>alert('Please fill up all empty fields. Image is optional unless change is required.'); document.location.href='./ManageWine.aspx';</script>"
           );
         }
 
