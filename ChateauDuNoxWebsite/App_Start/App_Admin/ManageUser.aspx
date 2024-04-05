@@ -139,34 +139,79 @@
         <div class="accordian-wrapper">
           <button type="button" class="accordian-control">Admins</button>
           <div class="accordian-panel">
-            <div class="user-detail">
-              <div class="user-top">
-                <div class="user-avatar">
-                  <img src="../../App_Assets/profile.jpg" />
+            <asp:Repeater runat="server" ID="AdminRepeater">
+              <ItemTemplate>
+                <div class="user-detail">
+                  <div class="user-top">
+                    <div class="user-avatar">
+                      <img src='../../App_Assets/profile.jpg' />
+                    </div>
+                    <div class="user-content">
+                      <h3><%# Eval("Name") %></h3>
+                      <p><%# Eval("EmailAddress") %></p>
+                      <p>Joined since <span id="registered-date"><%# Eval("RegisteredDate") %></span></p>
+                    </div>
+                  </div>
+                  <div class="user-bottom">
+                    <asp:Button runat="server" CommandArgument='<%# Eval("UserId") %>' CssClass="input-submit edit-user-button" ID="ChangeRole" Text="Change Role" OnClick="ChangeRole_Click" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("UserId") %>' CssClass="input-submit" ID="ViewProfile" Text="View Profile" OnClick="ViewProfile_Click" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("UserId") %>' CssClass="input-submit" ID="DeleteUser" Text="DeleteUser" OnClick="DeleteUser_Click" />
+                  </div>
                 </div>
-                <div class="user-content">
-                  <h3>John Doe</h3>
-                  <p>john.doe@gmail.com</p>
-                  <p>Joined since <span id="registered-date">18 February 2024</span></p>
-                </div>
-              </div>
-              <div class="user-bottom">
-                <asp:Button runat="server" CssClass="input-submit" ID="ChangeRole" Text="Change Role" />
-                <asp:Button runat="server" CssClass="input-submit" ID="ViewProfile" Text="View Profile" />
-              </div>
-            </div>
+              </ItemTemplate>
+            </asp:Repeater>
           </div>
         </div>
         <div class="accordian-wrapper">
           <button type="button" class="accordian-control">Active Users</button>
           <div class="accordian-panel">
-            
+            <asp:Repeater runat="server" ID="ActiveRepeater">
+              <ItemTemplate>
+                <div class="user-detail">
+                  <div class="user-top">
+                    <div class="user-avatar">
+                      <img src='data:image/jpeg;base64,<%# Convert.ToBase64String((byte[])Eval("Avatar")) %>' />
+                    </div>
+                    <div class="user-content">
+                      <h3><%# Eval("Name") %></h3>
+                      <p><%# Eval("EmailAddress") %></p>
+                      <p>Joined since <span id="registered-date"><%# Eval("RegisteredDate") %></span></p>
+                    </div>
+                  </div>
+                  <div class="user-bottom">
+                    <asp:Button runat="server" CommandArgument='<%# Eval("UserId") %>' CssClass="input-submit edit-user-button" ID="ChangeRole" Text="Change Role" OnClick="ChangeRole_Click" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("UserId") %>' CssClass="input-submit" ID="ViewProfile" Text="View Profile" OnClick="ViewProfile_Click" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("UserId") %>' CssClass="input-submit" ID="DeleteUser" Text="DeleteUser" OnClick="DeleteUser_Click" />
+                  </div>
+                </div>
+              </ItemTemplate>
+            </asp:Repeater>
           </div>
         </div>
         <div class="accordian-wrapper">
           <button type="button" class="accordian-control">Inactive Users</button>
           <div class="accordian-panel">
-            
+            <asp:Repeater runat="server" ID="InactiveRepeater">
+              <ItemTemplate>
+                <div class="user-detail">
+                  <div class="user-top">
+                    <div class="user-avatar">
+                      <img src='data:image/jpeg;base64,<%# Convert.ToBase64String((byte[])Eval("Avatar")) %>' />
+                    </div>
+                    <div class="user-content">
+                      <h3><%# Eval("Name") %></h3>
+                      <p><%# Eval("EmailAddress") %></p>
+                      <p>Joined since <span id="registered-date"><%# Eval("RegisteredDate") %></span></p>
+                    </div>
+                  </div>
+                  <div class="user-bottom">
+                    <asp:Button runat="server" CommandArgument='<%# Eval("UserId") %>' CssClass="input-submit edit-user-button" ID="ChangeRole" Text="Change Role" OnClick="ChangeRole_Click" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("UserId") %>' CssClass="input-submit" ID="ViewProfile" Text="View Profile" OnClick="ViewProfile_Click" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("UserId") %>' CssClass="input-submit" ID="DeleteUser" Text="DeleteUser" OnClick="DeleteUser_Click" />
+                  </div>
+                </div>
+              </ItemTemplate>
+            </asp:Repeater>
           </div>
         </div>
       </div>

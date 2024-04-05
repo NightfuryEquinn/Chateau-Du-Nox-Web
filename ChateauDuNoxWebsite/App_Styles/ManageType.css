@@ -155,8 +155,9 @@
   }
 
   .user-detail {
-    height: fit-content;
     max-width: 300px;
+    justify-content: space-between;
+    word-break: break-word;
   }
 
   .user-detail:last-child,

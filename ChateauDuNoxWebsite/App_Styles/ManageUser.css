@@ -59,8 +59,10 @@
 }
 
 .user-avatar {
-  height: 75px;
-  width: 75px;
+  min-height: 75px;
+  min-width: 75px;
+  max-height: 75px;
+  max-width: 75px;
 }
 
 .user-avatar img {
@@ -79,7 +81,7 @@
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 @media only screen and (min-width: 768px) {
@@ -90,9 +92,14 @@
     justify-content: space-between;
   }
 
+  .user-bottom {
+    flex-direction: column;
+  }
+
   .user-detail {
-    height: fit-content;
     max-width: 300px;
+    justify-content: space-between;
+    word-break: break-word;
   }
 
   .user-detail:last-child,

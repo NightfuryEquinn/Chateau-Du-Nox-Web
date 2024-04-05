@@ -47,7 +47,7 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
       {
         WineData wine = new WineData
         {
-          WineId = Convert.ToInt32(reader["WineId"]),
+          WineId = Convert.ToInt32(reader["WineId"].ToString()),
           Name = reader["Name"].ToString(),
           Description = reader["Description"].ToString(),
           Price = Convert.ToInt32(reader["Price"]),
@@ -84,6 +84,77 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
       return typesTable;
     }
 
+    private void loadPageContent()
+    {
+      try
+      {
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ChateauString"].ConnectionString);
+        conn.Open();
+
+        List<WineData> activeWines = GetWineByStatus(conn, 1);
+        List<WineData> inactiveWines = GetWineByStatus(conn, 0);
+
+        ActiveRepeater.DataSource = activeWines;
+        ActiveRepeater.DataBind();
+
+        InactiveRepeater.DataSource = inactiveWines;
+        InactiveRepeater.DataBind();
+
+        DataTable typesTable = GetWineTypes(conn);
+        if (typesTable.Rows.Count > 0)
+        {
+          AddWineDropdown.DataSource = typesTable;
+          EditWineDropdown.DataSource = typesTable;
+
+          AddWineDropdown.DataTextField = "Name";
+          EditWineDropdown.DataTextField = "Name";
+
+          AddWineDropdown.DataValueField = "TypeId";
+          EditWineDropdown.DataValueField = "TypeId";
+
+          AddWineDropdown.DataBind();
+          EditWineDropdown.DataBind();
+
+          AddWineDropdown.Items.Insert(0, new ListItem("-- Select Type --", "0"));
+          EditWineDropdown.Items.Insert(0, new ListItem("-- Select Type --", "0"));
+        }
+
+        if (Request.QueryString["WineId"] != null)
+        {
+          string fetchWineQuery = "SELECT * FROM [Wine] WHERE WineId = @WineId";
+          SqlCommand fetchWineCommand = new SqlCommand(fetchWineQuery, conn);
+          fetchWineCommand.Parameters.AddWithValue("@WineId", Convert.ToInt32(Request.QueryString["WineId"]));
+
+          SqlDataReader reader = fetchWineCommand.ExecuteReader();
+
+          if (reader.Read())
+          {
+            EditWineName.Text = reader["Name"].ToString();
+            EditWineDesc.Text = reader["Description"].ToString();
+            EditWinePrice.Text = reader["Price"].ToString();
+            EditWineDropdown.SelectedIndex = Convert.ToInt32(reader["TypeId"].ToString());
+            EditWineVar.Text = reader["Varietal"].ToString();
+            EditWineVint.Text = reader["Vintage"].ToString();
+            EditWineML.Text = reader["Volume"].ToString();
+            EditWineBody.Text = reader["Body"].ToString();
+            EditWineTannin.Text = reader["Tannin"].ToString();
+            EditWineAcid.Text = reader["Acidity"].ToString();
+            EditWineABV.Text = reader["ABV"].ToString();
+            EditWineOrigin.Text = reader["Origin"].ToString();
+            EditWineStock.Text = reader["Stock"].ToString();
+          }
+
+          reader.Close();
+        }
+
+        conn.Close();
+      }
+      catch (Exception ex)
+      {
+        Debug.WriteLine("Fetch Wine Error:", ex.Message);
+      }
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
       if (Session["Role"] as string != "Admin")
@@ -92,75 +163,9 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
           "<script>alert('Only admin has access to this page.'); document.location.href='../Home.aspx';</script>"
         );
       }
-      else
+      else if (!Page.IsPostBack)
       {
-        try
-        {
-          SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ChateauString"].ConnectionString);
-          conn.Open();
-
-          List<WineData> activeWines = GetWineByStatus(conn, 1);
-          List<WineData> inactiveWines = GetWineByStatus(conn, 0);
-
-          ActiveRepeater.DataSource = activeWines;
-          ActiveRepeater.DataBind();
-
-          InactiveRepeater.DataSource = inactiveWines;
-          InactiveRepeater.DataBind();
-
-          DataTable typesTable = GetWineTypes(conn);
-          if (typesTable.Rows.Count > 0)
-          {
-            AddWineDropdown.DataSource = typesTable;
-            EditWineDropdown.DataSource = typesTable;
-
-            AddWineDropdown.DataTextField = "Name";
-            EditWineDropdown.DataTextField = "Name";
-
-            AddWineDropdown.DataValueField = "TypeId";
-            EditWineDropdown.DataValueField = "TypeId";
-
-            AddWineDropdown.DataBind();
-            EditWineDropdown.DataBind();
-
-            AddWineDropdown.Items.Insert(0, new ListItem("-- Select Type --", "0"));
-            EditWineDropdown.Items.Insert(0, new ListItem("-- Select Type --", "0"));
-          }
-
-          if (Request.QueryString["WineId"] != null)
-          {
-            string fetchWineQuery = "SELECT * FROM [Wine] WHERE WineId = @WineId";
-            SqlCommand fetchWineCommand = new SqlCommand(fetchWineQuery, conn);
-            fetchWineCommand.Parameters.AddWithValue("@WineId", Convert.ToInt32(Request.QueryString["WineId"]));
-
-            SqlDataReader reader = fetchWineCommand.ExecuteReader();
-
-            if (reader.Read())
-            {
-              EditWineName.Text = reader["Name"].ToString();
-              EditWineDesc.Text = reader["Description"].ToString();
-              EditWinePrice.Text = reader["Price"].ToString();
-              EditWineDropdown.SelectedIndex = Convert.ToInt32(reader["TypeId"].ToString());
-              EditWineVar.Text = reader["Varietal"].ToString();
-              EditWineVint.Text = reader["Vintage"].ToString();
-              EditWineML.Text = reader["Volume"].ToString();
-              EditWineBody.Text = reader["Body"].ToString();
-              EditWineTannin.Text = reader["Tannin"].ToString();
-              EditWineAcid.Text = reader["Acidity"].ToString();
-              EditWineABV.Text = reader["ABV"].ToString();
-              EditWineOrigin.Text = reader["Origin"].ToString();
-              EditWineStock.Text = reader["Stock"].ToString();
-            }
-
-            reader.Close();
-          }
-
-          conn.Close();
-        }
-        catch (Exception ex)
-        {
-          Debug.WriteLine("Fetch Wine Error:", ex.Message);
-        }
+        loadPageContent();
       }
     }
 

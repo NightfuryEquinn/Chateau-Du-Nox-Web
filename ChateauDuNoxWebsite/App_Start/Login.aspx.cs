@@ -45,17 +45,20 @@ namespace ChateauDuNoxWebsite.App_Start
 
           SqlDataReader reader = commandCheck.ExecuteReader();
 
+          string userId = "";
           string username = "";
           string role = "";
 
           while (reader.Read())
           {
+            userId = reader["UserId"].ToString().Trim();
             username = reader["Name"].ToString().Trim();
             role = reader["Role"].ToString().Trim();
           }
 
           reader.Close();
 
+          Session["UserId"] = userId;
           Session["Name"] = username;
           Session["Role"] = role;
 
