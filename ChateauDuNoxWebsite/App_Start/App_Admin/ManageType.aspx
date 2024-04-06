@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ManageType.aspx.cs" Inherits="ChateauDuNoxWebsite.App_Start.App_Admin.ManageType" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="ManageType.aspx.cs" Inherits="ChateauDuNoxWebsite.App_Start.App_Admin.ManageType" %>
 
 <!DOCTYPE html>
 
@@ -143,18 +143,23 @@
         <div class="accordian-wrapper">
           <button type="button" class="accordian-control">Active Wine Types</button>
           <div class="accordian-panel">
-            <div class="user-detail">
-              <div class="user-top">
-                <div class="user-content">
-                  <h3>Red Wines</h3>
-                  <p>Count: <span id="wine-stock">17</span></p>
+            <asp:Repeater runat="server" ID="ActiveRepeater">
+              <ItemTemplate>
+                <div class="user-detail">
+                  <div class="user-top">
+                    <div class="user-content">
+                      <h3>Red Wines</h3>
+                      <p>Count: <span id="wine-stock">17</span></p>
+                    </div>
+                  </div>
+                  <div class="user-bottom">
+                    <asp:Button runat="server" CssClass="input-submit" ID="EditType" Text="Edit Type" />
+                    <asp:Button runat="server" CssClass="input-submit" ID="DeleteType" Text="Delete Type" />
+                  </div>
                 </div>
-              </div>
-              <div class="user-bottom">
-                <asp:Button runat="server" CssClass="input-submit" ID="EditType" Text="Edit Type" />
-                <asp:Button runat="server" CssClass="input-submit" ID="DeleteType" Text="Delete Type" />
-              </div>
-            </div>
+              </ItemTemplate>
+            </asp:Repeater>
+            
           </div>
         </div>
         <div class="accordian-wrapper">

@@ -33,21 +33,12 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
     protected global::System.Web.UI.WebControls.Button AddType;
 
     /// <summary>
-    /// EditType control.
+    /// ActiveRepeater control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button EditType;
-
-    /// <summary>
-    /// DeleteType control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Button DeleteType;
+    protected global::System.Web.UI.WebControls.Repeater ActiveRepeater;
   }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ManageReview.aspx.cs" Inherits="ChateauDuNoxWebsite.App_Start.App_Admin.ManageReview" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="ManageReview.aspx.cs" Inherits="ChateauDuNoxWebsite.App_Start.App_Admin.ManageReview" %>
 
 <!DOCTYPE html>
 

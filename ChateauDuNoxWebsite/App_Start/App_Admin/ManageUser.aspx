@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ManageUser.aspx.cs" Inherits="ChateauDuNoxWebsite.App_Start.App_Admin.ManageUser" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="ManageUser.aspx.cs" Inherits="ChateauDuNoxWebsite.App_Start.App_Admin.ManageUser" %>
 
 <!DOCTYPE html>
 
@@ -207,7 +207,7 @@
                   <div class="user-bottom">
                     <asp:Button runat="server" CommandArgument='<%# Eval("UserId") %>' CssClass="input-submit edit-user-button" ID="ChangeRole" Text="Change Role" OnClick="ChangeRole_Click" />
                     <asp:Button runat="server" CommandArgument='<%# Eval("UserId") %>' CssClass="input-submit" ID="ViewProfile" Text="View Profile" OnClick="ViewProfile_Click" />
-                    <asp:Button runat="server" CommandArgument='<%# Eval("UserId") %>' CssClass="input-submit" ID="DeleteUser" Text="DeleteUser" OnClick="DeleteUser_Click" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("UserId") %>' CssClass="input-submit" ID="RecoverUser" Text="Recover User" OnClick="RecoverUser_Click" />
                   </div>
                 </div>
               </ItemTemplate>

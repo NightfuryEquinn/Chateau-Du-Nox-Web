@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ManageOrder.aspx.cs" Inherits="ChateauDuNoxWebsite.App_Start.App_Admin.ManageOrder" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="ManageOrder.aspx.cs" Inherits="ChateauDuNoxWebsite.App_Start.App_Admin.ManageOrder" %>
 
 <!DOCTYPE html>
 

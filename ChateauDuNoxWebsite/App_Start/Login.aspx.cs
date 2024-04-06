@@ -49,22 +49,37 @@ namespace ChateauDuNoxWebsite.App_Start
           string username = "";
           string role = "";
 
-          while (reader.Read())
+          string checkActiveQuery = "SELECT Active FROM [User] WHERE UserId = @UserId";
+          SqlCommand checkActiveCommand = new SqlCommand(checkActiveQuery, conn);
+          checkActiveCommand.Parameters.AddWithValue("@UserId", userId);
+
+          int status = Convert.ToInt32(checkActiveCommand.ExecuteScalar()?.ToString());
+
+          if (status == 1)
           {
-            userId = reader["UserId"].ToString().Trim();
-            username = reader["Name"].ToString().Trim();
-            role = reader["Role"].ToString().Trim();
+            while (reader.Read())
+            {
+              userId = reader["UserId"].ToString().Trim();
+              username = reader["Name"].ToString().Trim();
+              role = reader["Role"].ToString().Trim();
+            }
+
+            reader.Close();
+
+            Session["UserId"] = userId;
+            Session["Name"] = username;
+            Session["Role"] = role;
+
+            Response.Write(
+              "<script>alert('Welcome back, " + username + ".'); document.location.href='./Home.aspx';</script>"
+            );
           }
-
-          reader.Close();
-
-          Session["UserId"] = userId;
-          Session["Name"] = username;
-          Session["Role"] = role;
-
-          Response.Write(
-            "<script>alert('Welcome back, " + username + ".'); document.location.href='./Home.aspx';</script>"
-          );
+          else
+          {
+            Response.Write(
+              "<script>alert('Your account has been suspended or deactivated by our admin. Please contact our customer service at service@chateaudunox.com.'); document.location.href='./Home.aspx';</script>"
+            );
+          }
         }
         else
         {

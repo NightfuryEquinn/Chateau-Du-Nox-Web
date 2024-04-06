@@ -161,12 +161,63 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
 
     protected void ViewProfile_Click(object sender, EventArgs e)
     {
-
+      // TODO when complete Profile.aspx
     }
 
     protected void DeleteUser_Click(object sender, EventArgs e)
     {
+      Button deleteButton = (Button)sender;
+      string userId = deleteButton.CommandArgument;
 
+      try
+      {
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ChateauString"].ConnectionString);
+        conn.Open();
+
+        string deleteQuery = "UPDATE [User] SET Active = 0 WHERE UserId = @UserId";
+        SqlCommand deleteCommand = new SqlCommand(deleteQuery, conn);
+        deleteCommand.Parameters.AddWithValue("@UserId", userId);
+
+        deleteCommand.ExecuteNonQuery();
+
+        Response.Write(
+          "<script>alert('User with ID " + userId + " has been switched to inactive status.'); document.location.href='./ManageUser.aspx';</script>"
+        );
+
+        conn.Close();
+      }
+      catch (Exception ex)
+      {
+        Debug.WriteLine("Delete User Error:", ex.Message);
+      }
+    }
+
+    protected void RecoverUser_Click(object sender, EventArgs e)
+    {
+      Button recoverButton = (Button)sender;
+      string userId = recoverButton.CommandArgument;
+
+      try
+      {
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ChateauString"].ConnectionString);
+        conn.Open();
+
+        string recoverQuery = "UPDATE [User] SET Active = 1 WHERE UserId = @UserId";
+        SqlCommand recoverCommand = new SqlCommand(recoverQuery, conn);
+        recoverCommand.Parameters.AddWithValue("@UserId", userId);
+
+        recoverCommand.ExecuteNonQuery();
+
+        Response.Write(
+          "<script>alert('User with ID " + userId + " has been switched to active status.'); document.location.href='./ManageUser.aspx';</script>"
+        );
+
+        conn.Close();
+      }
+      catch (Exception ex)
+      {
+        Debug.WriteLine("Delete Wine Error:", ex.Message);
+      }
     }
   }
 }

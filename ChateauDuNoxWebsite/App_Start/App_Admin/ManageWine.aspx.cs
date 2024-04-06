@@ -385,12 +385,58 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
 
     protected void DeleteWine_Click(object sender, EventArgs e)
     {
+      Button deleteButton = (Button)sender;
+      string wineId = deleteButton.CommandArgument;
 
+      try
+      {
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ChateauString"].ConnectionString);
+        conn.Open();
+
+        string deleteQuery = "UPDATE [Wine] SET Active = 0 WHERE WineId = @WineId";
+        SqlCommand deleteCommand = new SqlCommand(deleteQuery, conn);
+        deleteCommand.Parameters.AddWithValue("@WineId", wineId);
+
+        deleteCommand.ExecuteNonQuery();
+
+        Response.Write(
+          "<script>alert('Wine with ID " + wineId + " has been switched to inactive status.'); document.location.href='./ManageWine.aspx';</script>"
+        );
+
+        conn.Close();
+      }
+      catch (Exception ex)
+      {
+        Debug.WriteLine("Delete Wine Error:", ex.Message);
+      }
     }
 
     protected void RecoverWine_Click(object sender, EventArgs e)
     {
+      Button recoverButton = (Button)sender;
+      string wineId = recoverButton.CommandArgument;
 
+      try
+      {
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ChateauString"].ConnectionString);
+        conn.Open();
+
+        string recoverQuery = "UPDATE [Wine] SET Active = 1 WHERE WineId = @WineId";
+        SqlCommand recoverCommand = new SqlCommand(recoverQuery, conn);
+        recoverCommand.Parameters.AddWithValue("@WineId", wineId);
+
+        recoverCommand.ExecuteNonQuery();
+
+        Response.Write(
+          "<script>alert('Wine with ID " + wineId + " has been switched to active status.'); document.location.href='./ManageWine.aspx';</script>"
+        );
+
+        conn.Close();
+      }
+      catch (Exception ex)
+      {
+        Debug.WriteLine("Delete Wine Error:", ex.Message);
+      }
     }
   }
 }
