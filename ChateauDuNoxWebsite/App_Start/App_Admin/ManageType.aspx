@@ -148,24 +148,38 @@
                 <div class="user-detail">
                   <div class="user-top">
                     <div class="user-content">
-                      <h3>Red Wines</h3>
-                      <p>Count: <span id="wine-stock">17</span></p>
+                      <h3><%# Eval("Name") %></h3>
+                      <p>Number of Wines: <%# Eval("Count") %></p>
                     </div>
                   </div>
                   <div class="user-bottom">
-                    <asp:Button runat="server" CssClass="input-submit" ID="EditType" Text="Edit Type" />
-                    <asp:Button runat="server" CssClass="input-submit" ID="DeleteType" Text="Delete Type" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("TypeId") %>' CssClass="input-submit" ID="EditType" Text="Edit Type" OnClientClick="return checkQueryString()" OnClick="EditType_Click" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("TypeId") %>' CssClass="input-submit" ID="DeleteType" Text="Delete Type" OnClick="DeleteType_Click" />
                   </div>
                 </div>
               </ItemTemplate>
             </asp:Repeater>
-            
           </div>
         </div>
         <div class="accordian-wrapper">
           <button type="button" class="accordian-control">Inactive Wine Types</button>
           <div class="accordian-panel">
-            
+            <asp:Repeater runat="server" ID="InactiveRepeater">
+              <ItemTemplate>
+                <div class="user-detail">
+                  <div class="user-top">
+                    <div class="user-content">
+                      <h3><%# Eval("Name") %></h3>
+                      <p>Number of Wines: <%# Eval("Count") %></p>
+                    </div>
+                  </div>
+                  <div class="user-bottom">
+                    <asp:Button runat="server" CommandArgument='<%# Eval("TypeId") %>' CssClass="input-submit" ID="EditType" Text="Edit Type" OnClientClick="return checkQueryString()" OnClick="EditType_Click" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("TypeId") %>' CssClass="input-submit" ID="RecoverType" Text="Recover Type" OnClick="RecoverType_Click" />
+                  </div>
+                </div>
+              </ItemTemplate>
+            </asp:Repeater>
           </div>
         </div>
       </div>
@@ -278,12 +292,12 @@
           <div class="input-container">
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Type"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>
+              <asp:TextBox runat="server" CssClass="input-box" ID="EditTypeName"></asp:TextBox>
             </div>
           </div>
         </div>
 
-        <asp:Button runat="server" CssClass="input-submit" Text="Save Changes" />
+        <asp:Button runat="server" CssClass="input-submit" Text="Save Changes" ID="SaveButton" OnClick="SaveButton_Click" />
       </div>
     </div>
   </form>

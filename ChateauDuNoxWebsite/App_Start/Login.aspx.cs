@@ -49,6 +49,15 @@ namespace ChateauDuNoxWebsite.App_Start
           string username = "";
           string role = "";
 
+          if (reader.Read())
+          {
+            userId = reader["UserId"].ToString().Trim();
+            username = reader["Name"].ToString().Trim();
+            role = reader["Role"].ToString().Trim();
+          }
+
+          reader.Close();
+
           string checkActiveQuery = "SELECT Active FROM [User] WHERE UserId = @UserId";
           SqlCommand checkActiveCommand = new SqlCommand(checkActiveQuery, conn);
           checkActiveCommand.Parameters.AddWithValue("@UserId", userId);
@@ -57,15 +66,6 @@ namespace ChateauDuNoxWebsite.App_Start
 
           if (status == 1)
           {
-            while (reader.Read())
-            {
-              userId = reader["UserId"].ToString().Trim();
-              username = reader["Name"].ToString().Trim();
-              role = reader["Role"].ToString().Trim();
-            }
-
-            reader.Close();
-
             Session["UserId"] = userId;
             Session["Name"] = username;
             Session["Role"] = role;

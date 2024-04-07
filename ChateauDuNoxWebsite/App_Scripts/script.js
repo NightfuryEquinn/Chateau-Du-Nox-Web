@@ -295,7 +295,14 @@ $(document).ready(function () {
 
       if (event.target == editModal) {
         editModal.style.display = "none"
-        document.location.href = "ManageWine.aspx"
+
+        const queryString = window.location.search
+
+        if (queryString.includes("WineId")) {
+          document.location.href = "ManageWine.aspx"
+        } else if (queryString.includes("TypeId")) {
+          document.location.href = "ManageType.aspx"
+        }
       }
     }
   }

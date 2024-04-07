@@ -155,7 +155,7 @@
                     </div>
                   </div>
                   <div class="user-bottom">
-                    <asp:Button runat="server" CommandArgument='<%# Eval("WineId") %>' CssClass="input-submit edit-wine-button" ID="EditWine" Text="Edit Wine" OnClientClick="return checkQueryString()" OnClick="EditWine_Click" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("WineId") %>' CssClass="input-submit" ID="EditWine" Text="Edit Wine" OnClientClick="return checkQueryString()" OnClick="EditWine_Click" />
                     <asp:Button runat="server" CommandArgument='<%# Eval("WineId") %>' CssClass="input-submit" ID="DeleteWine" Text="Delete Wine" OnClick="DeleteWine_Click" />
                   </div>
                 </div>
@@ -179,7 +179,7 @@
                     </div>
                   </div>
                   <div class="user-bottom">
-                    <asp:Button runat="server" CommandArgument='<%# Eval("WineId") %>' CssClass="input-submit edit-wine-button" ID="EditWine" Text="Edit Wine" OnClientClick="return checkQueryString()" OnClick="EditWine_Click" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("WineId") %>' CssClass="input-submit" ID="EditWine" Text="Edit Wine" OnClientClick="return checkQueryString()" OnClick="EditWine_Click" />
                     <asp:Button runat="server" CommandArgument='<%# Eval("WineId") %>' CssClass="input-submit" ID="RecoverWine" Text="Recover Wine" OnClick="RecoverWine_Click" />
                   </div>
                 </div>

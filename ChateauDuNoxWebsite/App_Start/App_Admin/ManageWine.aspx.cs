@@ -259,7 +259,7 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
 
         int wineId = Convert.ToInt32(Request.QueryString["WineId"]);
 
-        string name = EditWineName.Text;
+        string name = EditWineName.Text.Trim();
         byte[] wineImage = EditWineFileUpload.FileBytes;
         string desc = EditWineDesc.Text.Trim();
         int price = Convert.ToInt32(EditWinePrice.Text.Trim());
@@ -435,7 +435,7 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
       }
       catch (Exception ex)
       {
-        Debug.WriteLine("Delete Wine Error:", ex.Message);
+        Debug.WriteLine("Recover Wine Error:", ex.Message);
       }
     }
   }
