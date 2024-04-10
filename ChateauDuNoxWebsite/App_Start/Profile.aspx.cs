@@ -34,6 +34,7 @@ namespace ChateauDuNoxWebsite.App_Start
       public int WishlistId { get; set; }
       public int Amount { get; set; }
       public int WineId { get; set; }
+      public string WineName { get; set; }
       public int UserId { get; set; }
     }
 
@@ -42,6 +43,9 @@ namespace ChateauDuNoxWebsite.App_Start
       public int CartId { get; set; }
       public int Amount { get; set; }
       public int WineId { get; set; }
+      public string WineName { get; set; }
+      public int WinePrice { get; set; }
+      public int WineTotal { get; set; }
       public int UserId { get; set; }
     }
 
@@ -56,6 +60,7 @@ namespace ChateauDuNoxWebsite.App_Start
       public int Active { get; set; }
       public int WineId { get; set; }
       public int UserId { get; set; }
+      public string WineName { get; set; }
     }
 
     public class ReviewData
@@ -66,6 +71,7 @@ namespace ChateauDuNoxWebsite.App_Start
       public DateTime WrittenDate { get; set; }
       public int Active { get; set; }
       public int WineId { get; set; }
+      public string WineName { get; set; }
       public int UserId { get; set; }
     }
 
@@ -76,10 +82,12 @@ namespace ChateauDuNoxWebsite.App_Start
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ChateauString"].ConnectionString);
         conn.Open();
 
+        int userId = Convert.ToInt32(Session["UserId"].ToString());
+
         // Fetch for profile
         string fetchProfileQuery = "SELECT * FROM [User] WHERE UserId = @UserId";
         SqlCommand fetchProfileCommand = new SqlCommand(fetchProfileQuery, conn);
-        fetchProfileCommand.Parameters.AddWithValue("@UserId", Convert.ToInt32(Session["UserId"].ToString()));
+        fetchProfileCommand.Parameters.AddWithValue("@UserId", userId);
 
         SqlDataReader reader = fetchProfileCommand.ExecuteReader();
         List<ProfileData> profiles = new List<ProfileData>();
@@ -116,16 +124,165 @@ namespace ChateauDuNoxWebsite.App_Start
         reader.Close();
 
         // Fetch for Wishlist
+        string fetchWishlistQuery = @"
+                                  SELECT Wishlist.*, Wine.Name FROM Wishlist 
+                                  JOIN Wine on Wishlist.WineId = Wine.WineId 
+                                  WHERE Wishlist.UserId = @UserId
+                                  ";
+        SqlCommand fetchWishlistCommand = new SqlCommand(fetchWishlistQuery, conn);
+        fetchWishlistCommand.Parameters.AddWithValue("@UserId", userId);
 
+        SqlDataReader wishlistReader = fetchWishlistCommand.ExecuteReader();
+        List<WishlistData> wishlists = new List<WishlistData>();
+
+        while (wishlistReader.Read())
+        {
+          WishlistData wishlist = new WishlistData
+          {
+            WishlistId = Convert.ToInt32(wishlistReader["WishlistId"].ToString()),
+            Amount = Convert.ToInt32(wishlistReader["Amount"].ToString()),
+            WineId = Convert.ToInt32(wishlistReader["WineId"].ToString()),
+            WineName = wishlistReader["Name"].ToString(),
+            UserId = Convert.ToInt32(wishlistReader["UserId"].ToString())
+          };
+
+          wishlists.Add(wishlist);
+        }
+
+        WishlistRepeater.DataSource = wishlists;
+        WishlistRepeater.DataBind();
+
+        wishlistReader.Close();
 
         // Fetch for Cart
+        string fetchCartQuery = @"
+                              SELECT Cart.*, Wine.Name, Wine.Price, (Cart.Amount * Wine.Price) AS Total FROM Cart 
+                              JOIN Wine on Cart.WineId = Cart.WineId 
+                              WHERE Cart.UserId = @UserId
+                              ";
+        SqlCommand fetchCartCommand = new SqlCommand(fetchCartQuery, conn);
+        fetchCartCommand.Parameters.AddWithValue("@UserId", userId);
 
+        SqlDataReader cartReader = fetchCartCommand.ExecuteReader();
+        List<CartData> carts = new List<CartData>();
+        int totalCartPrice = 0;
+
+        while (cartReader.Read())
+        {
+          CartData cart = new CartData
+          {
+            CartId = Convert.ToInt32(cartReader["CartId"].ToString()),
+            Amount = Convert.ToInt32(cartReader["Amount"].ToString()),
+            WineId = Convert.ToInt32(cartReader["WineId"].ToString()),
+            WineName = cartReader["Name"].ToString(),
+            WinePrice = Convert.ToInt32(cartReader["Price"].ToString()),
+            WineTotal = Convert.ToInt32(cartReader["Total"].ToString()),
+            UserId = Convert.ToInt32(cartReader["UserId"].ToString())
+          };
+
+          carts.Add(cart);
+          totalCartPrice += cart.WineTotal;
+        }
+
+        CartRepeater.DataSource = carts;
+        CartRepeater.DataBind();
+
+        CartTotal.Text = totalCartPrice.ToString();
+
+        cartReader.Close();
 
         // Fetch for Order
+        string fetchOrderQuery = @"
+                              SELECT [Order].*, Wine.Name FROM [Order]
+                              JOIN Wine on [Order].WineId = Wine.WineId 
+                              WHERE [Order].UserId = @UserId
+                              ORDER BY [Order].OrderId DESC
+                              ";
+        SqlCommand fetchOrderCommand = new SqlCommand(fetchOrderQuery, conn);
+        fetchOrderCommand.Parameters.AddWithValue("@UserId", userId);
 
+        SqlDataReader orderReader = fetchOrderCommand.ExecuteReader();
+        List<OrderData> shippings = new List<OrderData>();
+        List<OrderData> delivereds = new List<OrderData>();
+        List<OrderData> completeds = new List<OrderData>();
+
+        while (orderReader.Read())
+        {
+          OrderData order = new OrderData
+          {
+            OrderID = Convert.ToInt32(orderReader["OrderId"].ToString()),
+            Status = orderReader["Status"].ToString(),
+            DeliveredDate = DateTime.Parse(orderReader["DeliveredDate"].ToString()),
+            OrderedDate = DateTime.Parse(orderReader["OrderedDate"].ToString()),
+            TotalPayable = Convert.ToInt32(orderReader["TotalPayable"].ToString()),
+            ReviewWritten = Convert.ToInt32(orderReader["ReviewWritten"].ToString()),
+            Active = Convert.ToInt32(orderReader["Active"].ToString()),
+            WineId = Convert.ToInt32(orderReader["WineId"].ToString()),
+            UserId = Convert.ToInt32(orderReader["UserId"].ToString()),
+            WineName = orderReader["Name"].ToString()
+          };
+
+          switch (order.Status)
+          {
+            case "Shipping":
+              shippings.Add(order);
+              break;
+            case "Delivered":
+              delivereds.Add(order);
+              break;
+            case "Completed":
+              completeds.Add(order);
+              break;
+            default:
+              break;
+          }
+        }
+
+        ShippingRepeater.DataSource = shippings;
+        ShippingRepeater.DataBind();
+
+        DeliveredRepeater.DataSource = delivereds;
+        DeliveredRepeater.DataBind();
+
+        CompletedRepeater.DataSource = completeds;
+        CompletedRepeater.DataBind();
+
+        orderReader.Close();
 
         // Fetch for Review
+        string fetchReviewQuery = @"
+                              SELECT Review.*, Wine.Name FROM [Review]
+                              JOIN Wine on Review.WineId = Wine.WineId 
+                              WHERE Review.UserId = @UserId
+                              ORDER BY Review.ReviewId DESC
+                              ";
+        SqlCommand fetchReviewCommand = new SqlCommand(fetchReviewQuery, conn);
+        fetchReviewCommand.Parameters.AddWithValue("@UserId", userId);
 
+        SqlDataReader reviewReader = fetchReviewCommand.ExecuteReader();
+        List<ReviewData> reviews = new List<ReviewData>();
+
+        while (reviewReader.Read())
+        {
+          ReviewData review = new ReviewData
+          {
+            ReviewId = Convert.ToInt32(reviewReader["ReviewId"].ToString()),
+            Content = reviewReader["Content"].ToString(),
+            Rating = Convert.ToInt32(reviewReader["Rating"].ToString()),
+            WrittenDate = DateTime.Parse(reviewReader["WrittenDate"].ToString()),
+            Active = Convert.ToInt32(reviewReader["Active"].ToString()),
+            WineId = Convert.ToInt32(reviewReader["WineId"].ToString()),
+            WineName = reviewReader["Name"].ToString(),
+            UserId = Convert.ToInt32(reviewReader["UserId"].ToString())
+          };
+
+          reviews.Add(review);
+        }
+
+        ReviewRepeater.DataSource = reviews;
+        ReviewRepeater.DataBind();
+
+        reviewReader.Close();
 
         conn.Close();
       }

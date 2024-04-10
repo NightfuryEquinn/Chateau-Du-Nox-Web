@@ -93,7 +93,7 @@
 .wine-wish {
   margin: 0 1rem;
   padding: 1rem;
-  color: var(--beige);
+  color: var(--beige) !important;
   background-color: var(--black);
 }
 
@@ -102,7 +102,7 @@ a:visited.wine-wish {
 }
 
 a:hover.wine-wish {
-  color: var(--green);
+  color: var(--green) !important;
 }
 
 .wine-cart,

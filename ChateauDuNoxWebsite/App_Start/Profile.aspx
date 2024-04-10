@@ -186,9 +186,9 @@
               <asp:Repeater runat="server" ID="WishlistRepeater">
                 <ItemTemplate>
                   <div class="wishlist-wrapper">
-                    <a href="#" class="wine-wish">
-                      <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
-                      <p>Amount: 3</p>
+                    <a href='SingleWine.aspx?WineId=<%# Eval("WineId") %>' class="wine-wish">
+                      <h4><%# Eval("WineName") %></h4>
+                      <p>Amount: <%# Eval("Amount") %></p>
                     </a>
 
                     <asp:Button runat="server" CssClass="input-submit" Text="Remove" ID="WishlistRemove" OnClick="WishlistRemove_Click" />
@@ -210,9 +210,9 @@
                 <ItemTemplate>
                   <div class="wine-wrapper">
                     <div class="wine-cart">
-                      <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
-                      <p>Quantity: <span id="wine-quantity">3</span></p>
-                      <p>Total Price: RM <span id="wine-total">1200</span></p>
+                      <h4><%# Eval("WineName") %></h4>
+                      <p>Amount: <%# Eval("Amount") %></p>
+                      <p>Total Price: RM <%# Eval("WineTotal") %></p>
                     </div>
               
                     <asp:Button runat="server" CssClass="input-submit" Text="Remove" ID="CartRemove" OnClick="CartRemove_Click" />
@@ -225,7 +225,7 @@
           </div>
 
           <div class="cart-content">
-            <h3>Checkout Price: RM <asp:Label runat="server" ID="CartTotal" Text="1300"></asp:Label></h3>
+            <h3>Checkout Price: RM <asp:Label runat="server" ID="CartTotal" Text=""></asp:Label></h3>
             <asp:Button runat="server" CssClass="input-submit" Text="Checkout" ID="CartCheckout" OnClick="CartCheckout_Click" />
           </div>
         </div>
@@ -239,14 +239,14 @@
                 <ItemTemplate>
                   <div class="order-wrapper">
                     <div class="order-history">
-                      <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
-                      <p>Status: <span id="status">Shipping</span></p>
-                      <p>Ordered Date: <span id="ordered-date">24 February 2024</span></p>
-                      <p>Delivered Date: <span id="delivered-date">24 March 2024</span></p>
-                      <p>Total Payable: RM <span id="total-payable">3100</span></p>
+                      <h4><%# Eval("WineName") %></h4>
+                      <p>Status: <%# Eval("Status") %></p>
+                      <p>Ordered Date: <%# Eval("OrderedDate") %></p>
+                      <p>Delivered Date: <%# Eval("DeliveredDate") %></p>
+                      <p>Total Payable: RM <%# Eval("TotalPayable") %></p>
                     </div>
 
-                    <asp:Button runat="server" CssClass="input-submit" Text="Cancel" ID="OrderCancel" OnClick="OrderCancel_Click" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("OrderId") %>' CssClass="input-submit" Text="Cancel" ID="OrderCancel" OnClick="OrderCancel_Click" />
                   </div>
 
                   <hr />
@@ -257,14 +257,14 @@
                 <ItemTemplate>
                   <div class="order-wrapper">
                     <div class="order-history">
-                      <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
-                      <p>Status: <span id="status">Delivered</span></p>
-                      <p>Ordered Date: <span id="ordered-date">24 February 2024</span></p>
-                      <p>Delivered Date: <span id="delivered-date">24 March 2024</span></p>
-                      <p>Total Payable: RM <span id="total-payable">3100</span></p>
+                      <h4><%# Eval("WineName") %></h4>
+                      <p>Status: <%# Eval("Status") %></p>
+                      <p>Ordered Date: <%# Eval("OrderedDate") %></p>
+                      <p>Delivered Date: <%# Eval("DeliveredDate") %></p>
+                      <p>Total Payable: RM <%# Eval("TotalPayable") %></p>
                     </div>
 
-                    <asp:Button runat="server" CssClass="input-submit" Text="Confirm" ID="OrderConfirm" OnClick="OrderConfirm_Click" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("OrderId") %>' CssClass="input-submit" Text="Confirm" ID="OrderConfirm" OnClick="OrderConfirm_Click" />
                   </div>
 
                   <hr />
@@ -275,14 +275,14 @@
                 <ItemTemplate>
                   <div class="order-wrapper">
                     <div class="order-history">
-                      <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
-                      <p>Status: <span id="status">Completed</span></p>
-                      <p>Ordered Date: <span id="ordered-date">24 February 2024</span></p>
-                      <p>Delivered Date: <span id="delivered-date">24 March 2024</span></p>
-                      <p>Total Payable: RM <span id="total-payable">3100</span></p>
+                      <h4><%# Eval("WineName") %></h4>
+                      <p>Status: <%# Eval("Status") %></p>
+                      <p>Ordered Date: <%# Eval("OrderedDate") %></p>
+                      <p>Delivered Date: <%# Eval("DeliveredDate") %></p>
+                      <p>Total Payable: RM <%# Eval("TotalPayable") %></p>
                     </div>
 
-                    <asp:Button runat="server" CssClass="input-submit" Text="Rate" ID="OrderRate" OnClick="OrderRate_Click" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("OrderId") %>' CssClass="input-submit" Text="Rate" ID="OrderRate" OnClick="OrderRate_Click" />
                   </div>
 
                   <hr />
@@ -301,15 +301,16 @@
                 <ItemTemplate>
                   <div class="review-wrapper">
                     <div class="review">
-                      <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
-                      <p>Written Date: <span>27 March 2024</span></p>
+                      <h4><%# Eval("WineName") %></h4>
+                      <p>Rating: <%# Eval("Rating") %></p>
+                      <p>Written Date: <span><%# Eval("WrittenDate") %></span></p>
 
                       <hr />
 
-                      <p>Very good wine, full body, quite sour but ok.</p>
+                      <p><%# Eval("Content") %></p>
                     </div>
 
-                    <asp:Button runat="server" CssClass="input-submit" Text="View" ID="ReviewView" OnClick="ReviewView_Click" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("WineId") %>' CssClass="input-submit" Text="View" ID="ReviewView" OnClick="ReviewView_Click" />
                   </div>
 
                   <hr />
