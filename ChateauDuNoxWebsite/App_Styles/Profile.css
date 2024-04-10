@@ -138,6 +138,7 @@ a:hover.wine-wish {
   align-items: flex-end;
 }
 
+.wishlist-wrapper,
 .wine-wrapper,
 .order-wrapper,
 .review-wrapper {
@@ -146,6 +147,7 @@ a:hover.wine-wish {
   gap: 0.5rem;
 }
 
+.scroll-wrapper .wishlist-wrapper:last-of-type,
 .scroll-wrapper .wine-wrapper:last-of-type,
 .scroll-wrapper .order-wrapper:last-of-type,
 .scroll-wrapper .review-wrapper:last-of-type {

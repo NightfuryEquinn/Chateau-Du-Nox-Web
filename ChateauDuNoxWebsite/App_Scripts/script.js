@@ -302,6 +302,8 @@ $(document).ready(function () {
           document.location.href = "ManageWine.aspx"
         } else if (queryString.includes("TypeId")) {
           document.location.href = "ManageType.aspx"
+        } else if (queryString.includes("Name")) {
+          document.location.href = "Profile.aspx"
         }
       }
     }

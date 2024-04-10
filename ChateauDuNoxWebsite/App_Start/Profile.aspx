@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="ChateauDuNoxWebsite.App_Start.Profile" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="ChateauDuNoxWebsite.App_Start.Profile" %>
 
 <!DOCTYPE html>
 
@@ -134,44 +134,48 @@
     </nav>
 
     <div class="profile-container">
-      <div class="avatar-section">
-        <div class="avatar-wrapper">
-          <img src="../App_Assets/profile.jpg" />
-        </div>
-        <div class="avatar-detail">
-          <p>Joined since 13 March 2024</p>
-          <h1>John Doe</h1>
-        </div>
-        <div class="avatar-cover">
-          <img src="../App_Assets/profile-cover.jpg" />
-        </div>
-      </div>
+      <asp:Repeater runat="server" ID="ProfileRepeater">
+        <ItemTemplate>
+          <div class="avatar-section">
+            <div class="avatar-wrapper">
+              <img src='data:image/jpeg;base64,<%# Convert.ToBase64String((byte[])Eval("Avatar")) %>' />
+            </div>
+            <div class="avatar-detail">
+              <p>Joined since <%# Eval("RegisteredDate") %></p>
+              <h1><%# Eval("Name") %></h1>
+            </div>
+            <div class="avatar-cover">
+              <img src="../App_Assets/profile-cover.jpg" />
+            </div>
+          </div>
 
-      <div class="profile-detail-section">
-        <div class="detail">
-          <asp:Label runat="server" CssClass="input-label" Text="Email Address"></asp:Label>
-          <asp:Label runat="server" CssClass="input-label" ID="email" Text="john.doe@gmail.com"></asp:Label>
-        </div>
-        <div class="detail">
-          <asp:Label runat="server" CssClass="input-label" Text="Phone Number"></asp:Label>
-          <asp:Label runat="server" CssClass="input-label" ID="phone" Text="0128981055"></asp:Label>
-        </div>
-        <div class="detail">
-          <asp:Label runat="server" CssClass="input-label" Text="Shipping Address"></asp:Label>
-          <asp:Label runat="server" CssClass="input-label" ID="shipping" Text="35, Walnut Street, Baker Town, Oxford"></asp:Label>
-        </div>
-        <div class="detail">
-          <asp:Label runat="server" CssClass="input-label" Text="Billing Address"></asp:Label>
-          <asp:Label runat="server" CssClass="input-label" ID="billing" Text="35, Walnut Street, Baker Town, Oxford"></asp:Label>
-        </div>
-        <div class="detail">
-          <asp:Label runat="server" CssClass="input-label" Text="Role"></asp:Label>
-          <asp:Label runat="server" CssClass="input-label" ID="role" Text="User"></asp:Label>
-        </div>
+          <div class="profile-detail-section">
+            <div class="detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Email Address"></asp:Label>
+              <asp:Label runat="server" CssClass="input-label" ID="email" Text='<%# Eval("EmailAddress") %>'></asp:Label>
+            </div>
+            <div class="detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Phone Number"></asp:Label>
+              <asp:Label runat="server" CssClass="input-label" ID="phone" Text='<%# Eval("PhoneNumber") %>'></asp:Label>
+            </div>
+            <div class="detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Shipping Address"></asp:Label>
+              <asp:Label runat="server" CssClass="input-label" ID="shipping" Text='<%# Eval("ShippingAddress") %>'></asp:Label>
+            </div>
+            <div class="detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Billing Address"></asp:Label>
+              <asp:Label runat="server" CssClass="input-label" ID="billing" Text='<%# Eval("BillingAddress") %>'></asp:Label>
+            </div>
+            <div class="detail">
+              <asp:Label runat="server" CssClass="input-label" Text="Role"></asp:Label>
+              <asp:Label runat="server" CssClass="input-label" ID="role" Text='<%# Eval("Role") %>'></asp:Label>
+            </div>
 
-        <asp:Button runat="server" CssClass="input-submit" ID="EditProfile" Text="Edit Profile" />
-        <asp:Button runat="server" OnClick="ChangePass_Click" CssClass="input-submit" ID="ChangePass" Text="Change Password" />
-      </div>
+            <asp:Button runat="server" CommandArgument='<%# Eval("Name") %>' OnClientClick="return checkQueryString()" OnClick="EditProfile_Click" CssClass="input-submit" ID="EditProfile" Text="Edit Profile" />
+            <asp:Button runat="server" OnClick="ChangePass_Click" CssClass="input-submit" ID="ChangePass" Text="Change Password" />
+          </div>
+        </ItemTemplate>
+      </asp:Repeater>
 
       <div class="function-section">
         <div class="function-content short">
@@ -179,11 +183,20 @@
 
           <div class="scroll-container">
             <div class="scroll-wrapper">
-              <a href="#" class="wine-wish">
-                <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
-              </a>
+              <asp:Repeater runat="server" ID="WishlistRepeater">
+                <ItemTemplate>
+                  <div class="wishlist-wrapper">
+                    <a href="#" class="wine-wish">
+                      <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
+                      <p>Amount: 3</p>
+                    </a>
 
-              <hr />
+                    <asp:Button runat="server" CssClass="input-submit" Text="Remove" ID="WishlistRemove" OnClick="WishlistRemove_Click" />
+                  </div>
+              
+                  <hr />
+                </ItemTemplate>
+              </asp:Repeater>
             </div>
           </div>
         </div>
@@ -193,23 +206,27 @@
 
           <div class="scroll-container">
             <div class="scroll-wrapper">
-              <div class="wine-wrapper">
-                <div class="wine-cart">
-                  <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
-                  <p>Quantity: <span id="wine-quantity">3</span></p>
-                  <p>Total Price: RM <span id="wine-total">1200</span></p>
-                </div>
+              <asp:Repeater runat="server" ID="CartRepeater">
+                <ItemTemplate>
+                  <div class="wine-wrapper">
+                    <div class="wine-cart">
+                      <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
+                      <p>Quantity: <span id="wine-quantity">3</span></p>
+                      <p>Total Price: RM <span id="wine-total">1200</span></p>
+                    </div>
               
-                <asp:Button runat="server" CssClass="input-submit" Text="Remove" />
-              </div>
+                    <asp:Button runat="server" CssClass="input-submit" Text="Remove" ID="CartRemove" OnClick="CartRemove_Click" />
+                  </div>
 
-              <hr />
+                  <hr />
+                </ItemTemplate>
+              </asp:Repeater>
             </div>
           </div>
 
           <div class="cart-content">
-            <h3>Checkout Price: RM <span id="cart-total">1400</span></h3>
-            <asp:Button runat="server" CssClass="input-submit" Text="Checkout" />
+            <h3>Checkout Price: RM <asp:Label runat="server" ID="CartTotal" Text="1300"></asp:Label></h3>
+            <asp:Button runat="server" CssClass="input-submit" Text="Checkout" ID="CartCheckout" OnClick="CartCheckout_Click" />
           </div>
         </div>
 
@@ -218,47 +235,59 @@
 
           <div class="scroll-container">
             <div class="scroll-wrapper">
-              <div class="order-wrapper">
-                <div class="order-history">
-                  <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
-                  <p>Status: <span id="status">Completed</span></p>
-                  <p>Ordered Date: <span id="ordered-date">24 February 2024</span></p>
-                  <p>Delivered Date: <span id="delivered-date">24 March 2024</span></p>
-                  <p>Total Payable: RM <span id="total-payable">3100</span></p>
-                </div>
+              <asp:Repeater runat="server" ID="ShippingRepeater">
+                <ItemTemplate>
+                  <div class="order-wrapper">
+                    <div class="order-history">
+                      <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
+                      <p>Status: <span id="status">Shipping</span></p>
+                      <p>Ordered Date: <span id="ordered-date">24 February 2024</span></p>
+                      <p>Delivered Date: <span id="delivered-date">24 March 2024</span></p>
+                      <p>Total Payable: RM <span id="total-payable">3100</span></p>
+                    </div>
 
-                <asp:Button runat="server" CssClass="input-submit" Text="Rate" />
-              </div>
+                    <asp:Button runat="server" CssClass="input-submit" Text="Cancel" ID="OrderCancel" OnClick="OrderCancel_Click" />
+                  </div>
 
-              <hr />
+                  <hr />
+                </ItemTemplate>
+              </asp:Repeater>
 
-              <div class="order-wrapper">
-                <div class="order-history">
-                  <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
-                  <p>Status: <span id="status">Shipping</span></p>
-                  <p>Ordered Date: <span id="ordered-date">24 February 2024</span></p>
-                  <p>Delivered Date: <span id="delivered-date">24 March 2024</span></p>
-                  <p>Total Payable: RM <span id="total-payable">3100</span></p>
-                </div>
+              <asp:Repeater runat="server" ID="DeliveredRepeater">
+                <ItemTemplate>
+                  <div class="order-wrapper">
+                    <div class="order-history">
+                      <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
+                      <p>Status: <span id="status">Delivered</span></p>
+                      <p>Ordered Date: <span id="ordered-date">24 February 2024</span></p>
+                      <p>Delivered Date: <span id="delivered-date">24 March 2024</span></p>
+                      <p>Total Payable: RM <span id="total-payable">3100</span></p>
+                    </div>
 
-                <asp:Button runat="server" CssClass="input-submit" Text="Cancel" />
-              </div>
+                    <asp:Button runat="server" CssClass="input-submit" Text="Confirm" ID="OrderConfirm" OnClick="OrderConfirm_Click" />
+                  </div>
 
-              <hr />
+                  <hr />
+                </ItemTemplate>
+              </asp:Repeater>
 
-              <div class="order-wrapper">
-                <div class="order-history">
-                  <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
-                  <p>Status: <span id="status">Delivered</span></p>
-                  <p>Ordered Date: <span id="ordered-date">24 February 2024</span></p>
-                  <p>Delivered Date: <span id="delivered-date">24 March 2024</span></p>
-                  <p>Total Payable: RM <span id="total-payable">3100</span></p>
-                </div>
+              <asp:Repeater runat="server" ID="CompletedRepeater">
+                <ItemTemplate>
+                  <div class="order-wrapper">
+                    <div class="order-history">
+                      <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
+                      <p>Status: <span id="status">Completed</span></p>
+                      <p>Ordered Date: <span id="ordered-date">24 February 2024</span></p>
+                      <p>Delivered Date: <span id="delivered-date">24 March 2024</span></p>
+                      <p>Total Payable: RM <span id="total-payable">3100</span></p>
+                    </div>
 
-                <asp:Button runat="server" CssClass="input-submit" Text="Confirm" />
-              </div>
+                    <asp:Button runat="server" CssClass="input-submit" Text="Rate" ID="OrderRate" OnClick="OrderRate_Click" />
+                  </div>
 
-              <hr />
+                  <hr />
+                </ItemTemplate>
+              </asp:Repeater>
             </div>
           </div>
         </div>
@@ -268,20 +297,24 @@
 
           <div class="scroll-container">
             <div class="scroll-wrapper">
-              <div class="review-wrapper">
-                <div class="review">
-                  <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
-                  <p>Written Date: <span>27 March 2024</span></p>
+              <asp:Repeater runat="server" ID="ReviewRepeater">
+                <ItemTemplate>
+                  <div class="review-wrapper">
+                    <div class="review">
+                      <h4>Bouchard Père & Fils 2018 Nuits Saint Georges Burgundy France</h4>
+                      <p>Written Date: <span>27 March 2024</span></p>
+
+                      <hr />
+
+                      <p>Very good wine, full body, quite sour but ok.</p>
+                    </div>
+
+                    <asp:Button runat="server" CssClass="input-submit" Text="View" ID="ReviewView" OnClick="ReviewView_Click" />
+                  </div>
 
                   <hr />
-
-                  <p>Very good wine, full body, quite sour but ok.</p>
-                </div>
-
-                <asp:Button runat="server" CssClass="input-submit" Text="View" />
-              </div>
-
-              <hr />
+                </ItemTemplate>
+              </asp:Repeater>
             </div>
           </div>
         </div>
@@ -396,32 +429,32 @@
           <div class="input-container">
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Name"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>
+              <asp:TextBox runat="server" CssClass="input-box" ID="EditName"></asp:TextBox>
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Avatar"></asp:Label>
-              <asp:FileUpload ID="AvatarUpload" CssClass="input-file" runat="server" />
+              <asp:FileUpload ID="EditAvatarUpload" CssClass="input-file" runat="server" />
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Email Address"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box" TextMode="Email"></asp:TextBox>
+              <asp:TextBox runat="server" CssClass="input-box" TextMode="Email" ID="EditEmailAddress"></asp:TextBox>
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Phone Number"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box" TextMode="Phone"></asp:TextBox>
+              <asp:TextBox runat="server" CssClass="input-box" TextMode="Phone" ID="EditPhone"></asp:TextBox>
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Shipping Address"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-textarea" TextMode="MultiLine" Height="50"></asp:TextBox>
+              <asp:TextBox runat="server" CssClass="input-textarea" TextMode="MultiLine" Height="50" ID="EditShipping"></asp:TextBox>
             </div>
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Billing Address"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-textarea" TextMode="MultiLine" Height="50"></asp:TextBox>
+              <asp:TextBox runat="server" CssClass="input-textarea" TextMode="MultiLine" Height="50" ID="EditBilling"></asp:TextBox>
             </div>
           </div>
         </div>
 
-        <asp:Button runat="server" CssClass="input-submit" Text="Save Changes" />
+        <asp:Button runat="server" CssClass="input-submit" ID="SaveButton" Text="Save Changes" OnClick="SaveButton_Click" />
       </div>
     </div>
   </form>

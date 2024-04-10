@@ -24,67 +24,85 @@ namespace ChateauDuNoxWebsite.App_Start
     protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
     /// <summary>
-    /// email control.
+    /// ProfileRepeater control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label email;
+    protected global::System.Web.UI.WebControls.Repeater ProfileRepeater;
 
     /// <summary>
-    /// phone control.
+    /// WishlistRepeater control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label phone;
+    protected global::System.Web.UI.WebControls.Repeater WishlistRepeater;
 
     /// <summary>
-    /// shipping control.
+    /// CartRepeater control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label shipping;
+    protected global::System.Web.UI.WebControls.Repeater CartRepeater;
 
     /// <summary>
-    /// billing control.
+    /// CartTotal control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label billing;
+    protected global::System.Web.UI.WebControls.Label CartTotal;
 
     /// <summary>
-    /// role control.
+    /// CartCheckout control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Label role;
+    protected global::System.Web.UI.WebControls.Button CartCheckout;
 
     /// <summary>
-    /// EditProfile control.
+    /// ShippingRepeater control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button EditProfile;
+    protected global::System.Web.UI.WebControls.Repeater ShippingRepeater;
 
     /// <summary>
-    /// ChangePass control.
+    /// DeliveredRepeater control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button ChangePass;
+    protected global::System.Web.UI.WebControls.Repeater DeliveredRepeater;
+
+    /// <summary>
+    /// CompletedRepeater control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Repeater CompletedRepeater;
+
+    /// <summary>
+    /// ReviewRepeater control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Repeater ReviewRepeater;
 
     /// <summary>
     /// ManageOrder control.
@@ -132,12 +150,66 @@ namespace ChateauDuNoxWebsite.App_Start
     protected global::System.Web.UI.WebControls.Button ManageWine;
 
     /// <summary>
-    /// AvatarUpload control.
+    /// EditName control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.FileUpload AvatarUpload;
+    protected global::System.Web.UI.WebControls.TextBox EditName;
+
+    /// <summary>
+    /// EditAvatarUpload control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.FileUpload EditAvatarUpload;
+
+    /// <summary>
+    /// EditEmailAddress control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox EditEmailAddress;
+
+    /// <summary>
+    /// EditPhone control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox EditPhone;
+
+    /// <summary>
+    /// EditShipping control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox EditShipping;
+
+    /// <summary>
+    /// EditBilling control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox EditBilling;
+
+    /// <summary>
+    /// SaveButton control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button SaveButton;
   }
 }
