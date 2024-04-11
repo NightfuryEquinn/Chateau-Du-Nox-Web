@@ -88,6 +88,11 @@
   font-size: 2rem;
 }
 
+.counter input[type="submit"]:hover {
+  background-color: var(--white) !important;
+  color: var(--darkgreen) !important;
+}
+
 .counter .input-submit {
   font-size: 2rem;
   padding: 0.125rem 0.75rem;

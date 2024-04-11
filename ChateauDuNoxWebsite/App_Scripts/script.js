@@ -1,26 +1,26 @@
 ﻿// Price counter
 const increment = () => {
-  let quantity = parseInt(document.getElementById("total-quantity").innerText)
+  let quantity = parseInt(document.getElementById("quantity").innerText)
   quantity++
-  document.getElementById("total-quantity").innerText = quantity
+  document.getElementById("quantity").innerText = quantity
 
   updatePrice()
 }
 
 const decrement = () => {
-  let quantity = parseInt(document.getElementById("total-quantity").innerText)
+  let quantity = parseInt(document.getElementById("quantity").innerText)
   if (quantity > 1) {
     quantity--
   }
-  document.getElementById("total-quantity").innerText = quantity
+  document.getElementById("quantity").innerText = quantity
 
   updatePrice()
 }
 
 const updatePrice = () => {
-  let quantity = parseInt(document.getElementById("total-quantity").innerText)
-  let total = quantity * $("#total-price").attr("data-price")
-  document.getElementById("total-price").innerText = total
+  let quantity = parseInt(document.getElementById("quantity").innerText)
+  let total = quantity * $("#price").attr("data-price")
+  document.getElementById("price").innerText = total
 }
 
 // Tab Panel
