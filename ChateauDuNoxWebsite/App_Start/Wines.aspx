@@ -140,126 +140,42 @@
         <p>Unveiling the exquisite wines of Chateau du Nox. Steeped in tradition and crafted with meticulous care, each bottle promises a captivating journey for your senses. Chateau du Nox's dedication to quality shines through in the depth and complexity of their flavors. Explore their offerings and discover your new favorite wine, perfect for elevating any occasion.</p>
       </div>
 
-      <div class="search-bar">
-        <asp:TextBox CssClass="input-box" ID="SearchInput" runat="server"></asp:TextBox>
-      
-        <asp:Button CssClass="input-submit" ID="SearchButton" runat="server" Text="Search" />
-      </div>
-
       <div class="tab-panel-container">
         <div class="tabs">
-          <button class="tab" onclick="openWine(event, 'all')">All</button>
-          <button class="tab" onclick="openWine(event, 'red-wines')">Red Wines</button>
-          <button class="tab" onclick="openWine(event, 'white-wines')">White Wines</button>
+          <asp:Repeater runat="server" ID="TabRepeater">
+            <ItemTemplate>
+              <button class="tab" onclick="openWine(event, '<%# Eval("TypeId") %>')"><%# Eval("TypeName") %></button>
+            </ItemTemplate>
+          </asp:Repeater>
         </div>
 
-        <div id="all" class="wine-wrapper">
-          <div class="wine">
-            <div class="wine-image">
-              <img src="../App_Assets/langhe.jpeg" />
+        <asp:Repeater runat="server" ID="TypeRepeater">
+          <ItemTemplate>
+            <div id='<%# Eval("TypeId") %>' class="wine-wrapper">
+              <asp:Repeater runat="server" DataSource='<%# Eval("TypeWines") %>'>
+                <ItemTemplate>
+                  <div class="wine">
+                    <div class="wine-image">
+                      <img src='data:image/jpeg;base64,<%# Convert.ToBase64String((byte[])Eval("Image")) %>' />
+                    </div>
+
+                    <div class="wine-overlay">
+                      <div class="wine-content">
+                        <h3><%# Eval("Name") %></h3>
+                        <p>RM <%# Eval("Price") %></p>
+                        <button onclick="document.location.href='./SingleWine.aspx?WineId=<%# Eval("WineId") %>'; return false;">
+                          <h4>Discover</h4>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr />
+                </ItemTemplate>
+              </asp:Repeater>
             </div>
-
-            <div class="wine-overlay">
-              <div class="wine-content">
-                <h3>Larigi Langhe Rosso 2020 Elio Altare</h3>
-                <p>RM 400</p>
-                <button>
-                  <h4>Discover</h4>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <hr />
-
-          <div class="wine">
-            <div class="wine-image">
-              <img src="../App_Assets/langhe.jpeg" />
-            </div>
-
-            <div class="wine-overlay">
-              <div class="wine-content">
-                <h3>Larigi Langhe Rosso 2020 Elio Altare</h3>
-                <p>RM 400</p>
-                <button>
-                  <h4>Discover</h4>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="red-wines" class="wine-wrapper">
-          <div class="wine">
-            <div class="wine-image">
-              <img src="../App_Assets/langhe.jpeg" />
-            </div>
-
-            <div class="wine-overlay">
-              <div class="wine-content">
-                <h3>Larigi Langhe Rosso 2020 Elio Altare</h3>
-                <p>RM 400</p>
-                <button>
-                  <h4>Discover</h4>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <hr />
-
-          <div class="wine">
-            <div class="wine-image">
-              <img src="../App_Assets/langhe.jpeg" />
-            </div>
-
-            <div class="wine-overlay">
-              <div class="wine-content">
-                <h3>Larigi Langhe Rosso 2020 Elio Altare</h3>
-                <p>RM 400</p>
-                <button>
-                  <h4>Discover</h4>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="white-wines" class="wine-wrapper">
-          <div class="wine">
-            <div class="wine-image">
-              <img src="../App_Assets/langhe.jpeg" />
-            </div>
-
-            <div class="wine-overlay">
-              <div class="wine-content">
-                <h3>Larigi Langhe Rosso 2020 Elio Altare</h3>
-                <p>RM 400</p>
-                <button>
-                  <h4>Discover</h4>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <hr />
-
-          <div class="wine">
-            <div class="wine-image">
-              <img src="../App_Assets/langhe.jpeg" />
-            </div>
-
-            <div class="wine-overlay">
-              <div class="wine-content">
-                <h3>Larigi Langhe Rosso 2020 Elio Altare</h3>
-                <p>RM 400</p>
-                <button>
-                  <h4>Discover</h4>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+          </ItemTemplate>
+        </asp:Repeater>
       </div>
     </div>
 

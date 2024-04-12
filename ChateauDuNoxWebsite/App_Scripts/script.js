@@ -1,29 +1,4 @@
-﻿// Price counter
-const increment = () => {
-  let quantity = parseInt(document.getElementById("quantity").innerText)
-  quantity++
-  document.getElementById("quantity").innerText = quantity
-
-  updatePrice()
-}
-
-const decrement = () => {
-  let quantity = parseInt(document.getElementById("quantity").innerText)
-  if (quantity > 1) {
-    quantity--
-  }
-  document.getElementById("quantity").innerText = quantity
-
-  updatePrice()
-}
-
-const updatePrice = () => {
-  let quantity = parseInt(document.getElementById("quantity").innerText)
-  let total = quantity * $("#price").attr("data-price")
-  document.getElementById("price").innerText = total
-}
-
-// Tab Panel
+﻿// Tab Panel
 const openWine = (evt, wine) => {
   evt.preventDefault()
 

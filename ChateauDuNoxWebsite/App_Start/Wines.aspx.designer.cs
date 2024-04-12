@@ -24,21 +24,21 @@ namespace ChateauDuNoxWebsite.App_Start
     protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
     /// <summary>
-    /// SearchInput control.
+    /// TabRepeater control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox SearchInput;
+    protected global::System.Web.UI.WebControls.Repeater TabRepeater;
 
     /// <summary>
-    /// SearchButton control.
+    /// TypeRepeater control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button SearchButton;
+    protected global::System.Web.UI.WebControls.Repeater TypeRepeater;
   }
 }

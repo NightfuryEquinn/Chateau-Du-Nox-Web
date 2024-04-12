@@ -27,14 +27,6 @@
   text-align: justify;
 }
 
-.search-bar {
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
-  justify-content: center;
-  align-items: center;
-}
-
 .tab-panel-container {
   display: flex;
   flex-direction: column;
