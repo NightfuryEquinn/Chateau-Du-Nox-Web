@@ -240,7 +240,7 @@
                   <div class="order-wrapper">
                     <div class="order-history">
                       <h4><%# Eval("WineName") %></h4>
-                      <p>Status: <%# Eval("Status") %></p>
+                      <p>Status: <b><%# Eval("Status") %></b></p>
                       <p>Ordered Date: <%# Eval("OrderedDate") %></p>
                       <p>Total Payable: RM <%# Eval("TotalPayable") %></p>
                     </div>
@@ -257,7 +257,7 @@
                   <div class="order-wrapper">
                     <div class="order-history">
                       <h4><%# Eval("WineName") %></h4>
-                      <p>Status: <%# Eval("Status") %></p>
+                      <p>Status: <b><%# Eval("Status") %></b></p>
                       <p>Ordered Date: <%# Eval("OrderedDate") %></p>
                       <p>Delivered Date: <%# Eval("DeliveredDate") %></p>
                       <p>Total Payable: RM <%# Eval("TotalPayable") %></p>
@@ -275,13 +275,28 @@
                   <div class="order-wrapper">
                     <div class="order-history">
                       <h4><%# Eval("WineName") %></h4>
-                      <p>Status: <%# Eval("Status") %></p>
+                      <p>Status: <b><%# Eval("Status") %></b></p>
                       <p>Ordered Date: <%# Eval("OrderedDate") %></p>
                       <p>Delivered Date: <%# Eval("DeliveredDate") %></p>
                       <p>Total Payable: RM <%# Eval("TotalPayable") %></p>
                     </div>
 
                     <asp:Button runat="server" CommandArgument='<%# Eval("OrderId") %>' CssClass="input-submit" Text="Rate" ID="OrderRate" OnClick="OrderRate_Click" />
+                  </div>
+
+                  <hr />
+                </ItemTemplate>
+              </asp:Repeater>
+
+              <asp:Repeater runat="server" ID="CancelledRepeater">
+                <ItemTemplate>
+                  <div class="order-wrapper">
+                    <div class="order-history">
+                      <h4><%# Eval("WineName") %></h4>
+                      <p>Status: <b><%# Eval("Status") %></b></p>
+                      <p>Ordered Date: <%# Eval("OrderedDate") %></p>
+                      <p>Total Payable: RM <%# Eval("TotalPayable") %></p>
+                    </div>
                   </div>
 
                   <hr />

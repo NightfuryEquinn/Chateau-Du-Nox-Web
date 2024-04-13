@@ -205,6 +205,7 @@ namespace ChateauDuNoxWebsite.App_Start
         List<OrderData> shippings = new List<OrderData>();
         List<OrderData> delivereds = new List<OrderData>();
         List<OrderData> completeds = new List<OrderData>();
+        List<OrderData> cancelleds = new List<OrderData>();
 
         while (orderReader.Read())
         {
@@ -240,6 +241,9 @@ namespace ChateauDuNoxWebsite.App_Start
             case "Completed":
               completeds.Add(order);
               break;
+            case "Cancelled":
+              cancelleds.Add(order);
+              break;
             default:
               break;
           }
@@ -253,6 +257,9 @@ namespace ChateauDuNoxWebsite.App_Start
 
         CompletedRepeater.DataSource = completeds;
         CompletedRepeater.DataBind();
+
+        CancelledRepeater.DataSource = cancelleds;
+        CancelledRepeater.DataBind();
 
         orderReader.Close();
 
@@ -557,17 +564,67 @@ namespace ChateauDuNoxWebsite.App_Start
 
     protected void OrderCancel_Click(object sender, EventArgs e)
     {
+      try
+      {
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ChateauString"].ConnectionString);
+        conn.Open();
 
+        Button cancelButton = (Button)sender;
+        string orderId = cancelButton.CommandArgument;
+
+        string cancelQuery = "UPDATE [Order] SET Status = 'Cancelled' WHERE OrderId = @OrderId";
+        SqlCommand cancelCommand = new SqlCommand(cancelQuery, conn);
+        cancelCommand.Parameters.AddWithValue("@OrderId", orderId);
+
+        cancelCommand.ExecuteNonQuery();
+
+        Response.Write(
+          "<script>alert('Your order with ID " + orderId + " has been cancelled. Please view your order history.'); document.location.href='./Profile.aspx';</script>"
+        );
+
+        conn.Close();
+      }
+      catch (Exception ex)
+      {
+        Debug.WriteLine("Cancel Order Error:", ex.Message);
+      }
     }
 
     protected void OrderConfirm_Click(object sender, EventArgs e)
     {
+      try
+      {
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ChateauString"].ConnectionString);
+        conn.Open();
 
+        Button cancelButton = (Button)sender;
+        string orderId = cancelButton.CommandArgument;
+
+        string cancelQuery = "UPDATE [Order] SET Status = 'Completed' WHERE OrderId = @OrderId";
+        SqlCommand cancelCommand = new SqlCommand(cancelQuery, conn);
+        cancelCommand.Parameters.AddWithValue("@OrderId", orderId);
+
+        cancelCommand.ExecuteNonQuery();
+
+        Response.Write(
+          "<script>alert('Your order with ID " + orderId + " has been completed. Please rate your order. Thank you for your trust in our wines.'); document.location.href='./Profile.aspx';</script>"
+        );
+
+        conn.Close();
+      }
+      catch (Exception ex)
+      {
+        Debug.WriteLine("Cancel Order Error:", ex.Message);
+      }
     }
 
     protected void OrderRate_Click(object sender, EventArgs e)
     {
+      Button rateButton = (Button)sender;
+      string orderId = rateButton.CommandArgument;
 
+      StringBuilder builder = new StringBuilder("Review.aspx?OrderId=" + orderId);
+      Response.Redirect(builder.ToString());
     }
 
     protected void ReviewView_Click(object sender, EventArgs e)

@@ -142,7 +142,7 @@
         </div>
 
         <div class="rate-content">
-          <p>Riserva</p>
+          <p><asp:Label runat="server" ID="ReviewWine"></asp:Label></p>
 
           <div class="rate">
             <asp:RadioButton GroupName="rate" ID="OneStar" runat="server" />
@@ -159,7 +159,7 @@
 
           <asp:TextBox runat="server" ID="TextareaInput" CssClass="input-textarea" TextMode="MultiLine" Height="150" Width="300"></asp:TextBox>
         
-          <asp:Button CssClass="input-submit" ID="RateButton" runat="server" Text="Rate" />
+          <asp:Button CssClass="input-submit" ID="RateButton" runat="server" Text="Rate" OnClick="RateButton_Click" />
         </div>
       </div>
     </div>
