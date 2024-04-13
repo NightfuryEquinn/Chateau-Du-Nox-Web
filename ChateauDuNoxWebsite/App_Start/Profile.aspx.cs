@@ -208,11 +208,18 @@ namespace ChateauDuNoxWebsite.App_Start
 
         while (orderReader.Read())
         {
+          // Check if delivered date is null or not
+          DateTime? deliveredDate = null;
+          if (orderReader["DeliveredDate"] != DBNull.Value)
+          {
+            deliveredDate = DateTime.Parse(orderReader["DeliveredDate"].ToString());
+          }
+
           OrderData order = new OrderData
           {
             OrderID = Convert.ToInt32(orderReader["OrderId"].ToString()),
             Status = orderReader["Status"].ToString(),
-            DeliveredDate = DateTime.Parse(orderReader["DeliveredDate"].ToString()),
+            DeliveredDate = deliveredDate ?? default,
             OrderedDate = DateTime.Parse(orderReader["OrderedDate"].ToString()),
             TotalPayable = Convert.ToInt32(orderReader["TotalPayable"].ToString()),
             ReviewWritten = Convert.ToInt32(orderReader["ReviewWritten"].ToString()),
@@ -412,17 +419,140 @@ namespace ChateauDuNoxWebsite.App_Start
 
     protected void WishlistRemove_Click(object sender, EventArgs e)
     {
+      try
+      {
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ChateauString"].ConnectionString);
+        conn.Open();
 
+        Button removeButton = (Button)sender;
+        string wishlistId = removeButton.CommandArgument;
+
+        string deleteQuery = "DELETE FROM Wishlist WHERE WishlistId = @WishlistId";
+        SqlCommand deleteCommand = new SqlCommand(deleteQuery, conn);
+        deleteCommand.Parameters.AddWithValue("@WishlistId", wishlistId);
+
+        deleteCommand.ExecuteNonQuery();
+
+        Response.Write(
+          "<script>alert('Wishlist with ID " + wishlistId + " has been removed.'); document.location.href='./Profile.aspx';</script>"
+        );
+
+        conn.Close();
+      }
+      catch (Exception ex)
+      {
+        Debug.WriteLine("Remove Wishlist Error:", ex.Message);
+      }
     }
 
     protected void CartRemove_Click(object sender, EventArgs e)
     {
+      try
+      {
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ChateauString"].ConnectionString);
+        conn.Open();
 
+        Button removeButton = (Button)sender;
+        string cartId = removeButton.CommandArgument;
+
+        string deleteQuery = "DELETE FROM Cart WHERE CartId = @CartId";
+        SqlCommand deleteCommand = new SqlCommand(deleteQuery, conn);
+        deleteCommand.Parameters.AddWithValue("@CartId", cartId);
+
+        deleteCommand.ExecuteNonQuery();
+
+        Response.Write(
+          "<script>alert('Cart with ID " + cartId + " has been removed.'); document.location.href='./Profile.aspx';</script>"
+        );
+
+        conn.Close();
+      }
+      catch (Exception ex)
+      {
+        Debug.WriteLine("Remove Cart Error:", ex.Message);
+      }
     }
 
     protected void CartCheckout_Click(object sender, EventArgs e)
     {
+      int userId = Convert.ToInt32(Session["UserId"].ToString());
 
+      try
+      {
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ChateauString"].ConnectionString);
+        conn.Open();
+
+        string fetchCartQuery = @"
+                              SELECT Cart.*, Wine.Name, Wine.Price, (Cart.Amount * Wine.Price) AS Total FROM Cart 
+                              JOIN Wine on Cart.WineId = Cart.WineId 
+                              WHERE Cart.UserId = @UserId
+                              ";
+        SqlCommand fetchCartCommand = new SqlCommand(fetchCartQuery, conn);
+        fetchCartCommand.Parameters.AddWithValue("@UserId", userId);
+
+        SqlDataReader reader = fetchCartCommand.ExecuteReader();
+        int readerCount = 0;
+
+        while (reader.Read())
+        {
+          readerCount++;
+
+          string cartToOrderQuery = @"
+                                INSERT INTO [Order] (Status, OrderedDate, TotalPayable, WineId, UserId) 
+                                VALUES (@Status, @OrderedDate, @TotalPayable, @WineId, @UserId)
+                                ";
+          SqlCommand cartToOrderCommand = new SqlCommand(cartToOrderQuery, conn);
+          cartToOrderCommand.Parameters.AddWithValue("@Status", "Shipping");
+          cartToOrderCommand.Parameters.AddWithValue("@OrderedDate", DateTime.Now);
+          cartToOrderCommand.Parameters.AddWithValue("@TotalPayable", Convert.ToInt32(reader["Total"].ToString()));
+          cartToOrderCommand.Parameters.AddWithValue("@WineId", Convert.ToInt32(reader["WineId"].ToString()));
+          cartToOrderCommand.Parameters.AddWithValue("@UserId", userId);
+
+          reader.Close();
+
+          cartToOrderCommand.ExecuteNonQuery();
+
+          reader = fetchCartCommand.ExecuteReader();
+
+          if (reader.Read())
+          {
+            string deleteCartQuery = "DELETE FROM Cart WHERE CartId = @CartId";
+            SqlCommand deleteCartCommand = new SqlCommand(deleteCartQuery, conn);
+            deleteCartCommand.Parameters.AddWithValue("@CartId", Convert.ToInt32(reader["CartId"]));
+
+            reader.Close();
+
+            deleteCartCommand.ExecuteNonQuery();
+
+            reader = fetchCartCommand.ExecuteReader();
+          }
+          else
+          {
+            break;
+          }
+        }
+
+        reader.Close();
+
+        if (readerCount > 1)
+        {
+          Response.Write(
+            "<script>alert('" + readerCount + " wine orders have been placed. Please view your shipping order.'); document.location.href='./Profile.aspx';</script>"
+          );
+        }
+        else
+        {
+          Response.Write(
+            "<script>alert('" + readerCount + " wine order has been placed. Please view your shipping order.'); document.location.href='./Profile.aspx';</script>"
+          );
+        }
+
+        conn.Close();
+      }
+      catch (Exception ex)
+      {
+        Debug.WriteLine("Cart to Order Error:", ex.Message);
+      }
     }
 
     protected void OrderCancel_Click(object sender, EventArgs e)
@@ -442,7 +572,32 @@ namespace ChateauDuNoxWebsite.App_Start
 
     protected void ReviewView_Click(object sender, EventArgs e)
     {
+      Button viewButton = (Button)sender;
+      string wineId = viewButton.CommandArgument;
 
+      StringBuilder builder = new StringBuilder("SingleWine.aspx?WineId=" + wineId + "#price");
+      Response.Redirect(builder.ToString());
+    }
+
+    protected void CompletedRepeater_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+      if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+      {
+        if (e.Item.DataItem is OrderData order)
+        {
+          if (e.Item.FindControl("OrderRate") is Button rateButton)
+          {
+            if (order.ReviewWritten == 0)
+            {
+              rateButton.Visible = true;
+            }
+            else
+            {
+              rateButton.Visible = false;
+            }
+          }
+        }
+      }
     }
   }
 }

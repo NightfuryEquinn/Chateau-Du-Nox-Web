@@ -191,7 +191,7 @@
                       <p>Amount: <%# Eval("Amount") %></p>
                     </a>
 
-                    <asp:Button runat="server" CssClass="input-submit" Text="Remove" ID="WishlistRemove" OnClick="WishlistRemove_Click" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("WishlistId") %>' CssClass="input-submit" Text="Remove" ID="WishlistRemove" OnClick="WishlistRemove_Click" />
                   </div>
               
                   <hr />
@@ -215,7 +215,7 @@
                       <p>Total Price: RM <%# Eval("WineTotal") %></p>
                     </div>
               
-                    <asp:Button runat="server" CssClass="input-submit" Text="Remove" ID="CartRemove" OnClick="CartRemove_Click" />
+                    <asp:Button runat="server" CommandArgument='<%# Eval("CartId") %>' CssClass="input-submit" Text="Remove" ID="CartRemove" OnClick="CartRemove_Click" />
                   </div>
 
                   <hr />
@@ -242,7 +242,6 @@
                       <h4><%# Eval("WineName") %></h4>
                       <p>Status: <%# Eval("Status") %></p>
                       <p>Ordered Date: <%# Eval("OrderedDate") %></p>
-                      <p>Delivered Date: <%# Eval("DeliveredDate") %></p>
                       <p>Total Payable: RM <%# Eval("TotalPayable") %></p>
                     </div>
 
@@ -271,7 +270,7 @@
                 </ItemTemplate>
               </asp:Repeater>
 
-              <asp:Repeater runat="server" ID="CompletedRepeater">
+              <asp:Repeater runat="server" ID="CompletedRepeater" OnItemDataBound="CompletedRepeater_ItemDataBound">
                 <ItemTemplate>
                   <div class="order-wrapper">
                     <div class="order-history">
