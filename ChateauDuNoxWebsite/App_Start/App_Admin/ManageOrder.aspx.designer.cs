@@ -24,21 +24,39 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
     protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
     /// <summary>
-    /// ConfirmShipping control.
+    /// ShippingRepeater control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button ConfirmShipping;
+    protected global::System.Web.UI.WebControls.Repeater ShippingRepeater;
 
     /// <summary>
-    /// ConfirmPayment control.
+    /// DeliveredRepeater control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button ConfirmPayment;
+    protected global::System.Web.UI.WebControls.Repeater DeliveredRepeater;
+
+    /// <summary>
+    /// CompletedRepeater control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Repeater CompletedRepeater;
+
+    /// <summary>
+    /// CancelledRepeater control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Repeater CancelledRepeater;
   }
 }

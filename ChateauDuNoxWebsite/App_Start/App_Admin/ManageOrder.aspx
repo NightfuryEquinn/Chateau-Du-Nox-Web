@@ -139,67 +139,104 @@
         <div class="accordian-wrapper">
           <button type="button" class="accordian-control">Pending Shipping</button>
           <div class="accordian-panel">
-            <div class="user-detail">
-              <div class="user-top">
-                <div class="user-avatar">
-                  <img src="../../App_Assets/profile.jpg" />
+            <asp:Repeater runat="server" ID="ShippingRepeater">
+              <ItemTemplate>
+                <div class="user-detail">
+                  <div class="user-top">
+                    <div class="user-avatar">
+                      <img src='data:image/jpeg;base64,<%# Convert.ToBase64String((byte[])Eval("Avatar")) %>' />
+                    </div>
+                    <div class="user-content">
+                      <h3>Order ID: <%# Eval("OrderId") %></h3>
+                      <p><%# Eval("Name") %></p>
+                      <p><%# Eval("EmailAddress") %></p>
+                      <p>Order Date: <%# Eval("OrderedDate") %></p>
+                      <p>Total Payable: RM <%# Eval("TotalPayable") %></p>
+                    </div>
+                  </div>
+                  <div class="user-bottom">
+                    <asp:Button runat="server" CommandArgument='<%# Eval("OrderId") %>' CssClass="input-submit" ID="ConfirmShipping" Text="Confirm Shipping" OnClick="ConfirmShipping_Click" />
+                  </div>
                 </div>
-                <div class="user-content">
-                  <h3>Order ID: <span id="shipping-order-id">1</span></h3>
-                  <p><span id="shipping-username">John Doe</span></p>
-                  <p><span id="shipping-email">john.doe@gmail.com</span></p>
-                  <p>Order Date: <span id="shipping-order-date">27 February 2024</span></p>
-                  <p>Total Payable: RM <span id="shipping-order-pay">420</span></p>
-                </div>
-              </div>
-              <div class="user-bottom">
-                <asp:Button runat="server" CssClass="input-submit" ID="ConfirmShipping" Text="Confirm Shipping" />
-              </div>
-            </div>
+              </ItemTemplate>
+            </asp:Repeater>
           </div>
         </div>
         <div class="accordian-wrapper">
-          <button type="button" class="accordian-control">Pending Confirmation Delivered</button>
+          <button type="button" class="accordian-control">Pending Confirmation on Delivered</button>
           <div class="accordian-panel">
-            <div class="user-detail">
-              <div class="user-top">
-                <div class="user-avatar">
-                  <img src="../../App_Assets/profile.jpg" />
+            <asp:Repeater runat="server" ID="DeliveredRepeater">
+              <ItemTemplate>
+                <div class="user-detail">
+                  <div class="user-top">
+                    <div class="user-avatar">
+                      <img src='data:image/jpeg;base64,<%# Convert.ToBase64String((byte[])Eval("Avatar")) %>' />
+                    </div>
+                    <div class="user-content">
+                      <h3>Order ID: <%# Eval("OrderId") %></h3>
+                      <p><%# Eval("Name") %></p>
+                      <p><%# Eval("EmailAddress") %></p>
+                      <p>Order Date: <%# Eval("OrderedDate") %></p>
+                      <p>Delivered Date: <%# Eval("DeliveredDate") %></p>
+                      <p>Total Payable: RM <%# Eval("TotalPayable") %></p>
+                    </div>
+                  </div>
+                  <div class="user-bottom">
+                    <asp:Button runat="server" CommandArgument='<%# Eval("OrderId") %>' CssClass="input-submit" ID="ConfirmPayment" Text="Confirm Payment" OnClick="ConfirmPayment_Click" />
+                  </div>
                 </div>
-                <div class="user-content">
-                  <h3>Order ID: <span id="delivery-order-id">1</span></h3>
-                  <p><span id="delivery-username">John Doe</span></p>
-                  <p><span id="delivery-email">john.doe@gmail.com</span></p>
-                  <p>Order Date: <span id="delivery-order-date">27 February 2024</span></p>
-                  <p>Delivered Date: <span id="delivery-deliver-date">27 March 2024</span></p>
-                  <p>Total Payable: RM <span id="delivery-order-pay">420</span></p>
-                </div>
-              </div>
-              <div class="user-bottom">
-                <asp:Button runat="server" CssClass="input-submit" ID="ConfirmPayment" Text="Confirm Payment" />
-              </div>
-            </div>
+              </ItemTemplate>
+            </asp:Repeater>
           </div>
         </div>
         <div class="accordian-wrapper">
           <button type="button" class="accordian-control">Completed</button>
           <div class="accordian-panel">
-            <div class="user-detail">
-              <div class="user-top">
-                <div class="user-avatar">
-                  <img src="../../App_Assets/profile.jpg" />
+            <asp:Repeater runat="server" ID="CompletedRepeater">
+              <ItemTemplate>
+                <div class="user-detail">
+                  <div class="user-top">
+                    <div class="user-avatar">
+                      <img src='data:image/jpeg;base64,<%# Convert.ToBase64String((byte[])Eval("Avatar")) %>' />
+                    </div>
+                    <div class="user-content">
+                      <h3>Order ID: <%# Eval("OrderId") %></h3>
+                      <p><%# Eval("Name") %></p>
+                      <p><%# Eval("EmailAddress") %></p>
+                      <p>Order Date: <%# Eval("OrderedDate") %></p>
+                      <p>Delivered Date: <%# Eval("DeliveredDate") %></p>
+                      <p>Total Payable: RM <%# Eval("TotalPayable") %></p>
+                      <p>Review Written: <%# Eval("ReviewWritten") %></p>
+                    </div>
+                  </div>
                 </div>
-                <div class="user-content">
-                  <h3>Order ID: <span id="completed-order-id">1</span></h3>
-                  <p><span id="completed-username">John Doe</span></p>
-                  <p><span id="completed-email">john.doe@gmail.com</span></p>
-                  <p>Order Date: <span id="completed-order-date">27 February 2024</span></p>
-                  <p>Delivered Date: <span id="completed-deliver-date">27 March 2024</span></p>
-                  <p>Total Payable: RM <span id="completed-order-pay">420</span></p>
-                  <p>Review Written: <span id="completed-review">Yes</span></p>
+              </ItemTemplate>
+            </asp:Repeater>
+            
+          </div>
+        </div>
+        <div class="accordian-wrapper">
+          <button type="button" class="accordian-control">Cancelled</button>
+          <div class="accordian-panel">
+            <asp:Repeater runat="server" ID="CancelledRepeater">
+              <ItemTemplate>
+                <div class="user-detail">
+                  <div class="user-top">
+                    <div class="user-avatar">
+                      <img src='data:image/jpeg;base64,<%# Convert.ToBase64String((byte[])Eval("Avatar")) %>' />
+                    </div>
+                    <div class="user-content">
+                      <h3>Order ID: <%# Eval("OrderId") %></h3>
+                      <p><%# Eval("Name") %></p>
+                      <p><%# Eval("EmailAddress") %></p>
+                      <p>Order Date: <%# Eval("OrderedDate") %></p>
+                      <p>Delivered Date: <%# Eval("DeliveredDate") %></p>
+                      <p>Total Payable: RM <%# Eval("TotalPayable") %></p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              </ItemTemplate>
+            </asp:Repeater>
           </div>
         </div>
       </div>
