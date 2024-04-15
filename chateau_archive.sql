@@ -1,40 +1,40 @@
 --Create Table
 --User
 CREATE TABLE [dbo].[User] (
-    [UserId]          INT           IDENTITY (1, 1) NOT NULL,
-    [Name]            VARCHAR (50)  NULL,
+    [UserId]          INT             IDENTITY (1, 1) NOT NULL,
+    [Name]            VARCHAR (50)    NULL,
     [Avatar]          VARBINARY (MAX) NULL,
-    [Role]            VARCHAR (50)  NULL,
-    [EmailAddress]    VARCHAR (MAX) NULL,
-    [Password]        VARCHAR (MAX) NULL,
-    [PhoneNumber]     VARCHAR (20)  NULL,
-    [ShippingAddress] VARCHAR (MAX) NULL,
-    [BillingAddress]  VARCHAR (MAX) NULL,
-    [RegisteredDate]  DATETIME      NULL,
-    [Active]          INT           DEFAULT ((1)) NULL,
+    [Role]            VARCHAR (50)    NULL,
+    [EmailAddress]    VARCHAR (MAX)   NULL,
+    [Password]        VARCHAR (MAX)   NULL,
+    [PhoneNumber]     VARCHAR (20)    NULL,
+    [ShippingAddress] VARCHAR (MAX)   NULL,
+    [BillingAddress]  VARCHAR (MAX)   NULL,
+    [RegisteredDate]  DATETIME        NULL,
+    [Active]          INT             NULL,
     PRIMARY KEY CLUSTERED ([UserId] ASC)
 );
 
 -- Wine
 CREATE TABLE [dbo].[Wine] (
-    [WineId]      INT           IDENTITY (1, 1) NOT NULL,
-    [Name]        VARCHAR (50)  NULL,
-    [Description] VARCHAR (MAX) NULL,
-    [Price]       INT           NULL,
+    [WineId]      INT             IDENTITY (1, 1) NOT NULL,
+    [Name]        VARCHAR (50)    NULL,
+    [Description] VARCHAR (MAX)   NULL,
+    [Price]       INT             NULL,
     [Image]       VARBINARY (MAX) NULL,
-    [Varietal]    VARCHAR (50)  NULL,
-    [Vintage]     INT           NULL,
-    [Volume]      INT           NULL,
-    [Body]        VARCHAR (50)  NULL,
-    [Tannin]      VARCHAR (50)  NULL,
-    [Acidity]     VARCHAR (50)  NULL,
-    [ABV]         VARCHAR (50)  NULL,
-    [Origin]      VARCHAR (MAX) NULL,
-    [Stock]       INT           NULL,
-    [Active]      INT           DEFAULT ((1)) NULL,
-    [TypeId]      INT           NULL,
+    [Varietal]    VARCHAR (MAX)   NULL,
+    [Vintage]     INT             NULL,
+    [Volume]      INT             NULL,
+    [Body]        VARCHAR (MAX)   NULL,
+    [Tannin]      VARCHAR (MAX)   NULL,
+    [Acidity]     VARCHAR (MAX)   NULL,
+    [ABV]         VARCHAR (MAX)   NULL,
+    [Origin]      VARCHAR (MAX)   NULL,
+    [Stock]       INT             NULL,
+    [Active]      INT             DEFAULT ((1)) NULL,
+    [TypeId]      INT             NULL,
     PRIMARY KEY CLUSTERED ([WineId] ASC),
-    CONSTRAINT [FK_Wine_ToType] FOREIGN KEY ([TypeId]) REFERENCES [dbo].[Type] ([TypeId])
+    CONSTRAINT [FK_Wine_ToType] FOREIGN KEY ([TypeId]) REFERENCES [dbo].[Type] ([TypeId]) ON UPDATE CASCADE
 );
 
 -- Type
@@ -57,8 +57,8 @@ CREATE TABLE [dbo].[Order] (
     [WineId]        INT          NULL,
     [UserId]        INT          NULL,
     PRIMARY KEY CLUSTERED ([OrderId] ASC),
-    CONSTRAINT [FK_Order_ToWine] FOREIGN KEY ([WineId]) REFERENCES [dbo].[Wine] ([WineId]),
-    CONSTRAINT [FK_Order_ToUser] FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([UserId])
+    CONSTRAINT [FK_Order_ToUser] FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([UserId]),
+    CONSTRAINT [FK_Order_ToWine] FOREIGN KEY ([WineId]) REFERENCES [dbo].[Wine] ([WineId])
 );
 
 -- Cart
@@ -68,8 +68,8 @@ CREATE TABLE [dbo].[Cart] (
     [WineId] INT NULL,
     [UserId] INT NULL,
     PRIMARY KEY CLUSTERED ([CartId] ASC),
-    CONSTRAINT [FK_Cart_ToWine] FOREIGN KEY ([WineId]) REFERENCES [dbo].[Wine] ([WineId]),
-    CONSTRAINT [FK_Cart_ToUser] FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([UserId])
+    CONSTRAINT [FK_Cart_ToUser] FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([UserId]),
+    CONSTRAINT [FK_Cart_ToWine] FOREIGN KEY ([WineId]) REFERENCES [dbo].[Wine] ([WineId])
 );
 
 -- Wishlist
@@ -79,8 +79,8 @@ CREATE TABLE [dbo].[Wishlist] (
     [WineId]     INT NULL,
     [UserId]     INT NULL,
     PRIMARY KEY CLUSTERED ([WishlistId] ASC),
-    CONSTRAINT [FK_Wishlist_ToWine] FOREIGN KEY ([WineId]) REFERENCES [dbo].[Wine] ([WineId]),
-    CONSTRAINT [FK_Wishlist_ToUser] FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([UserId])
+    CONSTRAINT [FK_Wishlist_ToUser] FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([UserId]),
+    CONSTRAINT [FK_Wishlist_ToWine] FOREIGN KEY ([WineId]) REFERENCES [dbo].[Wine] ([WineId])
 );
 
 -- Review
@@ -89,10 +89,10 @@ CREATE TABLE [dbo].[Review] (
     [Content]     VARCHAR (MAX) NULL,
     [Rating]      INT           NULL,
     [WrittenDate] DATETIME      NULL,
-    [Active]      INT           NULL,
+    [Active]      INT           DEFAULT ((1)) NULL,
     [WineId]      INT           NULL,
     [UserId]      INT           NULL,
     PRIMARY KEY CLUSTERED ([ReviewId] ASC),
-    CONSTRAINT [FK_Review_ToWine] FOREIGN KEY ([WineId]) REFERENCES [dbo].[Wine] ([WineId]),
-    CONSTRAINT [FK_Review_ToUser] FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([UserId])
+    CONSTRAINT [FK_Review_ToUser] FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([UserId]),
+    CONSTRAINT [FK_Review_ToWine] FOREIGN KEY ([WineId]) REFERENCES [dbo].[Wine] ([WineId])
 );
