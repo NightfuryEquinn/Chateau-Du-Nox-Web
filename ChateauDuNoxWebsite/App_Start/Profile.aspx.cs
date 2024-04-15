@@ -595,7 +595,32 @@ namespace ChateauDuNoxWebsite.App_Start
 
         cancelCommand.ExecuteNonQuery();
 
-        // Add back the quantity to stock
+        string getBackStockQuery = @"
+                                  SELECT [Order].*, ([Order].TotalPayable / Wine.Price) AS OrderAmount, Wine.Stock FROM [Order] 
+                                  JOIN Wine ON [Order].WineId = Wine.WineId 
+                                  WHERE OrderId = @OrderId
+                                  ";
+        SqlCommand getBackStockCommand = new SqlCommand(getBackStockQuery, conn);
+        getBackStockCommand.Parameters.AddWithValue("@OrderId", orderId);
+
+        SqlDataReader reader = getBackStockCommand.ExecuteReader();
+
+        if (reader.Read())
+        {
+          int wineId = Convert.ToInt32(reader["WineId"].ToString());
+          int orderAmount = Convert.ToInt32(reader["OrderAmount"].ToString());
+          int oriStock = Convert.ToInt32(reader["Stock"].ToString());
+          int addBackStock = orderAmount + oriStock;
+
+          string updateBackQuery = "UPDATE Wine SET Stock = @Stock WHERE WineId = @WineId";
+          SqlCommand updateBackCommand = new SqlCommand(updateBackQuery, conn);
+          updateBackCommand.Parameters.AddWithValue("@WineId", wineId);
+          updateBackCommand.Parameters.AddWithValue("@Stock", addBackStock);
+
+          reader.Close();
+
+          updateBackCommand.ExecuteNonQuery();
+        }
 
         Response.Write(
           "<script>alert('Your order with ID " + orderId + " has been cancelled. Please view your order history.'); document.location.href='./Profile.aspx';</script>"
