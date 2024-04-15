@@ -275,12 +275,12 @@
           <div class="input-container">
             <div class="input-detail">
               <asp:Label runat="server" CssClass="input-label" Text="Type"></asp:Label>
-              <asp:TextBox runat="server" CssClass="input-box"></asp:TextBox>
+              <asp:TextBox runat="server" CssClass="input-box" ID="AddTypeName"></asp:TextBox>
             </div>
           </div>
         </div>
 
-        <asp:Button runat="server" CssClass="input-submit" Text="Confirm" />
+        <asp:Button runat="server" CssClass="input-submit" Text="Confirm" ID="AddButton" OnClick="AddButton_Click" />
       </div>
     </div>
 

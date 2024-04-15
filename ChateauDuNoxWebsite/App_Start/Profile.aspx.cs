@@ -490,8 +490,8 @@ namespace ChateauDuNoxWebsite.App_Start
         conn.Open();
 
         string fetchCartQuery = @"
-                              SELECT Cart.*, Wine.Name, Wine.Price, (Cart.Amount * Wine.Price) AS Total FROM Cart 
-                              JOIN Wine on Cart.WineId = Cart.WineId 
+                              SELECT Cart.*, Wine.Name, Wine.Price, (Cart.Amount * Wine.Price) AS Total, Wine.Stock FROM Cart 
+                              JOIN Wine on Cart.WineId = Wine.WineId 
                               WHERE Cart.UserId = @UserId
                               ";
         SqlCommand fetchCartCommand = new SqlCommand(fetchCartQuery, conn);
@@ -518,6 +518,22 @@ namespace ChateauDuNoxWebsite.App_Start
           reader.Close();
 
           cartToOrderCommand.ExecuteNonQuery();
+
+          reader = fetchCartCommand.ExecuteReader();
+
+          int wineId = Convert.ToInt32(reader["WineId"]);
+          int currentStock = Convert.ToInt32(reader["Stock"]);
+          int orderedQuantity = Convert.ToInt32(reader["Amount"]);
+          int updatedStock = currentStock - orderedQuantity;
+
+          string updateStockQuery = "UPDATE Wine SET Stock = @UpdatedStock WHERE WineId = @WineId";
+          SqlCommand updateStockCommand = new SqlCommand(updateStockQuery, conn);
+          updateStockCommand.Parameters.AddWithValue("@UpdatedStock", updatedStock);
+          updateStockCommand.Parameters.AddWithValue("@WineId", wineId);
+
+          reader.Close();
+
+          updateStockCommand.ExecuteNonQuery();
 
           reader = fetchCartCommand.ExecuteReader();
 

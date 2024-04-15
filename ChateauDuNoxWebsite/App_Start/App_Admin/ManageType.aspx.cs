@@ -214,5 +214,41 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
         Debug.WriteLine("Edit Type Error:", ex.Message);
       }
     }
+
+    protected void AddButton_Click(object sender, EventArgs e)
+    {
+      try
+      {
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ChateauString"].ConnectionString);
+        conn.Open();
+
+        string name = AddTypeName.Text.Trim();
+
+        if (!string.IsNullOrEmpty(name))
+        {
+          string insertQuery = "INSERT INTO [Type] (Name) VALUES (@Name)";
+          SqlCommand insertCommand = new SqlCommand(insertQuery, conn);
+          insertCommand.Parameters.AddWithValue("@Name", AddTypeName.Text.Trim());
+
+          insertCommand.ExecuteNonQuery();
+
+          Response.Write(
+            "<script>alert('New wine type has been added successfully.'); document.location.href='./ManageType.aspx';</script>"
+          );
+        }
+        else
+        {
+          Response.Write(
+            "<script>alert('Please fill in a new wine type.'); document.location.href='./ManageType.aspx';</script>"
+          );
+        }
+
+        conn.Close();
+      }
+      catch (Exception ex)
+      {
+        Debug.WriteLine("Add Type Error:", ex.Message);
+      }
+    }
   }
 }

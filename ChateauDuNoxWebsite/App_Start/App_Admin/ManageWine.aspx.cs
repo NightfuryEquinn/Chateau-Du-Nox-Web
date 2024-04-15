@@ -132,7 +132,7 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
             EditWineName.Text = reader["Name"].ToString();
             EditWineDesc.Text = reader["Description"].ToString();
             EditWinePrice.Text = reader["Price"].ToString();
-            EditWineDropdown.SelectedIndex = Convert.ToInt32(reader["TypeId"].ToString());
+            EditWineDropdown.SelectedValue = reader["TypeId"].ToString();
             EditWineVar.Text = reader["Varietal"].ToString();
             EditWineVint.Text = reader["Vintage"].ToString();
             EditWineML.Text = reader["Volume"].ToString();
@@ -180,7 +180,7 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
         byte[] wineImage = AddWineFileUpload.FileBytes;
         string desc = AddWineDesc.Text.Trim();
         int price = Convert.ToInt32(AddWinePrice.Text.Trim());
-        int typeId = AddWineDropdown.SelectedIndex;
+        int typeId = Convert.ToInt32(AddWineDropdown.SelectedValue);
         string varietal = AddWineVar.Text.Trim();
         int vintage = Convert.ToInt32(AddWineVint.Text.Trim());
         int volume = Convert.ToInt32(AddWineML.Text.Trim());
@@ -263,7 +263,7 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
         byte[] wineImage = EditWineFileUpload.FileBytes;
         string desc = EditWineDesc.Text.Trim();
         int price = Convert.ToInt32(EditWinePrice.Text.Trim());
-        int typeId = EditWineDropdown.SelectedIndex;
+        int typeId = Convert.ToInt32(EditWineDropdown.SelectedValue);
         string varietal = EditWineVar.Text.Trim();
         int vintage = Convert.ToInt32(EditWineVint.Text.Trim());
         int volume = Convert.ToInt32(EditWineML.Text.Trim());

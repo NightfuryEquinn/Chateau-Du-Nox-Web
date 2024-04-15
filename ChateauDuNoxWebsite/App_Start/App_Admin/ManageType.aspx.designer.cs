@@ -51,6 +51,24 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
     protected global::System.Web.UI.WebControls.Repeater InactiveRepeater;
 
     /// <summary>
+    /// AddTypeName control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox AddTypeName;
+
+    /// <summary>
+    /// AddButton control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button AddButton;
+
+    /// <summary>
     /// EditTypeName control.
     /// </summary>
     /// <remarks>
