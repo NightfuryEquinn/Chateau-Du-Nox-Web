@@ -21,7 +21,7 @@ namespace ChateauDuNoxWebsite.App_Start
 
         int orderId = Convert.ToInt32(Request.QueryString["OrderId"].ToString());
 
-        string fetchWineQuery = "SELECT Wine.Name FROM [Order] JOIN Wine ON [Order].WineId = Wine.WineId WHERE [Order].OrderID = @OrderId";
+        string fetchWineQuery = "SELECT Wine.Name, Wine.Image FROM [Order] JOIN Wine ON [Order].WineId = Wine.WineId WHERE [Order].OrderID = @OrderId";
         SqlCommand fetchWineCommand = new SqlCommand(fetchWineQuery, conn);
         fetchWineCommand.Parameters.AddWithValue("@OrderId", orderId);
 
@@ -30,6 +30,13 @@ namespace ChateauDuNoxWebsite.App_Start
         if (reader.Read())
         {
           ReviewWine.Text = reader["Name"].ToString();
+
+          byte[] imageByte = (byte[])reader["Image"];
+
+          string base64String = Convert.ToBase64String(imageByte);
+          string imageUrl = "data:image/jpeg;base64," + base64String;
+
+          wineImage.ImageUrl = imageUrl;
         }
 
         reader.Close();

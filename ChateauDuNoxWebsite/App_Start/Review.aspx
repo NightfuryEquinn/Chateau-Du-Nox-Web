@@ -138,23 +138,23 @@
 
       <div class="review-content">
         <div class="image-wrapper">
-          <img src="../App_Assets/riserva.jpg" />
+          <asp:Image runat="server" ID="wineImage" />
         </div>
 
         <div class="rate-content">
           <p><asp:Label runat="server" ID="ReviewWine"></asp:Label></p>
 
           <div class="rate">
-            <asp:RadioButton GroupName="rate" ID="OneStar" runat="server" />
-            <asp:Label runat="server" AssociatedControlID="OneStar" Text="One Star"></asp:Label>
-            <asp:RadioButton GroupName="rate" ID="TwoStar" runat="server" />
-            <asp:Label runat="server" AssociatedControlID="TwoStar" Text="Two Star"></asp:Label>
-            <asp:RadioButton GroupName="rate" ID="ThreeStar" runat="server" />
-            <asp:Label runat="server" AssociatedControlID="ThreeStar" Text="Three Star"></asp:Label>
-            <asp:RadioButton GroupName="rate" ID="FourStar" runat="server" />
-            <asp:Label runat="server" AssociatedControlID="FourStar" Text="Four Star"></asp:Label>
             <asp:RadioButton GroupName="rate" ID="FiveStar" runat="server" />
             <asp:Label runat="server" AssociatedControlID="FiveStar" Text="Five Star"></asp:Label>
+            <asp:RadioButton GroupName="rate" ID="FourStar" runat="server" />
+            <asp:Label runat="server" AssociatedControlID="FourStar" Text="Four Star"></asp:Label>
+            <asp:RadioButton GroupName="rate" ID="ThreeStar" runat="server" />
+            <asp:Label runat="server" AssociatedControlID="ThreeStar" Text="Three Star"></asp:Label>
+            <asp:RadioButton GroupName="rate" ID="TwoStar" runat="server" />
+            <asp:Label runat="server" AssociatedControlID="TwoStar" Text="Two Star"></asp:Label>
+            <asp:RadioButton GroupName="rate" ID="OneStar" runat="server" />
+            <asp:Label runat="server" AssociatedControlID="OneStar" Text="One Star"></asp:Label>
           </div>
 
           <asp:TextBox runat="server" ID="TextareaInput" CssClass="input-textarea" TextMode="MultiLine" Height="150" Width="300"></asp:TextBox>

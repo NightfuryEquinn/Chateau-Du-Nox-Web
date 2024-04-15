@@ -24,6 +24,15 @@ namespace ChateauDuNoxWebsite.App_Start
     protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
     /// <summary>
+    /// wineImage control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Image wineImage;
+
+    /// <summary>
     /// ReviewWine control.
     /// </summary>
     /// <remarks>
@@ -33,31 +42,13 @@ namespace ChateauDuNoxWebsite.App_Start
     protected global::System.Web.UI.WebControls.Label ReviewWine;
 
     /// <summary>
-    /// OneStar control.
+    /// FiveStar control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.RadioButton OneStar;
-
-    /// <summary>
-    /// TwoStar control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.RadioButton TwoStar;
-
-    /// <summary>
-    /// ThreeStar control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.RadioButton ThreeStar;
+    protected global::System.Web.UI.WebControls.RadioButton FiveStar;
 
     /// <summary>
     /// FourStar control.
@@ -69,13 +60,31 @@ namespace ChateauDuNoxWebsite.App_Start
     protected global::System.Web.UI.WebControls.RadioButton FourStar;
 
     /// <summary>
-    /// FiveStar control.
+    /// ThreeStar control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.RadioButton FiveStar;
+    protected global::System.Web.UI.WebControls.RadioButton ThreeStar;
+
+    /// <summary>
+    /// TwoStar control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.RadioButton TwoStar;
+
+    /// <summary>
+    /// OneStar control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.RadioButton OneStar;
 
     /// <summary>
     /// TextareaInput control.

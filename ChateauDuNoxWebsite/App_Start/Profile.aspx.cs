@@ -157,7 +157,7 @@ namespace ChateauDuNoxWebsite.App_Start
         // Fetch for Cart
         string fetchCartQuery = @"
                               SELECT Cart.*, Wine.Name, Wine.Price, (Cart.Amount * Wine.Price) AS Total FROM Cart 
-                              JOIN Wine on Cart.WineId = Cart.WineId 
+                              JOIN Wine on Cart.WineId = Wine.WineId 
                               WHERE Cart.UserId = @UserId
                               ";
         SqlCommand fetchCartCommand = new SqlCommand(fetchCartQuery, conn);
@@ -490,7 +490,7 @@ namespace ChateauDuNoxWebsite.App_Start
         conn.Open();
 
         string fetchCartQuery = @"
-                              SELECT Cart.*, Wine.Name, Wine.Price, (Cart.Amount * Wine.Price) AS Total, Wine.Stock FROM Cart 
+                              SELECT Cart.*, Wine.Name, Wine.Price, Wine.Stock, (Cart.Amount * Wine.Price) AS Total FROM Cart 
                               JOIN Wine on Cart.WineId = Wine.WineId 
                               WHERE Cart.UserId = @UserId
                               ";
@@ -502,6 +502,10 @@ namespace ChateauDuNoxWebsite.App_Start
 
         while (reader.Read())
         {
+          int orderAmount = Convert.ToInt32(reader["Amount"].ToString());
+          int oriStock = Convert.ToInt32(reader["Stock"].ToString());
+          int wineId = Convert.ToInt32(reader["WineId"].ToString());
+
           readerCount++;
 
           string cartToOrderQuery = @"
@@ -521,31 +525,28 @@ namespace ChateauDuNoxWebsite.App_Start
 
           reader = fetchCartCommand.ExecuteReader();
 
-          int wineId = Convert.ToInt32(reader["WineId"]);
-          int currentStock = Convert.ToInt32(reader["Stock"]);
-          int orderedQuantity = Convert.ToInt32(reader["Amount"]);
-          int updatedStock = currentStock - orderedQuantity;
-
-          string updateStockQuery = "UPDATE Wine SET Stock = @UpdatedStock WHERE WineId = @WineId";
-          SqlCommand updateStockCommand = new SqlCommand(updateStockQuery, conn);
-          updateStockCommand.Parameters.AddWithValue("@UpdatedStock", updatedStock);
-          updateStockCommand.Parameters.AddWithValue("@WineId", wineId);
-
-          reader.Close();
-
-          updateStockCommand.ExecuteNonQuery();
-
-          reader = fetchCartCommand.ExecuteReader();
-
           if (reader.Read())
           {
             string deleteCartQuery = "DELETE FROM Cart WHERE CartId = @CartId";
             SqlCommand deleteCartCommand = new SqlCommand(deleteCartQuery, conn);
-            deleteCartCommand.Parameters.AddWithValue("@CartId", Convert.ToInt32(reader["CartId"]));
+            deleteCartCommand.Parameters.AddWithValue("@CartId", Convert.ToInt32(reader["CartId"].ToString()));
 
             reader.Close();
 
             deleteCartCommand.ExecuteNonQuery();
+
+            reader = fetchCartCommand.ExecuteReader();
+
+            int updateStock = oriStock - orderAmount;
+
+            string updateStockQuery = "UPDATE Wine SET Stock = @Stock WHERE WineId = @WineId";
+            SqlCommand updateStockCommand = new SqlCommand(updateStockQuery, conn);
+            updateStockCommand.Parameters.AddWithValue("@WineId", wineId);
+            updateStockCommand.Parameters.AddWithValue("@Stock", updateStock);
+
+            reader.Close();
+
+            updateStockCommand.ExecuteNonQuery();
 
             reader = fetchCartCommand.ExecuteReader();
           }
@@ -593,6 +594,8 @@ namespace ChateauDuNoxWebsite.App_Start
         cancelCommand.Parameters.AddWithValue("@OrderId", orderId);
 
         cancelCommand.ExecuteNonQuery();
+
+        // Add back the quantity to stock
 
         Response.Write(
           "<script>alert('Your order with ID " + orderId + " has been cancelled. Please view your order history.'); document.location.href='./Profile.aspx';</script>"
