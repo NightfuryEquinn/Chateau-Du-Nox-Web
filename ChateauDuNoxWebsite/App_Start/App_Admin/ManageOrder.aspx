@@ -45,12 +45,12 @@
 
       <div class="nav-buttons">
         <% if (Session["Name"] != null) { %>
-        <a href="../Profile.aspx#shipping" class="profile-btn">
+        <a href="../Profile.aspx#wishlist" class="profile-btn">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" color="#242C34" viewBox="0 0 24 24">
             <path fill="currentColor" d="M5 21V5q0-.825.588-1.412T7 3h10q.825 0 1.413.588T19 5v16l-7-3z"/>
           </svg>
         </a>
-        <a href="../Profile.aspx#shipping" class="profile-btn">
+        <a href="../Profile.aspx#wishlist" class="profile-btn">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" color="#242C34" viewBox="0 0 24 24">
             <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
               <path d="M3 21h18v-9a9 9 0 1 0-18 0zm0-4h18"/>
@@ -315,8 +315,8 @@
             <a href="../Wines.aspx"><p>Our Wines</p></a>
             <a href="../Partners.aspx"><p>Our Partners</p></a>
             <% if (Session["Name"] != null) { %>
-            <a href="../Profile.aspx#shipping"><p>My Wishlist</p></a>
-            <a href="../Profile.aspx#shipping"><p>My Cart</p></a>
+            <a href="../Profile.aspx#wishlist"><p>My Wishlist</p></a>
+            <a href="../Profile.aspx#wishlist"><p>My Cart</p></a>
             <% } %>
           </div>
         </div>
