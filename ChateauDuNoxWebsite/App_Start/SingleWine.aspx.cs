@@ -132,23 +132,43 @@ namespace ChateauDuNoxWebsite.App_Start
       if (Session["UserId"] != null)
       {
         int wineId = Convert.ToInt32(Request.QueryString["WineId"]);
+        int wineQuantity = Convert.ToInt32(Quantity.Text);
 
         try
         {
           SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ChateauString"].ConnectionString);
           conn.Open();
 
-          string insertQuery = "INSERT INTO Wishlist (Amount, WineId, UserId) VALUES (@Amount, @WineId, @UserId)";
-          SqlCommand insertCommand = new SqlCommand(insertQuery, conn);
-          insertCommand.Parameters.AddWithValue("@Amount", Convert.ToInt32(Quantity.Text));
-          insertCommand.Parameters.AddWithValue("@WineId", wineId);
-          insertCommand.Parameters.AddWithValue("@UserId", Convert.ToInt32(Session["UserId"].ToString()));
+          string getStockQuery = "SELECT * FROM Wine WHERE Active = 1";
+          SqlCommand getStockCommand = new SqlCommand(getStockQuery, conn);
 
-          insertCommand.ExecuteNonQuery();
+          SqlDataReader getStockReader = getStockCommand.ExecuteReader();
 
-          Response.Write(
-            "<script>alert('Wine has been added into your wishlist. Please review to confirm.'); document.location.href='./Profile.aspx#shipping';</script>"
-          );
+          if (getStockReader.Read())
+          {
+            int stockQuantity = Convert.ToInt32(getStockReader["Stock"].ToString());
+
+            if (wineQuantity > stockQuantity)
+            {
+              string insertQuery = "INSERT INTO Wishlist (Amount, WineId, UserId) VALUES (@Amount, @WineId, @UserId)";
+              SqlCommand insertCommand = new SqlCommand(insertQuery, conn);
+              insertCommand.Parameters.AddWithValue("@Amount", Convert.ToInt32(Quantity.Text));
+              insertCommand.Parameters.AddWithValue("@WineId", wineId);
+              insertCommand.Parameters.AddWithValue("@UserId", Convert.ToInt32(Session["UserId"].ToString()));
+
+              insertCommand.ExecuteNonQuery();
+
+              Response.Write(
+                "<script>alert('Wine has been added into your wishlist. Please review to confirm.'); document.location.href='./Profile.aspx#shipping';</script>"
+              );
+            }
+            else
+            {
+              Response.Write(
+                "<script>alert('Stock is not enough to cater your need. Please buy according to the stock availability.');</script>"
+              );
+            }
+          }
 
           conn.Close();
         }
@@ -170,23 +190,45 @@ namespace ChateauDuNoxWebsite.App_Start
       if (Session["Name"] != null)
       {
         int wineId = Convert.ToInt32(Request.QueryString["WineId"]);
+        int wineQuantity = Convert.ToInt32(Quantity.Text);
 
         try
         {
           SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ChateauString"].ConnectionString);
           conn.Open();
 
-          string insertQuery = "INSERT INTO Cart (Amount, WineId, UserId) VALUES (@Amount, @WineId, @UserId)";
-          SqlCommand insertCommand = new SqlCommand(insertQuery, conn);
-          insertCommand.Parameters.AddWithValue("@Amount", Convert.ToInt32(Quantity.Text));
-          insertCommand.Parameters.AddWithValue("@WineId", wineId);
-          insertCommand.Parameters.AddWithValue("@UserId", Convert.ToInt32(Session["UserId"].ToString()));
+          string getStockQuery = "SELECT * FROM Wine WHERE Active = 1";
+          SqlCommand getStockCommand = new SqlCommand(getStockQuery, conn);
 
-          insertCommand.ExecuteNonQuery();
+          SqlDataReader getStockReader = getStockCommand.ExecuteReader();
 
-          Response.Write(
-            "<script>alert('Wine has been added into your cart. Please review to confirm.'); document.location.href='./Profile.aspx#shipping';</script>"
-          );
+          if (getStockReader.Read())
+          {
+            int stockQuantity = Convert.ToInt32(getStockReader["Stock"].ToString());
+
+            if (wineQuantity > stockQuantity)
+            {
+              string insertQuery = "INSERT INTO Cart (Amount, WineId, UserId) VALUES (@Amount, @WineId, @UserId)";
+              SqlCommand insertCommand = new SqlCommand(insertQuery, conn);
+              insertCommand.Parameters.AddWithValue("@Amount", wineQuantity);
+              insertCommand.Parameters.AddWithValue("@WineId", wineId);
+              insertCommand.Parameters.AddWithValue("@UserId", Convert.ToInt32(Session["UserId"].ToString()));
+
+              insertCommand.ExecuteNonQuery();
+
+              Response.Write(
+                "<script>alert('Wine has been added into your cart. Please review to confirm.'); document.location.href='./Profile.aspx#shipping';</script>"
+              );
+            }
+            else
+            {
+              Response.Write(
+                "<script>alert('Stock is not enough to cater your need. Please buy according to the stock availability.');</script>"
+              );
+            }
+          }
+
+          getStockReader.Close();
 
           conn.Close();
         }

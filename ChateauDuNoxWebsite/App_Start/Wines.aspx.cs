@@ -56,7 +56,7 @@ namespace ChateauDuNoxWebsite.App_Start
       string fetchWineTypeAndWineQuery = @"
                                         SELECT Wine.*, Type.Name as TypeName, Type.Active as TypeActive FROM Wine
                                         INNER JOIN Type ON Wine.TypeId = Type.TypeId
-                                        WHERE Wine.Active = 1 AND Type.Active = 1
+                                        WHERE Wine.Active = 1 AND Wine.Stock > 0 AND Type.Active = 1
                                         ";
       SqlCommand fetchWTAWCommand = new SqlCommand(fetchWineTypeAndWineQuery, conn);
 
