@@ -193,7 +193,7 @@
       <div class="wine-wrapper">
         <div class="wine">
           <div class="wine-image">
-            <img src="../App_Assets/langhe.jpeg" />
+            <img src="../App_Assets/langhe.jpg" />
           </div>
 
           <div class="wine-overlay">
