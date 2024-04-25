@@ -159,11 +159,6 @@ namespace ChateauDuNoxWebsite.App_Start.App_Admin
       }
     }
 
-    protected void ViewProfile_Click(object sender, EventArgs e)
-    {
-      // TODO when complete Profile.aspx
-    }
-
     protected void DeleteUser_Click(object sender, EventArgs e)
     {
       Button deleteButton = (Button)sender;

@@ -173,6 +173,7 @@
 
             <asp:Button runat="server" CommandArgument='<%# Eval("Name") %>' OnClientClick="return checkQueryString()" OnClick="EditProfile_Click" CssClass="input-submit" ID="EditProfile" Text="Edit Profile" />
             <asp:Button runat="server" OnClick="ChangePass_Click" CssClass="input-submit" ID="ChangePass" Text="Change Password" />
+            <asp:Button runat="server" OnClick="LogoutButton_Click" CssClass="input-submit" ID="LogoutButton" Text="Log Out" />
           </div>
         </ItemTemplate>
       </asp:Repeater>

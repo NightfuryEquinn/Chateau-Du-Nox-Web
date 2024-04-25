@@ -700,5 +700,13 @@ namespace ChateauDuNoxWebsite.App_Start
         }
       }
     }
+
+    protected void LogoutButton_Click(object sender, EventArgs e)
+    {
+      Session.Abandon();
+      Request.Cookies.Clear();
+
+      Response.Redirect("Login.aspx");
+    }
   }
 }

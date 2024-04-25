@@ -148,7 +148,9 @@ namespace ChateauDuNoxWebsite.App_Start
           {
             int stockQuantity = Convert.ToInt32(getStockReader["Stock"].ToString());
 
-            if (wineQuantity > stockQuantity)
+            getStockReader.Close();
+
+            if (wineQuantity < stockQuantity)
             {
               string insertQuery = "INSERT INTO Wishlist (Amount, WineId, UserId) VALUES (@Amount, @WineId, @UserId)";
               SqlCommand insertCommand = new SqlCommand(insertQuery, conn);
@@ -206,7 +208,9 @@ namespace ChateauDuNoxWebsite.App_Start
           {
             int stockQuantity = Convert.ToInt32(getStockReader["Stock"].ToString());
 
-            if (wineQuantity > stockQuantity)
+            getStockReader.Close();
+
+            if (wineQuantity < stockQuantity)
             {
               string insertQuery = "INSERT INTO Cart (Amount, WineId, UserId) VALUES (@Amount, @WineId, @UserId)";
               SqlCommand insertCommand = new SqlCommand(insertQuery, conn);
@@ -227,8 +231,6 @@ namespace ChateauDuNoxWebsite.App_Start
               );
             }
           }
-
-          getStockReader.Close();
 
           conn.Close();
         }
