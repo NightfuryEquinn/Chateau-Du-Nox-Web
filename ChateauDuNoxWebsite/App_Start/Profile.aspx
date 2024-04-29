@@ -187,7 +187,7 @@
               <asp:Repeater runat="server" ID="WishlistRepeater">
                 <ItemTemplate>
                   <div class="wishlist-wrapper">
-                    <a href='SingleWine.aspx?WineId=<%# Eval("WineId") %>' class="wine-wish">
+                    <a href='SingleWine.aspx?WineId=<%# Eval("WineId") %>&Amount=<%# Eval("Amount") %>' class="wine-wish">
                       <h4><%# Eval("WineName") %></h4>
                       <p>Amount: <%# Eval("Amount") %></p>
                     </a>

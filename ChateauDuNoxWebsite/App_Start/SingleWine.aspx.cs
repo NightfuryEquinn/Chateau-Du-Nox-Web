@@ -29,6 +29,7 @@ namespace ChateauDuNoxWebsite.App_Start
       if (!string.IsNullOrEmpty(Request.QueryString["WineId"]))
       {
         int wineId = Convert.ToInt32(Request.QueryString["WineId"]);
+        string wineQuantity = Request.QueryString["Amount"];
 
         try
         {
@@ -104,6 +105,16 @@ namespace ChateauDuNoxWebsite.App_Start
 
           reviewReader.Close();
 
+          if (wineQuantity != null)
+          {
+            int initialQuantity = Convert.ToInt32(wineQuantity);
+            int winePrice = Convert.ToInt32(price.Text.ToString());
+            int totalPrice = initialQuantity * winePrice;
+
+            Quantity.Text = initialQuantity.ToString();
+            price.Text = totalPrice.ToString();
+          }
+
           conn.Close();
         }
         catch (Exception ex)
@@ -131,6 +142,7 @@ namespace ChateauDuNoxWebsite.App_Start
     {
       if (Session["UserId"] != null)
       {
+        int userId = Convert.ToInt32(Session["UserId"].ToString());
         int wineId = Convert.ToInt32(Request.QueryString["WineId"]);
         int wineQuantity = Convert.ToInt32(Quantity.Text);
 
@@ -152,17 +164,57 @@ namespace ChateauDuNoxWebsite.App_Start
 
             if (wineQuantity < stockQuantity)
             {
-              string insertQuery = "INSERT INTO Wishlist (Amount, WineId, UserId) VALUES (@Amount, @WineId, @UserId)";
-              SqlCommand insertCommand = new SqlCommand(insertQuery, conn);
-              insertCommand.Parameters.AddWithValue("@Amount", Convert.ToInt32(Quantity.Text));
-              insertCommand.Parameters.AddWithValue("@WineId", wineId);
-              insertCommand.Parameters.AddWithValue("@UserId", Convert.ToInt32(Session["UserId"].ToString()));
+              string checkExistInWish = "SELECT COUNT(*) FROM Wishlist WHERE WineId = @WineId AND UserId = @UserId";
+              SqlCommand checkExistInWishCommand = new SqlCommand(checkExistInWish, conn);
+              checkExistInWishCommand.Parameters.AddWithValue("@WineId", wineId);
+              checkExistInWishCommand.Parameters.AddWithValue("@UserId", userId);
 
-              insertCommand.ExecuteNonQuery();
+              int check = Convert.ToInt32(checkExistInWishCommand.ExecuteScalar().ToString());
 
-              Response.Write(
-                "<script>alert('Wine has been added into your wishlist. Please review to confirm.'); document.location.href='./Profile.aspx#shipping';</script>"
-              );
+              if (check == 1)
+              {
+                string getExistInWish = "SELECT * FROM Wishlist WHERE WineId = @WineId AND UserId = @UserId";
+                SqlCommand getExistInWishCommand = new SqlCommand(getExistInWish, conn);
+                getExistInWishCommand.Parameters.AddWithValue("@WineId", wineId);
+                getExistInWishCommand.Parameters.AddWithValue("@UserId", userId);
+
+                SqlDataReader getReader = getExistInWishCommand.ExecuteReader();
+
+                if (getReader.Read())
+                {
+                  int existedQuantity = Convert.ToInt32(getReader["Amount"].ToString());
+                  int newQuantity = existedQuantity + wineQuantity;
+
+                  string updateQuery = "UPDATE Wishlist SET Amount = @Amount WHERE WineId = @WineId AND UserId = @UserId";
+                  SqlCommand updateCommand = new SqlCommand(updateQuery, conn);
+                  updateCommand.Parameters.AddWithValue("@Amount", newQuantity);
+                  updateCommand.Parameters.AddWithValue("@WineId", wineId);
+                  updateCommand.Parameters.AddWithValue("@UserId", userId);
+
+                  getReader.Close();
+
+                  updateCommand.ExecuteNonQuery();
+
+                  Response.Write(
+                    "<script>alert('Updated amount to your wishlist. Please review to confirm.'); document.location.href='./Profile.aspx#wishlist';</script>"
+                  );
+                }
+              }
+              else
+              {
+                string insertQuery = "INSERT INTO Wishlist (Amount, WineId, UserId) VALUES (@Amount, @WineId, @UserId)";
+                SqlCommand insertCommand = new SqlCommand(insertQuery, conn);
+                insertCommand.Parameters.AddWithValue("@Amount", Convert.ToInt32(Quantity.Text));
+                insertCommand.Parameters.AddWithValue("@WineId", wineId);
+                insertCommand.Parameters.AddWithValue("@UserId", Convert.ToInt32(Session["UserId"].ToString()));
+
+                insertCommand.ExecuteNonQuery();
+
+                Response.Write(
+                  "<script>alert('Wine has been added into your wishlist. Please review to confirm.'); document.location.href='./Profile.aspx#shipping';</script>"
+                );
+              }
+              
             }
             else
             {
@@ -191,7 +243,8 @@ namespace ChateauDuNoxWebsite.App_Start
     {
       if (Session["Name"] != null)
       {
-        int wineId = Convert.ToInt32(Request.QueryString["WineId"]);
+        int userId = Convert.ToInt32(Session["UserId"].ToString());
+        int wineId = Convert.ToInt32(Request.QueryString["WineId"].ToString());
         int wineQuantity = Convert.ToInt32(Quantity.Text);
 
         try
@@ -212,17 +265,56 @@ namespace ChateauDuNoxWebsite.App_Start
 
             if (wineQuantity < stockQuantity)
             {
-              string insertQuery = "INSERT INTO Cart (Amount, WineId, UserId) VALUES (@Amount, @WineId, @UserId)";
-              SqlCommand insertCommand = new SqlCommand(insertQuery, conn);
-              insertCommand.Parameters.AddWithValue("@Amount", wineQuantity);
-              insertCommand.Parameters.AddWithValue("@WineId", wineId);
-              insertCommand.Parameters.AddWithValue("@UserId", Convert.ToInt32(Session["UserId"].ToString()));
+              string checkExistInCart = "SELECT COUNT(*) FROM Cart WHERE WineId = @WineId AND UserId = @UserId";
+              SqlCommand checkExistInCartCommand = new SqlCommand(checkExistInCart, conn);
+              checkExistInCartCommand.Parameters.AddWithValue("@WineId", wineId);
+              checkExistInCartCommand.Parameters.AddWithValue("@UserId", userId);
 
-              insertCommand.ExecuteNonQuery();
+              int check = Convert.ToInt32(checkExistInCartCommand.ExecuteScalar().ToString());
 
-              Response.Write(
-                "<script>alert('Wine has been added into your cart. Please review to confirm.'); document.location.href='./Profile.aspx#shipping';</script>"
-              );
+              if (check == 1)
+              {
+                string getExistInCart = "SELECT * FROM Cart WHERE WineId = @WineId AND UserId = @UserId";
+                SqlCommand getExistInCartCommand = new SqlCommand(getExistInCart, conn);
+                getExistInCartCommand.Parameters.AddWithValue("@WineId", wineId);
+                getExistInCartCommand.Parameters.AddWithValue("@UserId", userId);
+
+                SqlDataReader getReader = getExistInCartCommand.ExecuteReader();
+
+                if (getReader.Read())
+                {
+                  int existedQuantity = Convert.ToInt32(getReader["Amount"].ToString());
+                  int newQuantity = existedQuantity + wineQuantity;
+
+                  string updateQuery = "UPDATE Cart SET Amount = @Amount WHERE WineId = @WineId AND UserId = @UserId";
+                  SqlCommand updateCommand = new SqlCommand(updateQuery, conn);
+                  updateCommand.Parameters.AddWithValue("@Amount", newQuantity);
+                  updateCommand.Parameters.AddWithValue("@WineId", wineId);
+                  updateCommand.Parameters.AddWithValue("@UserId", userId);
+
+                  getReader.Close();
+
+                  updateCommand.ExecuteNonQuery();
+
+                  Response.Write(
+                    "<script>alert('Updated amount to your cart. Please review to confirm.'); document.location.href='./Profile.aspx#wishlist';</script>"
+                  );
+                }
+              }
+              else
+              {
+                string insertQuery = "INSERT INTO Cart (Amount, WineId, UserId) VALUES (@Amount, @WineId, @UserId)";
+                SqlCommand insertCommand = new SqlCommand(insertQuery, conn);
+                insertCommand.Parameters.AddWithValue("@Amount", wineQuantity);
+                insertCommand.Parameters.AddWithValue("@WineId", wineId);
+                insertCommand.Parameters.AddWithValue("@UserId", Convert.ToInt32(Session["UserId"].ToString()));
+
+                insertCommand.ExecuteNonQuery();
+
+                Response.Write(
+                  "<script>alert('Wine has been added into your cart. Please review to confirm.'); document.location.href='./Profile.aspx#wishlist';</script>"
+                );
+              }  
             }
             else
             {
