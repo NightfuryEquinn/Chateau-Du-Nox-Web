@@ -24,4 +24,4 @@ Password: chateau_admin
 
 <hr />
 
-### 📂 Read documentation: [Here]()
+### 📂 Read documentation: [Here](https://github.com/NightfuryEquinn/Chateau-Du-Nox-Web/blob/main/Yip%20Zi%20Xian%20-%20TP059963%20-%20MWM%20Documentation.pdf)
