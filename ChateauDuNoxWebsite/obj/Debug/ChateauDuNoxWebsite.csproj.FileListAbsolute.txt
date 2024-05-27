@@ -67,8 +67,8 @@ C:\Users\ZxianYip\Local_Docs\Degree\mwm\Repos\chateau-du-nox-website\ChateauDuNo
 C:\Users\ZxianYip\Local_Docs\Degree\mwm\Repos\chateau-du-nox-website\ChateauDuNoxWebsite\bin\Antlr3.Runtime.pdb
 C:\Users\ZxianYip\Local_Docs\Degree\mwm\Repos\chateau-du-nox-website\ChateauDuNoxWebsite\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\ZxianYip\Local_Docs\Degree\mwm\Repos\chateau-du-nox-website\ChateauDuNoxWebsite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\ZxianYip\Local_Docs\Degree\mwm\Repos\chateau-du-nox-website\ChateauDuNoxWebsite\obj\Debug\ChateauDuNoxWebsite.csproj.AssemblyReference.cache
 C:\Users\ZxianYip\Local_Docs\Degree\mwm\Repos\chateau-du-nox-website\ChateauDuNoxWebsite\obj\Debug\ChateauDuNoxWebsite.csproj.CoreCompileInputs.cache
-C:\Users\ZxianYip\Local_Docs\Degree\mwm\Repos\chateau-du-nox-website\ChateauDuNoxWebsite\obj\Debug\ChateauDuNoxWebsite.csproj.CopyComplete
+C:\Users\ZxianYip\Local_Docs\Degree\mwm\Repos\chateau-du-nox-website\ChateauDuNoxWebsite\obj\Debug\ChateauD.72FF8AA4.Up2Date
 C:\Users\ZxianYip\Local_Docs\Degree\mwm\Repos\chateau-du-nox-website\ChateauDuNoxWebsite\obj\Debug\ChateauDuNoxWebsite.dll
 C:\Users\ZxianYip\Local_Docs\Degree\mwm\Repos\chateau-du-nox-website\ChateauDuNoxWebsite\obj\Debug\ChateauDuNoxWebsite.pdb
-C:\Users\ZxianYip\Local_Docs\Degree\mwm\Repos\chateau-du-nox-website\ChateauDuNoxWebsite\obj\Debug\ChateauDuNoxWebsite.csproj.AssemblyReference.cache
